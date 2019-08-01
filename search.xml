@@ -3,7 +3,13 @@
   <entry>
     <title><![CDATA[博客名字]]></title>
     <url>%2F2019%2F07%2F31%2F%E5%8D%9A%E5%AE%A2%E5%90%8D%E5%AD%97%2F</url>
-    <content type="text"></content>
+    <content type="text"><![CDATA[奥术大师阿萨德撒大的]]></content>
+      <categories>
+        <category>随笔</category>
+      </categories>
+      <tags>
+        <tag>随笔</tag>
+      </tags>
   </entry>
   <entry>
     <title><![CDATA[test_my_site]]></title>
