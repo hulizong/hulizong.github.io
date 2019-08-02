@@ -106,7 +106,7 @@
 
 
 
-  <meta name="keywords" content=".Net,">
+  <meta name="keywords" content="Docker,">
 
 
 
@@ -117,18 +117,24 @@
 
 
 
-<meta name="description" content="一、类型成员类成员定义有（public、private、internal、protected）。 Public–对任何类和成员都是公开的，无限制 Private–是私有的，仅能由类内部代码访问，如果没有声明，默认使用此关键字 Internal–仅能在所属命名空间内部访问 Protected–可以由类或者其派生类中的代码访问 类成员–字段、方法、属性 12345678910public class">
-<meta name="keywords" content=".Net">
+<meta name="description" content="目录： **　　一、什么是RabbitMQ** **　　二、RabbitMQ运用场景** **　　三、RabbitMQ优势及特点** **　　四、Centos7中Docker安装RabbitMQ** **　　五、.Net Core 中使用RabbitMQ**  一、什么是RabbitMQ RabbitMQ是什么? –”RabbitMQ是基于AMQP协议的队列服务“,. 什么是AMQP?– Adva">
+<meta name="keywords" content="Docker">
 <meta property="og:type" content="article">
-<meta property="og:title" content="c#类型详解">
-<meta property="og:url" content="http://yoursite.com/2019/07/31/C#类型详解/index.html">
+<meta property="og:title" content="RabbitMQ的介绍及使用进阶（Docker+.Net Core）">
+<meta property="og:url" content="http://yoursite.com/2019/08/02/RabbitMQ的介绍及使用进阶（Docker+.Net Core）/index.html">
 <meta property="og:site_name" content="小世界的野孩子">
-<meta property="og:description" content="一、类型成员类成员定义有（public、private、internal、protected）。 Public–对任何类和成员都是公开的，无限制 Private–是私有的，仅能由类内部代码访问，如果没有声明，默认使用此关键字 Internal–仅能在所属命名空间内部访问 Protected–可以由类或者其派生类中的代码访问 类成员–字段、方法、属性 12345678910public class">
+<meta property="og:description" content="目录： **　　一、什么是RabbitMQ** **　　二、RabbitMQ运用场景** **　　三、RabbitMQ优势及特点** **　　四、Centos7中Docker安装RabbitMQ** **　　五、.Net Core 中使用RabbitMQ**  一、什么是RabbitMQ RabbitMQ是什么? –”RabbitMQ是基于AMQP协议的队列服务“,. 什么是AMQP?– Adva">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-08-01T08:58:34.034Z">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/15931901-d52da4e7275b07ab.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/15931901-ac857973011f35c4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/15931901-8068df027832ef28.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/15931901-7996800506c94a63.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/15931901-ab5577972231451b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2019-08-02T06:57:07.596Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="c#类型详解">
-<meta name="twitter:description" content="一、类型成员类成员定义有（public、private、internal、protected）。 Public–对任何类和成员都是公开的，无限制 Private–是私有的，仅能由类内部代码访问，如果没有声明，默认使用此关键字 Internal–仅能在所属命名空间内部访问 Protected–可以由类或者其派生类中的代码访问 类成员–字段、方法、属性 12345678910public class">
+<meta name="twitter:title" content="RabbitMQ的介绍及使用进阶（Docker+.Net Core）">
+<meta name="twitter:description" content="目录： **　　一、什么是RabbitMQ** **　　二、RabbitMQ运用场景** **　　三、RabbitMQ优势及特点** **　　四、Centos7中Docker安装RabbitMQ** **　　五、.Net Core 中使用RabbitMQ**  一、什么是RabbitMQ RabbitMQ是什么? –”RabbitMQ是基于AMQP协议的队列服务“,. 什么是AMQP?– Adva">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/15931901-d52da4e7275b07ab.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
 
 
@@ -158,13 +164,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/07/31/C#类型详解/">
+  <link rel="canonical" href="http://yoursite.com/2019/08/02/RabbitMQ的介绍及使用进阶（Docker+.Net Core）/">
 
 
 
 
 
-  <title>c#类型详解 | 小世界的野孩子</title>
+  <title>RabbitMQ的介绍及使用进阶（Docker+.Net Core） | 小世界的野孩子</title>
   
 
 
@@ -330,7 +336,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/31/C#类型详解/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/02/RabbitMQ的介绍及使用进阶（Docker+.Net Core）/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Boy">
@@ -347,7 +353,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">c#类型详解</h1>
+          <h1 class="post-title" itemprop="name headline">RabbitMQ的介绍及使用进阶（Docker+.Net Core）</h1>
         
 
         <div class="post-meta">
@@ -359,8 +365,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-31T13:53:41+08:00">
-                2019-07-31
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-02T15:50:16+08:00">
+                2019-08-02
               </time>
             
 
@@ -382,8 +388,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/基础系列/" itemprop="url" rel="index">
-                    <span itemprop="name">基础系列</span>
+                  <a href="/categories/Docker知识分享/" itemprop="url" rel="index">
+                    <span itemprop="name">Docker知识分享</span>
                   </a>
                 </span>
 
@@ -400,8 +406,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/07/31/C#类型详解/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/07/31/C#类型详解/" itemprop="commentCount"></span>
+                <a href="/2019/08/02/RabbitMQ的介绍及使用进阶（Docker+.Net Core）/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/08/02/RabbitMQ的介绍及使用进阶（Docker+.Net Core）/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -428,7 +434,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1.6k 字
+                  1.3k 字
                 </span>
               
 
@@ -465,74 +471,66 @@
       
 
       
-        <h2 id="一、类型成员"><a href="#一、类型成员" class="headerlink" title="一、类型成员"></a>一、<strong>类型成员</strong></h2><p>类成员定义有（public、private、internal、protected）。</p>
-<p><strong>Public–对任何类和成员都是公开的，无限制</strong></p>
-<p><strong>Private–是私有的，仅能由类内部代码访问，如果没有声明，默认使用此关键字</strong></p>
-<p><strong>Internal–仅能在所属命名空间内部访问</strong></p>
-<p><strong>Protected–可以由类或者其派生类中的代码访问</strong></p>
-<p>类成员–字段、方法、属性</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">public class MyClass</span><br><span class="line"></span><br><span class="line">   &#123; public int MyInt = 2019;//字段</span><br><span class="line"></span><br><span class="line">       public static string MyMain()</span><br><span class="line"></span><br><span class="line">       &#123; return &quot;这是方法&quot;;</span><br><span class="line"></span><br><span class="line">       &#125; public int MyProperty &#123; get; set; &#125;//属性</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <p><strong>目录：</strong></p>
+<p>**　　一、什么是RabbitMQ**</p>
+<p>**　　二、RabbitMQ运用场景**</p>
+<p>**　　三、RabbitMQ优势及特点**</p>
+<p>**　　四、Centos7中Docker安装RabbitMQ**</p>
+<p>**　　五、.Net Core 中使用RabbitMQ**</p>
+<hr>
+<p><strong>一、什么是RabbitMQ</strong></p>
+<p>RabbitMQ是什么? –”<strong>RabbitMQ是基于AMQP协议的队列服务</strong>“,.</p>
+<p>什么是AMQP?– Advanced Message Queue，高级消息队列协议。它是应用层协议的一个开放标准，为面向消息的中间件设计，基于此协议的客户端与消息中间件可传递消息，并不受产品、开发语言等条件的限制。</p>
+<p>可以理解<strong>RabbitMQ</strong>是实现了高级消息队列协议（AMQP）的开源消息代理软件（也可以叫面向消息的中间件）</p>
+<p><strong>二、RabbitMQ运用场景</strong></p>
+<p><strong>消息通讯</strong>—因为其本身就是基于AMQP协议的队列服务，也就可以用于单纯的消息通讯，实现点对点的消息通讯或者聊天。</p>
+<p><strong>提速提性能</strong>—异步处理，不需要及时同步处理并且比较耗时，减少请求响应时间</p>
+<p><strong>流量削峰</strong>—流量过大，应用容易挂掉，可使用队列来处理。</p>
+<p><strong>三、RabbitMQ优势及特点</strong></p>
+<p><strong>可靠</strong>—RabbitMQ具有持久化，传输确认，发布确认等机制。保证了消息的安全性，一旦发送了消息，就算接收者接收不到，它也会保存信息，一直到接收者接收消息为止</p>
+<p><strong>复用性</strong>—RabbitMQ可以发送多种类型消息</p>
+<p><strong>异步处理（提速</strong>）—把消息传给中间件，中间件后续慢慢处理，同时也可达到削峰的效果</p>
+<p><strong>解耦</strong>–防止引入过多的API给系统的稳定性带来风险；调用方使用不当会给被调用方系统造成压力，被调用方处理不当会降低调用方系统的响应能力。</p>
+<hr>
+<p><strong>四、Centos7中Docker安装RabbitMQ</strong></p>
+<p>**　如何在Linux中安装可以看前段时间的一篇文章–<a href="https://www.cnblogs.com/hulizhong/p/10702367.html" target="_blank" rel="noopener">https://www.cnblogs.com/hulizhong/p/10702367.html</a>**</p>
+<p>先拉取镜像（选择带有mangement的版本）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull rabbitmq:management</span><br></pre></td></tr></table></figure>
 
-<p><strong>字段–一个只读、可读/写的数据值</strong></p>
-<p><strong>方法–对类型或对象状态数据操作的一个过程实现</strong></p>
-<p><strong>属性–它可以像方法一样操作类或对象的状态数据，但看上去却像字段一样的书写方式</strong></p>
-<h2 id="二、类型操作（隐式转换、显示转换、装箱、拆箱）"><a href="#二、类型操作（隐式转换、显示转换、装箱、拆箱）" class="headerlink" title="二、类型操作（隐式转换、显示转换、装箱、拆箱）"></a><strong>二、类型操作（隐式转换、显示转换、装箱、拆箱）</strong></h2><p><strong>隐式转换–对于内置数值类型，如果要存储的值无需截断或四舍五入即可适应变量，则可以进行隐式转换、小精度数据转大精度也可进行隐式转换</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Int  Num=100;</span><br><span class="line"></span><br><span class="line">Long Bignum= Num;&lt;/pre&gt;</span><br></pre></td></tr></table></figure>
+<p>然后查看镜像拉取情况</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker images</span><br></pre></td></tr></table></figure>
 
-<p><strong>显示转换–显示转换也称为强制转换，强制转换是显式告知编译器你打算进行转换且你知道可能会发生数据丢失的一种方式。</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Double Num=100.1;</span><br><span class="line"></span><br><span class="line">Int a;</span><br><span class="line"></span><br><span class="line">a=int.Parse(Num);&lt;/pre&gt;</span><br></pre></td></tr></table></figure>
+<p>启动容器同时设置账号密码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run  --name=rabbit  -p 15672:15672 -p 5672:5672  -e RABBITMQ_DEFAULT_USER=admin -e RABBITMQ_DEFAULT_PASS=admin  -d  rabbitmq:management</span><br></pre></td></tr></table></figure>
 
-<p><strong>显示转换存在一定的风险性，如若出现失误可能会抛出异常或者影响整个结果的精确性。假如在不知a的类型的情况下进行显示转换，但是转换失败则会引起程序抛出异常。</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var a = &quot;yi&quot;; int b = int.Parse(a);&lt;/pre&gt;</span><br></pre></td></tr></table></figure>
+<p>查看容器运行情况   </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker ps</span><br></pre></td></tr></table></figure>
 
-<p><strong>这是可以尝试使用TryParse，这里返回的是一个bool，转换成功则True</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var a = &quot;yi&quot;; int b; int.TryParse(a, out b);&lt;/pre&gt;</span><br></pre></td></tr></table></figure>
+<p>运行成功，然后我们就去浏览器看看能否访问ip:15672</p>
+<p> <img src="http://upload-images.jianshu.io/upload_images/15931901-d52da4e7275b07ab.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
+<p>然后输入刚刚输入的账号密码登入进去就可以查看消息队列的整体情况，到这里RabbitMQ已经安装好了，接下来我们看看如何在.Net Core中使用RabbitMQ.</p>
+<hr>
+<p><strong>五、.Net Core 中使用RabbitMQ</strong></p>
+<p>RabbitMQ使用的话可以分为三个步骤</p>
+<p><strong>1、 创建RabbitMQ的连接</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">public class ConnectionMQ</span><br><span class="line">    &#123; /// &lt;summary&gt;</span><br><span class="line">        /// 创建MQ连接 /// &lt;/summary&gt;</span><br><span class="line">        /// &lt;returns&gt;&lt;/returns&gt;</span><br><span class="line">        public static IConnection Connection()</span><br><span class="line">        &#123; //创建连接工厂 ConnectionFactory factory = new ConnectionFactory</span><br><span class="line">            &#123;</span><br><span class="line">                UserName =  “admin”,//用户名 Password =” admin”,//密码 HostName = “127.0.0.1”//rabbitmq ip &#125;; //创建连接</span><br><span class="line">            var connection = factory.CreateConnection(); return connection;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 
-<p><strong>类型操作转换–装箱、拆箱</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">public void Test()</span><br><span class="line"></span><br><span class="line">        &#123; //装箱</span><br><span class="line"></span><br><span class="line">            int a = 1; object obj = a; //拆箱</span><br><span class="line"></span><br><span class="line">            object obj2 = 2; int b = (int)obj2;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>2、 RabbitMQ发送消息</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">  public class PushMQ</span><br><span class="line">   &#123; </span><br><span class="line">/// &lt;summary&gt;</span><br><span class="line"> /// 发送MQ消息 /// &lt;/summary&gt;</span><br><span class="line"> /// &lt;typeparam name=&quot;T&quot;&gt;&lt;/typeparam&gt;</span><br><span class="line"> /// &lt;param name=&quot;item&quot;&gt;&lt;/param&gt;</span><br><span class="line"> /// &lt;param name=&quot;queueName&quot;&gt;&lt;/param&gt;</span><br><span class="line">    public static void SendMQ&lt;T&gt;(T item,string queueName)</span><br><span class="line">    &#123; string input = Newtonsoft.Json.JsonConvert.SerializeObject(item); using (var channel = ConnectionMQ.Connection().CreateModel())</span><br><span class="line">        &#123; //声明一个队列 channel.QueueDeclare(</span><br><span class="line">               queue: queueName,//队列名称 durable: true,//队列是否持久化 exclusive: false,//是否排外的 autoDelete: false,//是否自动删除 arguments: null//消息什么时候自动 ); var sendBytes=Encoding.UTF8.GetBytes(input); var properties = new BasicProperties();</span><br><span class="line">                properties.DeliveryMode = 2;// 设置消息是否持久化，1： 非持久化 2：持久化 //发布消息 channel.BasicPublish(</span><br><span class="line">                   exchange: &quot;&quot;,</span><br><span class="line">                   routingKey: queueName,</span><br><span class="line">                   mandatory: true,</span><br><span class="line">                  basicProperties: properties,</span><br><span class="line">                  body: sendBytes); </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p><strong>首先我们得了解，值类型是分配在线程栈中的，不受垃圾回收机制管理。而引用类型分配在托管堆中的。</strong></p>
-<p><strong>装箱–简单来说值类型转换引用类型是装箱，详细来说是。先在托管内存中分配内存，然后将值类型的值复制到内存堆中，然后返回新对象的地址，这一过程为装箱。</strong></p>
-<p><strong>拆箱–拆箱并不是装箱的逆过程，简单说也是引用类型转换为值类型为拆箱，详细来说拆箱是获取为装箱部分的指针，然后将未装箱部分的值复制到堆栈中。</strong></p>
-<h2 id="三、类型转换-Is-As"><a href="#三、类型转换-Is-As" class="headerlink" title="三、类型转换(Is,As)"></a>三、<strong>类型转换(Is,As)</strong></h2><p><strong>类型转换操作符–is、as</strong></p>
-<p>as–是将一个对象从一种类型转换为另一种类型，如果转换成功则返回该类型，否则返回null</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">A a=new A();</span><br><span class="line"></span><br><span class="line">B b= A as B;//转换正常则返回B类型，转换失败则返回null&lt;/pre&gt;</span><br></pre></td></tr></table></figure>
+<p>在这里连接的ConnectionMQ.Connection().CreateModel()是可以进行重写的，自己定义如何去连接 </p>
+<p><strong>3、 RabbitMQ接收消息</strong>  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">public class ReceiveMQ</span><br><span class="line">    　　&#123; /// &lt;summary&gt;</span><br><span class="line">        /// 接收MQ消息 /// &lt;/summary&gt;</span><br><span class="line">        /// &lt;typeparam name=&quot;T&quot;&gt;&lt;/typeparam&gt;</span><br><span class="line">        /// &lt;param name=&quot;func&quot;&gt;&lt;/param&gt;</span><br><span class="line">        /// &lt;param name=&quot;queueName&quot;&gt;&lt;/param&gt;</span><br><span class="line">        public static void GetMQ&lt;T&gt;(Func&lt;T,bool&gt; func,string queueName)</span><br><span class="line">        &#123; //创建连接</span><br><span class="line">            var connection = ConnectionMQ.Connection(); //创建通道</span><br><span class="line">            var channel = connection.CreateModel(); //事件基本消费者 EventingBasicConsumer consumer = new EventingBasicConsumer(channel); //接收到消息事件 consumer.Received += (ch, ea) =&gt; &#123; var message = Encoding.UTF8.GetString(ea.Body); try &#123; var item = JsonConvert.DeserializeObject&lt;T&gt;(message);</span><br><span class="line">                        func(item);</span><br><span class="line">                    &#125; catch (Exception ex)</span><br><span class="line">                    &#123;</span><br><span class="line">                        LogHelp.Error(ex);</span><br><span class="line">                    &#125; //确认该消息已被消费 channel.BasicAck(ea.DeliveryTag, false);</span><br><span class="line">                &#125;; //启动消费者 设置为手动应答消息 channel.BasicConsum、e(queueName, false, consumer);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 
-<p>is–是判断一种类型转换为另一种类型，如果转换成功则返回True，否则返回False。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">A a=new A();</span><br><span class="line"></span><br><span class="line">If(B is A)//返回True False</span><br><span class="line"> &#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>保险起见可以先用is对类型转换进行判断然后再使用as进行类型转换。当然这样的话可能会造成更新的性能消耗。</p>
-<p>更简单的一次验证并安全的操作：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">A a=new A();</span><br><span class="line"></span><br><span class="line">B b= A as B; if(B!=null)&#123;&#125; else&#123;&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="四、类型分类"><a href="#四、类型分类" class="headerlink" title="四、类型分类"></a>四、<strong>类型分类</strong></h2><p>一切皆对象，每一个对象都对应一个类，所有的类都有一个基类–Object-System.Object</p>
-<p>然后其下又可分为值类型(基本数据类型)、引用类型。</p>
-<p><strong>值类型：整型、浮点型、字符型、布尔型、结构体、枚举</strong></p>
-<p><strong>引用类型：数组、字符串、类、接口、委托</strong></p>
-<p>关于类型的详解将在下一节中详细讲出。</p>
-<h2 id="五、扩展延伸（抽象类、类）"><a href="#五、扩展延伸（抽象类、类）" class="headerlink" title="五、扩展延伸（抽象类、类）"></a>五、<strong>扩展延伸（抽象类、类）</strong></h2><p><strong>在这里我们详细讲解下类以及抽象类。同时与接口直接的区别和相同。</strong></p>
-<p><strong>类-抽象类：</strong></p>
-<p>1、<strong>都可被继承</strong></p>
-<p>2、<strong>抽象类不能被实例化，只是用来继承的，普通类可以实例化</strong></p>
-<p>3、<strong>抽象类只含有方法声明，没有方法体。并且只能存在于抽象类中</strong></p>
-<p>4、<strong>继承抽象类的子类必须实现抽象方法，除非子类也是抽象类</strong></p>
-<p>5、<strong>抽象类中可以包含抽象方法和实例方法</strong></p>
-<p><strong>接口-抽象类：</strong></p>
-<p><strong>相同</strong></p>
-<p>1、<strong>都可被继承</strong></p>
-<p>2、<strong>都可以有声明不实现的方法</strong></p>
-<p>3、<strong>都不可被实例化</strong></p>
-<p>4、<strong>子类必须实现其声明的方法</strong></p>
-<p><strong>不同：</strong></p>
-<p>1、<strong>一个类可以继承多个接口，但是仅能继承一个抽象类</strong></p>
-<p>2、<strong>抽象类可包含实例方法，接口不可包含</strong></p>
-<p>3、<strong>接口支持回调，抽象类不支持</strong></p>
-<p><strong>既然有类、抽象类、接口，那么他们分别在什么时候使用呢？</strong></p>
-<p><strong>类不用说了吧，普通情况下使用即可。</strong></p>
-<p><strong>抽象类–如果需要设计大的功能单元，则使用抽象类。抽象类主要用于关系密切的对象。</strong></p>
-<p><strong>接口–如果设计小而简练的功能块的话可以使用接口，接口适合为不想关的类提供通用功能</strong></p>
-<p><strong>举个例子：一个围栏之间有很多的小动物，猪、狗、鸡、猫。针对这个我们设计一段程序，猪、狗、鸡、猫其都是动物，根据抽象类-设计大的功能单元。我们可以设计一个动物类的抽象类。然后在各自继承下去写自己的具体类（猪类、狗类、鸡类、猫类）。那么我们要研究他们的叫声，这里设计小的功能模块。我们就可以使用接口来设计一个叫声。然后每个每个东西去实现不同的叫声（猪叫、狗叫、鸡叫、猫叫）。设计实现大的功能单元我们选择抽象类，设计实现小而简练的功能块我们选择使用接口。</strong></p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结:"></a><strong>总结:</strong></h2><p><a href="https://www.cnblogs.com/hulizhong/p/11205119.html" target="_blank" rel="noopener"><strong>c#基础知识详解系列</strong></a></p>
+<p><strong>4、查看消息</strong> </p>
+<p><em><img src="http://upload-images.jianshu.io/upload_images/15931901-ac857973011f35c4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></em> </p>
+<p>在这里我们发送消息，然后我们去ip+15672看看是否有未消费的消息。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/15931901-8068df027832ef28.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
+<p>发现有一条未消费的信息，队列名称是Test，正好是我们刚刚发送的消息。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/15931901-7996800506c94a63.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
+<p>然后我们去消费这一条信息，再次进入ip+15672看看</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/15931901-ab5577972231451b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
+<p>刚刚的一条消息的确被消费掉了。其中GetInfo方法可以穿插自己的很多的业务逻辑的处理。到这里也就简单的介绍了下如何在.Net Core中使用RabbitMQ,还有一些其他的属性必要之时都可以加入进来的。可以高度扩展的。<br>`</p>
 
       
     </div>
@@ -558,7 +556,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Net/" rel="tag"># .Net</a>
+            <a href="/tags/Docker/" rel="tag"># Docker</a>
           
         </div>
       
@@ -571,8 +569,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/07/31/基础类型详解下/" rel="next" title="基础类型详解下">
-                <i class="fa fa-chevron-left"></i> 基础类型详解下
+              <a href="/2019/08/02/Windows+docker 运行.NetCore/" rel="next" title="Windows+docker 运行.NetCore">
+                <i class="fa fa-chevron-left"></i> Windows+docker 运行.NetCore
               </a>
             
           </div>
@@ -580,10 +578,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/07/31/基础知识详解系列目录/" rel="prev" title="基础知识详解系列目录">
-                基础知识详解系列目录 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -651,17 +645,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -755,22 +740,6 @@
         </div>
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、类型成员"><span class="nav-number">1.</span> <span class="nav-text">一、类型成员</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、类型操作（隐式转换、显示转换、装箱、拆箱）"><span class="nav-number">2.</span> <span class="nav-text">二、类型操作（隐式转换、显示转换、装箱、拆箱）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、类型转换-Is-As"><span class="nav-number">3.</span> <span class="nav-text">三、类型转换(Is,As)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四、类型分类"><span class="nav-number">4.</span> <span class="nav-text">四、类型分类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#五、扩展延伸（抽象类、类）"><span class="nav-number">5.</span> <span class="nav-text">五、扩展延伸（抽象类、类）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">6.</span> <span class="nav-text">总结:</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
@@ -964,9 +933,9 @@
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'http://yoursite.com/2019/07/31/C#类型详解/';
-          this.page.identifier = '2019/07/31/C#类型详解/';
-          this.page.title = 'c#类型详解';
+          this.page.url = 'http://yoursite.com/2019/08/02/RabbitMQ的介绍及使用进阶（Docker+.Net Core）/';
+          this.page.identifier = '2019/08/02/RabbitMQ的介绍及使用进阶（Docker+.Net Core）/';
+          this.page.title = 'RabbitMQ的介绍及使用进阶（Docker+.Net Core）';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://.disqus.com/embed.js';
