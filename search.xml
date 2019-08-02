@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Windows+docker 运行.NetCore]]></title>
+    <url>%2F2019%2F08%2F02%2FWindows%2Bdocker%20%E8%BF%90%E8%A1%8C.NetCore%2F</url>
+    <content type="text"><![CDATA[今天我们来说下如何在windows下使用docker运行.net core，既然是docker，那么我们首先得在windows上安装docker。 在Windows安装 docker 有两种选择： 1、docker for windows 2、docker toolbox 区别： docker for windows-64位Windows 10、必须开启 Hyper-V docker toolbox -有virtualbox即可 今天只给大家介绍 docker for windows安装 地址：https://download.docker.com/win/stable/Docker%20for%20Windows%20Installer.exe 我们下载按照步骤一步步安装就ok了，安装之后打开可能会出现一个错误，如果没有出现那肯定万事大吉咯！ Hyper-V 没开不能启动： 以管理员身份打开 PowerShell 控制台。 运行以下命令： 1Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V -All 现在我们再来启动即可，在右下角也会有一个图标，悬浮上去显示 docker desk is running，表示已经安装成功（这个会提示我们登录，不过登录不登录问题都不是太大，登录之后可以连接到(Docker Hub） 接下来正式进入我们今天的主题，如何而使用 docker for windows 来运行 .netcore（Start） 首先我们创建一个.net core web项目 然后我们去项目根目录去看，会发现有一个Dockerfile的文件，同样我们需要在项目当中修改Dockerfile文件的属性，修改为较新则复制。 我们可以运行一下.net core看一下出来的页面效果，到现在我们需要的.net core的事例已经准备好了，我们现在开始在docker 中部署了。 我们打开PowerShell ，输入 docker info 出现下面的界面的样子证明docker 一切正常。 我们进入到我们刚刚创建的.net core 项目的根目录，然后开始构建docker镜像，要注意命令后面的那个 . ，意思是当前目录 1docker build -t demotest . 然后我们发现在执行到第六步的时候报错了，说什么在该路径找不到该文件 我也卡在这里卡了很久，最后发现路径拼接起来不对。我们仔细检查下Dockerfile文件的第六步发现文件路径是dockertest/dockertest.csproj，再结合我们当前路径是E:\Docker\dockertest \dockertest，组合一来看，多了一个dockertest，然后我们修改Dockerfile文件中的路径去掉这个多的dockertest/ 然后我们再来执行docker build -t demotest .然后发现我们在第10步的时候又出错了，说这个程序不包含适合入口点的静态’Main’方法，我们继续检查下Dockerfile文件，发现第9步那个工作路径 是/src/dockertest，我们拼接一下发现，又多了一个/dockertest，我们接着继续去掉这个，然后继续运行docker build -t demotest . 这一次终于不负众望。它完整的运行完成了所有的步骤并且提示了 123Successfully built eaa8cea8fcf4Successfully tagged demotest:latest 我们来看看构建镜像是否真的成功了吧 1docker images 我们发现了这一个，是我们刚刚创建的demotest,既然镜像我们已经创建成功了，那我们正式运行起来看看是否可用。 1docekr run --name=demotest -p7778:80-d demotest--name：指定容器名称-p：指定容器端口-d：指定容器 后台运行 然后出现了一串字符串，说明我们启动成功了，然后我们查看一下我们正在运行的容器 1docker ps 然后我们去浏览器输入ip+7778，看到如下页面证明这次docker for windows +.net core 成功运行了。 那么到这里我们的第一的windows+docker运行.netcore算是正式完工了，然后在给大家介绍一些较为常用的docker命令（命令） 123456789101112131415161718192021docker build -t demotest . 构建 demotest镜像docker images 查看当前所有的镜像docker inspect demotest 查看 运行容器的详情docker ps 查看当前运行的容器docker ps -a 查看当前所有的容器docker stop demotest 停止运行demotest容器docker start demotest 开启运行demotest容器docker rm demotest 删除demotest容器docker rmi demotest 删除demotest镜像docker rm $(docker ps -aq) 删除所有容器docker rmi $(docker images -q) 删除所有镜像]]></content>
+      <categories>
+        <category>Docker知识分享</category>
+      </categories>
+      <tags>
+        <tag>Docker</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[基础知识详解系列目录]]></title>
     <url>%2F2019%2F07%2F31%2F%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E8%AF%A6%E8%A7%A3%E7%B3%BB%E5%88%97%E7%9B%AE%E5%BD%95%2F</url>
     <content type="text"><![CDATA[摘要：这个系列是本人在学习与复习当中所遇到或尚且未知的一些知识点，目前逐步学习并详细解读。 目录索引：一、c#类型详解上 二、基础类型详解下 三、抽象类与接口 四、委托与事件-委托详解（一） 五、委托与事件-事件详解（二） 六、委托与事件-委托事件案例（三） 七、面向对象三大特性—–封装、继承、多态 八、泛型程序设计详解（一） 九、泛型协变与抗变（二） 十、数组（ArrayPool数组池、Span结构） 十一、集合（正在编写中） 十二、LINQ（正在编写中） 十三、错误异常处理（正在编写中） 十四、异步编程（正在编写中） 十五、反射、元数据和动态编程（正在编写中） 十六、托管和非托管内存（正在编写中） 总结：** 本人知识尚且有限，一旦出现误解或者少解还请各位慷慨解囊。** ** 清风飒爽柳姿还在，一片轻云漫飞天。涟漪泛湖荷叶拂舟，一曲和音绕指柔。对镜描妆素面朝天，一记浅笑去无痕。凭栏怅望凝眸思量，一片清秋气自爽。和音题文，一把辛酸暂埋藏，寻音倚歌，一帘惆怅浅卷起。但凭楼兰，倾泻柔情，不慢不躁，雅致清秋，莫使伤愁锁清秋。**]]></content>
