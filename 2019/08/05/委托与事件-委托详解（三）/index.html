@@ -117,22 +117,18 @@
 
 
 
-<meta name="description" content="前言　　前面几篇文章讲了泛型、讲了数组，都有提到集合，这一节重点对集合进行详细解说。本文主要使用各种集合类型。以至于评估其性能，针对不同的场景选择不同的集合使用。 集合分类详解一、列表**　　列表的创建** 1var    intList=new   List&amp;lt;int&amp;gt;();  **　　创建一个容量为10 的集合** 1List&amp;lt;int&amp;gt;   intList=new   L">
+<meta name="description" content="前言　　这两天一直在想如何结合实际案例来结束委托与事件的讲解，下面讲解两个事例，用来加深对委托及事件的理解。 事例一（分页功能）　　本场景是用来讲解使用的，具体内容功能需自行填补实现。用委托加事件来实现分页功能的通用。按上一节讲解中的逻辑处理，分为订阅者和发布者，一样的可以先定义订阅者感兴趣的对象，然后发布者，订阅者。再就是主程序调用。 123456789101112131415161718192">
 <meta name="keywords" content=".Net">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Net集合详解">
-<meta property="og:url" content="http://yoursite.com/2019/08/02/Net集合详解/index.html">
+<meta property="og:title" content="委托与事件-委托详解（三）">
+<meta property="og:url" content="http://yoursite.com/2019/08/05/委托与事件-委托详解（三）/index.html">
 <meta property="og:site_name" content="小世界的野孩子">
-<meta property="og:description" content="前言　　前面几篇文章讲了泛型、讲了数组，都有提到集合，这一节重点对集合进行详细解说。本文主要使用各种集合类型。以至于评估其性能，针对不同的场景选择不同的集合使用。 集合分类详解一、列表**　　列表的创建** 1var    intList=new   List&amp;lt;int&amp;gt;();  **　　创建一个容量为10 的集合** 1List&amp;lt;int&amp;gt;   intList=new   L">
+<meta property="og:description" content="前言　　这两天一直在想如何结合实际案例来结束委托与事件的讲解，下面讲解两个事例，用来加深对委托及事件的理解。 事例一（分页功能）　　本场景是用来讲解使用的，具体内容功能需自行填补实现。用委托加事件来实现分页功能的通用。按上一节讲解中的逻辑处理，分为订阅者和发布者，一样的可以先定义订阅者感兴趣的对象，然后发布者，订阅者。再就是主程序调用。 123456789101112131415161718192">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/15931901-4b5b0a65687e8328.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/15931901-adb50c40a68a5fa2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/15931901-97c061d4d6fff2b6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2019-08-02T10:03:49.262Z">
+<meta property="og:updated_time" content="2019-08-05T06:18:44.944Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Net集合详解">
-<meta name="twitter:description" content="前言　　前面几篇文章讲了泛型、讲了数组，都有提到集合，这一节重点对集合进行详细解说。本文主要使用各种集合类型。以至于评估其性能，针对不同的场景选择不同的集合使用。 集合分类详解一、列表**　　列表的创建** 1var    intList=new   List&amp;lt;int&amp;gt;();  **　　创建一个容量为10 的集合** 1List&amp;lt;int&amp;gt;   intList=new   L">
-<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/15931901-4b5b0a65687e8328.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta name="twitter:title" content="委托与事件-委托详解（三）">
+<meta name="twitter:description" content="前言　　这两天一直在想如何结合实际案例来结束委托与事件的讲解，下面讲解两个事例，用来加深对委托及事件的理解。 事例一（分页功能）　　本场景是用来讲解使用的，具体内容功能需自行填补实现。用委托加事件来实现分页功能的通用。按上一节讲解中的逻辑处理，分为订阅者和发布者，一样的可以先定义订阅者感兴趣的对象，然后发布者，订阅者。再就是主程序调用。 123456789101112131415161718192">
 
 
 
@@ -162,13 +158,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/08/02/Net集合详解/">
+  <link rel="canonical" href="http://yoursite.com/2019/08/05/委托与事件-委托详解（三）/">
 
 
 
 
 
-  <title>Net集合详解 | 小世界的野孩子</title>
+  <title>委托与事件-委托详解（三） | 小世界的野孩子</title>
   
 
 
@@ -334,7 +330,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/02/Net集合详解/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/05/委托与事件-委托详解（三）/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Boy">
@@ -351,7 +347,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Net集合详解</h1>
+          <h1 class="post-title" itemprop="name headline">委托与事件-委托详解（三）</h1>
         
 
         <div class="post-meta">
@@ -363,8 +359,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-02T18:50:16+08:00">
-                2019-08-02
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-05T16:50:16+08:00">
+                2019-08-05
               </time>
             
 
@@ -404,8 +400,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/08/02/Net集合详解/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/08/02/Net集合详解/" itemprop="commentCount"></span>
+                <a href="/2019/08/05/委托与事件-委托详解（三）/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/08/05/委托与事件-委托详解（三）/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -432,7 +428,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  2k 字
+                  1.2k 字
                 </span>
               
 
@@ -448,7 +444,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  8 分钟
+                  5 分钟
                 </span>
               
             </div>
@@ -469,75 +465,18 @@
       
 
       
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a><strong>前言</strong></h2><p>　　前面几篇文章讲了泛型、讲了数组，都有提到集合，这一节重点对集合进行详细解说。本文主要使用各种集合类型。以至于评估其性能，针对不同的场景选择不同的集合使用。</p>
-<h2 id="集合分类详解"><a href="#集合分类详解" class="headerlink" title="集合分类详解"></a><strong>集合分类详解</strong></h2><h3 id="一、列表"><a href="#一、列表" class="headerlink" title="一、列表"></a>一、<strong>列表</strong></h3><p>**　　列表的创建**</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var    intList=new   List&lt;int&gt;();</span><br></pre></td></tr></table></figure>
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a><strong>前言</strong></h2><p>　　这两天一直在想如何结合实际案例来结束委托与事件的讲解，下面讲解两个事例，用来加深对委托及事件的理解。</p>
+<h2 id="事例一（分页功能）"><a href="#事例一（分页功能）" class="headerlink" title="事例一（分页功能）"></a><strong>事例一（分页功能）</strong></h2><p>　　本场景是用来讲解使用的，具体内容功能需自行填补实现。用委托加事件来实现分页功能的通用。按上一节讲解中的逻辑处理，分为订阅者和发布者，一样的可以先定义订阅者感兴趣的对象，然后发布者，订阅者。再就是主程序调用。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line">    /// &lt;summary&gt;</span><br><span class="line">   /// 首先定义订阅者感兴趣的对象，本例感兴趣的是上一页下一页等方法。这里使用Action抽象 /// &lt;/summary&gt;</span><br><span class="line">   public class PageChangeEventArgs : EventArgs</span><br><span class="line">   &#123; public string Action &#123; get; set; &#125; public int PageIndex &#123; get; set; &#125; public PageChangeEventArgs() &#123; &#125; public PageChangeEventArgs(string action, int pageIndex)</span><br><span class="line">       &#123; this.Action = action; this.PageIndex = pageIndex;</span><br><span class="line">       &#125;</span><br><span class="line">   &#125; /// &lt;summary&gt;</span><br><span class="line">   /// 定义发布者 /// &lt;/summary&gt;</span><br><span class="line">   public class PageActionPubliser</span><br><span class="line">   &#123; //定义委托</span><br><span class="line">       public delegate void PageActionEventHandler(object sender, PageChangeEventArgs e); //定义委托类型的事件</span><br><span class="line">       public event PageActionEventHandler PageAction; //定义保护方法判断委托事件是否为空,传入参数e类型为EventArgs</span><br><span class="line">       protected void OnPageAction(PageChangeEventArgs e)</span><br><span class="line">       &#123; if (PageAction != null)</span><br><span class="line">           &#123;</span><br><span class="line">               PageAction(this, e);</span><br><span class="line">           &#125; //PageAction?.Invoke(this, e);也可这样写</span><br><span class="line">&#125; //编写触发事件、上一页</span><br><span class="line">       public void PreviousClick( PageChangeEventArgs e)</span><br><span class="line"></span><br><span class="line">       &#123;</span><br><span class="line">           OnPageAction(new PageChangeEventArgs(&quot;Previous&quot;,e.PageIndex));</span><br><span class="line">       &#125; //下一页</span><br><span class="line">       public void NextClick( PageChangeEventArgs e)</span><br><span class="line">       &#123;</span><br><span class="line">           OnPageAction(new PageChangeEventArgs(&quot;Next&quot;,e.PageIndex));</span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">   &#125; /// &lt;summary&gt;</span><br><span class="line">   /// 定义订阅者 /// &lt;/summary&gt;</span><br><span class="line">   public class Recevice</span><br><span class="line">   &#123; /// &lt;summary&gt;</span><br><span class="line">       /// 具体分页内容的实现，订阅者 /// &lt;/summary&gt;</span><br><span class="line">       public static void BindPage(object sender, PageChangeEventArgs e)</span><br><span class="line">       &#123; //假设最大页数为10</span><br><span class="line">           int MaxIndex = 10; if (e.PageIndex == 0 &amp;&amp; e.Action == &quot;Previous&quot;)</span><br><span class="line">           &#123; //当前0页，不能上一页</span><br><span class="line">&#125; if (e.PageIndex == MaxIndex - 1 &amp;&amp; e.Action == &quot;Next&quot;)</span><br><span class="line">           &#123; //已是最后一页，不能下一页</span><br><span class="line">&#125; switch (e.Action)</span><br><span class="line">           &#123; case &quot;Previous&quot;:</span><br><span class="line">                   e.PageIndex--; break; default:</span><br><span class="line">                   e.PageIndex++; break;</span><br><span class="line">           &#125;</span><br><span class="line">           Console.WriteLine($&quot;已跳转到第&#123;e.PageIndex&#125;页&quot;);</span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">   &#125; /// &lt;summary&gt;</span><br><span class="line">       /// 这里使用的是控制台应用程序进行模拟 /// &lt;/summary&gt;</span><br><span class="line">       /// &lt;param name=&quot;args&quot;&gt;&lt;/param&gt;</span><br><span class="line">   class Program</span><br><span class="line">   &#123; static void Main(string[] args)</span><br><span class="line">       &#123; //绑定注册事件</span><br><span class="line">           PageActionPubliser pageActionPubliser = new PageActionPubliser();</span><br><span class="line">           pageActionPubliser.PageAction += Recevice.BindPage;</span><br><span class="line">           Console.WriteLine(&quot;请选择上一页或者下一页：上一页(A)/下一页（B）&quot;); string answer=Console.ReadLine();</span><br><span class="line">           PageChangeEventArgs pageChangeEventArgs = new PageChangeEventArgs(); //假设当前页为5</span><br><span class="line">           pageChangeEventArgs.PageIndex = 5; if (answer==&quot;A&quot;)</span><br><span class="line">           &#123;                        </span><br><span class="line">           pageActionPubliser.PreviousClick(pageChangeEventArgs);</span><br><span class="line">           &#125; else &#123;</span><br><span class="line">               pageActionPubliser.NextClick(pageChangeEventArgs);</span><br><span class="line">           &#125;</span><br><span class="line"></span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
 
-<p>**　　创建一个容量为10 的集合**</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">List&lt;int&gt;   intList=new   List&lt;int&gt;(10);</span><br></pre></td></tr></table></figure>
+<p>　　在这里委托加事件的分页功能实现完成了。其实原理很简单的，当点击上一页或者下一页的时候，这时候因为因为已经绑定注册了这个事件。 它就会具体执行其中的操作。还是要具体去实践编写操作调试一下，就很快知道它的执行顺序、也能很快的掌握的。</p>
+<h2 id="事例二（新车到达提醒）"><a href="#事例二（新车到达提醒）" class="headerlink" title="事例二（新车到达提醒）"></a><strong>事例二（新车到达提醒）</strong></h2><p>　　这个案例，简要的表述就是在车库中新到达了车辆时会对管理者发送通知。首先我们也先分析下。订阅者是管理者。订阅者感兴趣的对象是啥呢？感兴趣的对象是有没有新车达到。</p>
+<p>　　然后，我们开始这个的一个设计。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">    /// &lt;summary&gt;</span><br><span class="line">    /// 定义订阅者感兴趣的对象 /// &lt;/summary&gt;</span><br><span class="line">    public class NewCarsEventArgs : EventArgs</span><br><span class="line">    &#123; public string NewCardName &#123; get; set; &#125; public NewCarsEventArgs() &#123; &#125; public NewCarsEventArgs(string newCardName)</span><br><span class="line">        &#123; this.NewCardName = newCardName;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; /// &lt;summary&gt;</span><br><span class="line">    /// 定义发布者 /// &lt;/summary&gt;</span><br><span class="line">    public class NewCarsPublisher</span><br><span class="line">    &#123; public delegate void CarsEventHandler(object sender ,NewCarsEventArgs e); public event CarsEventHandler Cars; private void OnCars(NewCarsEventArgs e)</span><br><span class="line">        &#123; if (Cars!=null)</span><br><span class="line">            &#123;</span><br><span class="line">                Cars(this,e);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; public void NewCarsArrivals(NewCarsEventArgs e)</span><br><span class="line">        &#123;</span><br><span class="line">            OnCars(e);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; public class NewCarsRecevie</span><br><span class="line">    &#123; public static void Manager(object sender,NewCarsEventArgs e)</span><br><span class="line">        &#123;</span><br><span class="line">            Console.WriteLine($&quot;通知：新车&#123;e.NewCardName&#125;到了!&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; class Program</span><br><span class="line">    &#123; static void Main(string[] args)</span><br><span class="line">        &#123;</span><br><span class="line">            NewCarsPublisher newCarsPublisher = new NewCarsPublisher();</span><br><span class="line">            newCarsPublisher.Cars += NewCarsRecevie.Manager;</span><br><span class="line">            Console.WriteLine(&quot;请输入到达车辆的名称：&quot;); string name=Console.ReadLine();</span><br><span class="line">            Console.WriteLine(&quot;到达车辆是否是新车（Y/N）：&quot;); string answer = Console.ReadLine(); if (answer==&quot;Y&quot;)</span><br><span class="line">            &#123;</span><br><span class="line">                NewCarsEventArgs newCarsEventArgs = new NewCarsEventArgs() &#123; NewCardName=name&#125;;</span><br><span class="line"></span><br><span class="line">               newCarsPublisher.NewCarsArrivals(newCarsEventArgs);</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                Console.WriteLine(&quot;不是新车不对订阅者发送通知!&quot;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>**　　列表初始值设定项**</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var intList = new List&lt;int&gt;() &#123; 1,2&#125;;</span><br></pre></td></tr></table></figure>
-
-<p>**　　添加元素(通过使用Add方法进行元素添加)**</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var    intList=new   List&lt;int&gt;();</span><br><span class="line"></span><br><span class="line">inList.Add(1); var intList = new List&lt;int&gt;();</span><br><span class="line"></span><br><span class="line">intList.AddRange(new List&lt;int&gt;()&#123; 1,2,3&#125;);</span><br></pre></td></tr></table></figure>
-
-<p>**　　插入元素(使用insert方法插入元素)**</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var intList = new List&lt;int&gt;();</span><br><span class="line"></span><br><span class="line">intList.Insert(3, 3); var intList = new List&lt;int&gt;();</span><br><span class="line"></span><br><span class="line">intList.InsertRange(3, new List&lt;int&gt;() &#123; 1,2,3&#125;);</span><br></pre></td></tr></table></figure>
-
-<p>**　　访问元素(通过下表去实现访问或者循环遍历)**</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">var intList = new List&lt;int&gt;();</span><br><span class="line"></span><br><span class="line">    intList.AddRange( new List&lt;int&gt;() &#123; 1,2,3&#125;); var answer = intList[2]; foreach (var item in intList)</span><br><span class="line"></span><br><span class="line">     &#123;</span><br><span class="line"></span><br><span class="line">       Console.WriteLine(item);</span><br><span class="line"></span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
-
-<p>**　　删除元素(通过RemoveAt指定删除某一位置的值)**</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var intList = new List&lt;int&gt;();</span><br><span class="line"></span><br><span class="line">intList.AddRange( new List&lt;int&gt;() &#123; 1,2,3,4&#125;);</span><br><span class="line"></span><br><span class="line">intList.RemoveAt(3);</span><br></pre></td></tr></table></figure>
-
-<p>**　　搜索(通过IndexOf访问指定位置的值，可以使用的方法IndexOf()、LastIndexOf()、FindLastIndex()、Find()、FindLast())**</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var intList = new List&lt;int&gt;();</span><br><span class="line"></span><br><span class="line">intList.AddRange( new List&lt;int&gt;() &#123; 1,2,3,4&#125;); int indenx = intList.IndexOf(3);</span><br></pre></td></tr></table></figure>
-
-<h3 id="二、队列"><a href="#二、队列" class="headerlink" title="二、队列"></a>二、<strong>队列</strong></h3><p>　　队列是其元素以先进先出<strong>（FirstIn，FirstOut，FIFO）</strong>的方式来处理的集合，先放入队列中的元素会先读取。队列的例子比比皆是。排队买票，食堂排队打饭，先到先买，先到先打饭。</p>
-<p>　　　　　　 <img src="https://upload-images.jianshu.io/upload_images/15931901-4b5b0a65687e8328.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
-<p>　　队列使用<strong>System.Collections.Generic</strong>命名空间中的泛型类<strong>Queue<t></t></strong>来实现的。这个类型类似于List<t>。队列类使用<strong>Enqueue()</strong>方法在队列的一段插入元素，使用<strong>Dequeue()</strong>方法在另一端读取元素并删除。</t></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Queue&lt;string&gt; qa = new Queue&lt;string&gt;();</span><br><span class="line"></span><br><span class="line"> qa.Enqueue(&quot;第一个进&quot;);</span><br><span class="line"></span><br><span class="line">qa.Dequeue();</span><br></pre></td></tr></table></figure>
-
-<p>　　其中使用<strong>Count()</strong>返回队列中的元素总数，使用<strong>Peek()</strong>方法从队列头部读取一个元素，但不删除它。使用<strong>TrimExcess()</strong>方法重新设置队列的容量，<strong>Dequeue()</strong>虽然删除了元素，但不会重新设置容量。要从队列头部去除空元素，应使用<strong>TrimExcess()</strong>方法</p>
-<h3 id="三、栈"><a href="#三、栈" class="headerlink" title="三、栈"></a>三、<strong>栈</strong></h3><p>　　栈是与队列非常相似的另一个容器，知识使用不同的方法访问栈，而且栈的元素属于最后添加的元素最先读取也就是后进先出（LastIn,FirstOut,LIFO）。</p>
-<p>　　　　　　 <img src="https://upload-images.jianshu.io/upload_images/15931901-adb50c40a68a5fa2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
-<p>　　与<strong>Queue<t></t></strong>类似，栈使用<strong>Stack<t></t></strong>来实现，其中<strong>Push()</strong>在栈中添加元素，用<strong>Pop()</strong>方法获取最近添加的元素。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Stack&lt;string&gt; qa = new Stack&lt;string&gt;();</span><br><span class="line"></span><br><span class="line">qa.Push(&quot;第一个进&quot;);</span><br><span class="line"></span><br><span class="line">qa.Pop();</span><br></pre></td></tr></table></figure>
-
-<p>　　其中其他方法与<strong>Queue<t></t></strong>类似，使用<strong>Count()</strong>返回队列中的元素总数，使用<strong>Peek()</strong>方法从队列头部读取一个元素，但不删除它。使用<strong>Contains()</strong>确定某个元素是否存在于栈中，存在则返回True</p>
-<h3 id="四、有序列表"><a href="#四、有序列表" class="headerlink" title="四、有序列表"></a>四、<strong>有序列表</strong></h3><p>　　如果需要基于键对所需的集合进行排序，就可以使用<strong>SortedList&lt;TKey,TValue&gt;</strong>类。这个类按照键给的元素排序，这个集合中的值和键都可以使用任意类型。</p>
-<p>　　下面先创建一个空列表，然后通过<strong>Add()</strong>方法进行添加元素。然后输出结果。我们看下图可以发现自动帮我们已经排序好了然后输出的。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">static void Main(string[] args)</span><br><span class="line"></span><br><span class="line">        &#123; var test = new SortedList&lt;string, string&gt;();</span><br><span class="line"></span><br><span class="line">            test.Add(&quot;First&quot;,&quot;Code1&quot;);</span><br><span class="line"></span><br><span class="line">            test.Add(&quot;Two&quot;, &quot;Code2&quot;);</span><br><span class="line"></span><br><span class="line">            test.Add(&quot;A&quot;, &quot;Code3&quot;); foreach (var item in test)</span><br><span class="line"></span><br><span class="line">            &#123;</span><br><span class="line"></span><br><span class="line">                Console.WriteLine(item.Key+&quot;:&quot;+ item.Value);</span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="五、字典"><a href="#五、字典" class="headerlink" title="五、字典"></a>五、<strong>字典</strong></h3><p>　　字典表示一种复杂的数据结构，这种数据结构允许按照某个键来访问元素。字典也称为映射或散列表。字典的主要特性是能根据键快速查找值。也可以自由添加和删除元素，这有点像List<t>，但没有在内存中移动后续元素的性能开销。</t></p>
-<p>字典的初始化：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var dict = new Dictionary&lt;int, string&gt;() &#123; &#123;1,&quot;第一个&quot; &#125;,&#123;2,&quot;第二&quot; &#125; &#125;;</span><br></pre></td></tr></table></figure>
-
-<p>添加和输出访问</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">  dict.Add( 3,&quot;第一个&quot; ); foreach (var item in dict)</span><br><span class="line"></span><br><span class="line">    &#123;</span><br><span class="line"></span><br><span class="line">        Console.WriteLine(&quot;Key:&quot;+item.Key+&quot; Value:&quot;+ item.Value);</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>　　有序字典<strong>SortedDictionary&lt;TKey,TValue&gt;</strong>是一个二叉搜索树，其中的元素根据建排序。和前面讲的<strong>SortedList&lt;TKey,TValue&gt;</strong>的功能类似。但是SortedList&lt;TKey,TValue&gt;是基于数组的列表，而有序字典类为一个字典。多以它们也有不同之处：</p>
-<ul>
-<li><strong>SortedList&lt;TKey,TValue&gt;使用的内存比SortedDictionary&lt;TKey,TValue&gt;少</strong><ul>
-<li><strong>SortedDictionary&lt;TKey,TValue&gt;的元素插入和删除比较快</strong></li>
-<li><strong>在用已排好序的数据填充集合时，若不需要修改容量，SortedList&lt;TKey,TValue&gt;就比较快</strong></li>
-</ul>
-</li>
-</ul>
-<h3 id="六、集"><a href="#六、集" class="headerlink" title="六、集"></a>六、<strong>集</strong></h3><p>　　包含不重复元素的的集合称为<strong>”集(set)”</strong>，.Net Core 包含两个集(<strong>HashSet<t>**</t></strong>和SortedSet<t>)**，它们都实现ISet<t>接口，HashSet<t>集包含不重复元素的无序列表，SortedSet<t>集包含不重复元素的有序列表。</t></t></t></t></p>
-<p>　　<strong>ISet<t></t></strong>接口提供的方法可以创建合集、交集，或者给出一个集是另一个集的超集或子集的信息。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">static void Main(string[] args)</span><br><span class="line">        &#123; var teams = new HashSet&lt;string&gt;() &#123; &quot;one&quot;,&quot;two&quot;,&quot;three&quot;&#125;; var teams1= new HashSet&lt;string&gt;() &#123; &quot;开始&quot;,&quot;one&quot;, &quot;two&quot;, &quot;three&quot; &#125;; //Add方法如果集中存在该元素则不添加，返回bool值</span><br><span class="line">            if (!teams.Add(&quot;one&quot;))</span><br><span class="line">            &#123;</span><br><span class="line">                Console.WriteLine(&quot;one 已经存在集中&quot;);</span><br><span class="line">            &#125; //IsSubsetOf方法判断teams集合中的元素是否都包含在teams1中，返回bool值</span><br><span class="line">            if (teams.IsSubsetOf(teams1))</span><br><span class="line">            &#123;</span><br><span class="line">                Console.WriteLine(&quot;teams中的值都包含在teams1中&quot;);</span><br><span class="line">            &#125; //IsSupersetOf方法判断teams1集合是否是teams集合超集，返回bool值</span><br><span class="line">            if (teams1.IsSupersetOf(teams))</span><br><span class="line">            &#123;</span><br><span class="line">                Console.WriteLine(&quot;teams1是teams的超集&quot;);</span><br><span class="line">            &#125; //Overlaps方法判断teams集合与teams是否存在重叠的元素，返回bool值</span><br><span class="line">            if (teams.Overlaps(teams1))</span><br><span class="line">            &#123;</span><br><span class="line">                Console.WriteLine(&quot;teams与teams1有重叠元素&quot;);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a><strong>总结</strong></h2><p>　　许多的集合都提供了相同的功能，例如SortedList类与SortedDictionary类的功能几乎完全相同。但是其性能常常差别非常巨大，一个集合使用的内存少，另一个元素检索起来速度快，在MSDN文档中，集合的方法常常有性能的提示，给出以O记号表示的操作时间：</p>
-<pre><code>*   ** O(1)**
-*   ** O(log n)**
-*   ** O(n)**</code></pre><p>　　O(1)表示无论集合中有多少数据项，这个操作需要的时间都不变，例如，ArrayList类的Add()方法就具有这个行为，无论列表有多少个集合，在列表末尾添加一个新元素的时间都相同。</p>
-<p>　　O(n)表示对于集合执行一个操作需要的时间最坏的情况是N，如果需要重新给集合分配内存，ArrayList类的Add()方法就是一个O(n)操作。改变容量，需要复制列表，复制的时间随元素的增加而线性的增加。</p>
-<p>　　O(log n)表示操作需要的时间随集合中元素的增加而增加，但每个元素要增加的时间不是线性的，而是呈对数曲线。在集合中执行插入操作时，SortedDictionary&lt;TKey,TValue&gt;集合类具有O(log n)行为，而SortedList&lt;TKey,TValue&gt;集合具有O(n)行为，这里SortedDictionary&lt;TKey,TValue&gt;集合类就要快的多，因为树形结构中插入元素的效率比列表高的多。</p>
-<p>　　下面表格中则列出了集合类及其执行不同操作的性能。可以使用这个表选择性能最佳的集合类进行使用。<br><img src="https://upload-images.jianshu.io/upload_images/15931901-97c061d4d6fff2b6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
-<hr>
-<p>　　　　　　<strong>最糟糕的是人们在生活中经常受到错误志向的阻碍而不自知，真到摆脱了那些阻碍时才能明白过来。——歌德</strong></p>
+<p>　　<strong>谨记，事件基于委托，为委托提供了一种发布/订阅机制。理解发布订阅机制就会容易多了。一旦理清楚，发现好像也并不是很难的。多多消化一下，自己动手去想一下实例。去写一下。很快能掌握的。</strong></p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a><strong>总结</strong></h2><p>　　  委托与事件到这里就大结局了。一些列的问题也解决了。心中的疑惑也揭开了。下面我们就接着基础系列写其他的了。 </p>
+<p>**　　再长的路，一步步也能走完，再短的路，不迈开双脚也无法到达。**</p>
 
       
     </div>
@@ -576,8 +515,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/08/02/抽象类及接口详解/" rel="next" title="抽象类及接口详解">
-                <i class="fa fa-chevron-left"></i> 抽象类及接口详解
+              <a href="/2019/08/05/委托与事件-委托详解（二）/" rel="next" title="委托与事件-委托详解（二）">
+                <i class="fa fa-chevron-left"></i> 委托与事件-委托详解（二）
               </a>
             
           </div>
@@ -585,10 +524,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/08/05/委托与事件-委托详解（一）/" rel="prev" title="委托与事件-委托详解（一）">
-                委托与事件-委托详解（一） <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -770,7 +705,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#集合分类详解"><span class="nav-number">2.</span> <span class="nav-text">集合分类详解</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、列表"><span class="nav-number">2.1.</span> <span class="nav-text">一、列表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、队列"><span class="nav-number">2.2.</span> <span class="nav-text">二、队列</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三、栈"><span class="nav-number">2.3.</span> <span class="nav-text">三、栈</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#四、有序列表"><span class="nav-number">2.4.</span> <span class="nav-text">四、有序列表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#五、字典"><span class="nav-number">2.5.</span> <span class="nav-text">五、字典</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#六、集"><span class="nav-number">2.6.</span> <span class="nav-text">六、集</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">3.</span> <span class="nav-text">总结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#事例一（分页功能）"><span class="nav-number">2.</span> <span class="nav-text">事例一（分页功能）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#事例二（新车到达提醒）"><span class="nav-number">3.</span> <span class="nav-text">事例二（新车到达提醒）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">4.</span> <span class="nav-text">总结</span></a></li></ol></div>
             
 
           </div>
@@ -969,9 +904,9 @@
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'http://yoursite.com/2019/08/02/Net集合详解/';
-          this.page.identifier = '2019/08/02/Net集合详解/';
-          this.page.title = 'Net集合详解';
+          this.page.url = 'http://yoursite.com/2019/08/05/委托与事件-委托详解（三）/';
+          this.page.identifier = '2019/08/05/委托与事件-委托详解（三）/';
+          this.page.title = '委托与事件-委托详解（三）';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://.disqus.com/embed.js';
