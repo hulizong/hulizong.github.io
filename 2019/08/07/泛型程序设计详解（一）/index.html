@@ -117,22 +117,18 @@
 
 
 
-<meta name="description" content="前言　　前面几篇文章讲了泛型、讲了数组，都有提到集合，这一节重点对集合进行详细解说。本文主要使用各种集合类型。以至于评估其性能，针对不同的场景选择不同的集合使用。 集合分类详解一、列表**　　列表的创建** 1var    intList=new   List&amp;lt;int&amp;gt;();  **　　创建一个容量为10 的集合** 1List&amp;lt;int&amp;gt;   intList=new   L">
+<meta name="description" content="前言　　泛型是C#和.Net的一个重要概念，泛型不仅是C#编程语言中的一部分，而且与程序集中的IL(Intermediate Language)代码紧密的集成。 　　在平时编程过程中，常常会出现编写一些差不多的代码块，不同的仅是处理不同的数据类型。比如一个处理int数据的方法，现在新加了string类型的数据。是不是把之前的方法复制一遍，然后修改类型int为string。当然这样的方法是没有错的，">
 <meta name="keywords" content=".Net">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Net集合详解">
-<meta property="og:url" content="http://yoursite.com/2019/08/02/Net集合详解/index.html">
+<meta property="og:title" content="泛型程序设计详解（一）">
+<meta property="og:url" content="http://yoursite.com/2019/08/07/泛型程序设计详解（一）/index.html">
 <meta property="og:site_name" content="小世界的野孩子">
-<meta property="og:description" content="前言　　前面几篇文章讲了泛型、讲了数组，都有提到集合，这一节重点对集合进行详细解说。本文主要使用各种集合类型。以至于评估其性能，针对不同的场景选择不同的集合使用。 集合分类详解一、列表**　　列表的创建** 1var    intList=new   List&amp;lt;int&amp;gt;();  **　　创建一个容量为10 的集合** 1List&amp;lt;int&amp;gt;   intList=new   L">
+<meta property="og:description" content="前言　　泛型是C#和.Net的一个重要概念，泛型不仅是C#编程语言中的一部分，而且与程序集中的IL(Intermediate Language)代码紧密的集成。 　　在平时编程过程中，常常会出现编写一些差不多的代码块，不同的仅是处理不同的数据类型。比如一个处理int数据的方法，现在新加了string类型的数据。是不是把之前的方法复制一遍，然后修改类型int为string。当然这样的方法是没有错的，">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/15931901-4b5b0a65687e8328.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/15931901-adb50c40a68a5fa2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/15931901-97c061d4d6fff2b6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2019-08-02T10:03:49.262Z">
+<meta property="og:updated_time" content="2019-08-07T09:22:42.722Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Net集合详解">
-<meta name="twitter:description" content="前言　　前面几篇文章讲了泛型、讲了数组，都有提到集合，这一节重点对集合进行详细解说。本文主要使用各种集合类型。以至于评估其性能，针对不同的场景选择不同的集合使用。 集合分类详解一、列表**　　列表的创建** 1var    intList=new   List&amp;lt;int&amp;gt;();  **　　创建一个容量为10 的集合** 1List&amp;lt;int&amp;gt;   intList=new   L">
-<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/15931901-4b5b0a65687e8328.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta name="twitter:title" content="泛型程序设计详解（一）">
+<meta name="twitter:description" content="前言　　泛型是C#和.Net的一个重要概念，泛型不仅是C#编程语言中的一部分，而且与程序集中的IL(Intermediate Language)代码紧密的集成。 　　在平时编程过程中，常常会出现编写一些差不多的代码块，不同的仅是处理不同的数据类型。比如一个处理int数据的方法，现在新加了string类型的数据。是不是把之前的方法复制一遍，然后修改类型int为string。当然这样的方法是没有错的，">
 
 
 
@@ -162,13 +158,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/08/02/Net集合详解/">
+  <link rel="canonical" href="http://yoursite.com/2019/08/07/泛型程序设计详解（一）/">
 
 
 
 
 
-  <title>Net集合详解 | 小世界的野孩子</title>
+  <title>泛型程序设计详解（一） | 小世界的野孩子</title>
   
 
 
@@ -334,7 +330,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/02/Net集合详解/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/07/泛型程序设计详解（一）/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Boy">
@@ -351,7 +347,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Net集合详解</h1>
+          <h1 class="post-title" itemprop="name headline">泛型程序设计详解（一）</h1>
         
 
         <div class="post-meta">
@@ -363,8 +359,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-02T18:50:16+08:00">
-                2019-08-02
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-07T17:12:16+08:00">
+                2019-08-07
               </time>
             
 
@@ -404,8 +400,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/08/02/Net集合详解/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/08/02/Net集合详解/" itemprop="commentCount"></span>
+                <a href="/2019/08/07/泛型程序设计详解（一）/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/08/07/泛型程序设计详解（一）/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -432,7 +428,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  2k 字
+                  1.8k 字
                 </span>
               
 
@@ -448,7 +444,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  8 分钟
+                  7 分钟
                 </span>
               
             </div>
@@ -469,75 +465,111 @@
       
 
       
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a><strong>前言</strong></h2><p>　　前面几篇文章讲了泛型、讲了数组，都有提到集合，这一节重点对集合进行详细解说。本文主要使用各种集合类型。以至于评估其性能，针对不同的场景选择不同的集合使用。</p>
-<h2 id="集合分类详解"><a href="#集合分类详解" class="headerlink" title="集合分类详解"></a><strong>集合分类详解</strong></h2><h3 id="一、列表"><a href="#一、列表" class="headerlink" title="一、列表"></a>一、<strong>列表</strong></h3><p>**　　列表的创建**</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var    intList=new   List&lt;int&gt;();</span><br></pre></td></tr></table></figure>
-
-<p>**　　创建一个容量为10 的集合**</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">List&lt;int&gt;   intList=new   List&lt;int&gt;(10);</span><br></pre></td></tr></table></figure>
-
-<p>**　　列表初始值设定项**</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var intList = new List&lt;int&gt;() &#123; 1,2&#125;;</span><br></pre></td></tr></table></figure>
-
-<p>**　　添加元素(通过使用Add方法进行元素添加)**</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var    intList=new   List&lt;int&gt;();</span><br><span class="line"></span><br><span class="line">inList.Add(1); var intList = new List&lt;int&gt;();</span><br><span class="line"></span><br><span class="line">intList.AddRange(new List&lt;int&gt;()&#123; 1,2,3&#125;);</span><br></pre></td></tr></table></figure>
-
-<p>**　　插入元素(使用insert方法插入元素)**</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var intList = new List&lt;int&gt;();</span><br><span class="line"></span><br><span class="line">intList.Insert(3, 3); var intList = new List&lt;int&gt;();</span><br><span class="line"></span><br><span class="line">intList.InsertRange(3, new List&lt;int&gt;() &#123; 1,2,3&#125;);</span><br></pre></td></tr></table></figure>
-
-<p>**　　访问元素(通过下表去实现访问或者循环遍历)**</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">var intList = new List&lt;int&gt;();</span><br><span class="line"></span><br><span class="line">    intList.AddRange( new List&lt;int&gt;() &#123; 1,2,3&#125;); var answer = intList[2]; foreach (var item in intList)</span><br><span class="line"></span><br><span class="line">     &#123;</span><br><span class="line"></span><br><span class="line">       Console.WriteLine(item);</span><br><span class="line"></span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
-
-<p>**　　删除元素(通过RemoveAt指定删除某一位置的值)**</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var intList = new List&lt;int&gt;();</span><br><span class="line"></span><br><span class="line">intList.AddRange( new List&lt;int&gt;() &#123; 1,2,3,4&#125;);</span><br><span class="line"></span><br><span class="line">intList.RemoveAt(3);</span><br></pre></td></tr></table></figure>
-
-<p>**　　搜索(通过IndexOf访问指定位置的值，可以使用的方法IndexOf()、LastIndexOf()、FindLastIndex()、Find()、FindLast())**</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var intList = new List&lt;int&gt;();</span><br><span class="line"></span><br><span class="line">intList.AddRange( new List&lt;int&gt;() &#123; 1,2,3,4&#125;); int indenx = intList.IndexOf(3);</span><br></pre></td></tr></table></figure>
-
-<h3 id="二、队列"><a href="#二、队列" class="headerlink" title="二、队列"></a>二、<strong>队列</strong></h3><p>　　队列是其元素以先进先出<strong>（FirstIn，FirstOut，FIFO）</strong>的方式来处理的集合，先放入队列中的元素会先读取。队列的例子比比皆是。排队买票，食堂排队打饭，先到先买，先到先打饭。</p>
-<p>　　　　　　 <img src="https://upload-images.jianshu.io/upload_images/15931901-4b5b0a65687e8328.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
-<p>　　队列使用<strong>System.Collections.Generic</strong>命名空间中的泛型类<strong>Queue<t></t></strong>来实现的。这个类型类似于List<t>。队列类使用<strong>Enqueue()</strong>方法在队列的一段插入元素，使用<strong>Dequeue()</strong>方法在另一端读取元素并删除。</t></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Queue&lt;string&gt; qa = new Queue&lt;string&gt;();</span><br><span class="line"></span><br><span class="line"> qa.Enqueue(&quot;第一个进&quot;);</span><br><span class="line"></span><br><span class="line">qa.Dequeue();</span><br></pre></td></tr></table></figure>
-
-<p>　　其中使用<strong>Count()</strong>返回队列中的元素总数，使用<strong>Peek()</strong>方法从队列头部读取一个元素，但不删除它。使用<strong>TrimExcess()</strong>方法重新设置队列的容量，<strong>Dequeue()</strong>虽然删除了元素，但不会重新设置容量。要从队列头部去除空元素，应使用<strong>TrimExcess()</strong>方法</p>
-<h3 id="三、栈"><a href="#三、栈" class="headerlink" title="三、栈"></a>三、<strong>栈</strong></h3><p>　　栈是与队列非常相似的另一个容器，知识使用不同的方法访问栈，而且栈的元素属于最后添加的元素最先读取也就是后进先出（LastIn,FirstOut,LIFO）。</p>
-<p>　　　　　　 <img src="https://upload-images.jianshu.io/upload_images/15931901-adb50c40a68a5fa2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
-<p>　　与<strong>Queue<t></t></strong>类似，栈使用<strong>Stack<t></t></strong>来实现，其中<strong>Push()</strong>在栈中添加元素，用<strong>Pop()</strong>方法获取最近添加的元素。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Stack&lt;string&gt; qa = new Stack&lt;string&gt;();</span><br><span class="line"></span><br><span class="line">qa.Push(&quot;第一个进&quot;);</span><br><span class="line"></span><br><span class="line">qa.Pop();</span><br></pre></td></tr></table></figure>
-
-<p>　　其中其他方法与<strong>Queue<t></t></strong>类似，使用<strong>Count()</strong>返回队列中的元素总数，使用<strong>Peek()</strong>方法从队列头部读取一个元素，但不删除它。使用<strong>Contains()</strong>确定某个元素是否存在于栈中，存在则返回True</p>
-<h3 id="四、有序列表"><a href="#四、有序列表" class="headerlink" title="四、有序列表"></a>四、<strong>有序列表</strong></h3><p>　　如果需要基于键对所需的集合进行排序，就可以使用<strong>SortedList&lt;TKey,TValue&gt;</strong>类。这个类按照键给的元素排序，这个集合中的值和键都可以使用任意类型。</p>
-<p>　　下面先创建一个空列表，然后通过<strong>Add()</strong>方法进行添加元素。然后输出结果。我们看下图可以发现自动帮我们已经排序好了然后输出的。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">static void Main(string[] args)</span><br><span class="line"></span><br><span class="line">        &#123; var test = new SortedList&lt;string, string&gt;();</span><br><span class="line"></span><br><span class="line">            test.Add(&quot;First&quot;,&quot;Code1&quot;);</span><br><span class="line"></span><br><span class="line">            test.Add(&quot;Two&quot;, &quot;Code2&quot;);</span><br><span class="line"></span><br><span class="line">            test.Add(&quot;A&quot;, &quot;Code3&quot;); foreach (var item in test)</span><br><span class="line"></span><br><span class="line">            &#123;</span><br><span class="line"></span><br><span class="line">                Console.WriteLine(item.Key+&quot;:&quot;+ item.Value);</span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="五、字典"><a href="#五、字典" class="headerlink" title="五、字典"></a>五、<strong>字典</strong></h3><p>　　字典表示一种复杂的数据结构，这种数据结构允许按照某个键来访问元素。字典也称为映射或散列表。字典的主要特性是能根据键快速查找值。也可以自由添加和删除元素，这有点像List<t>，但没有在内存中移动后续元素的性能开销。</t></p>
-<p>字典的初始化：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var dict = new Dictionary&lt;int, string&gt;() &#123; &#123;1,&quot;第一个&quot; &#125;,&#123;2,&quot;第二&quot; &#125; &#125;;</span><br></pre></td></tr></table></figure>
-
-<p>添加和输出访问</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">  dict.Add( 3,&quot;第一个&quot; ); foreach (var item in dict)</span><br><span class="line"></span><br><span class="line">    &#123;</span><br><span class="line"></span><br><span class="line">        Console.WriteLine(&quot;Key:&quot;+item.Key+&quot; Value:&quot;+ item.Value);</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>　　有序字典<strong>SortedDictionary&lt;TKey,TValue&gt;</strong>是一个二叉搜索树，其中的元素根据建排序。和前面讲的<strong>SortedList&lt;TKey,TValue&gt;</strong>的功能类似。但是SortedList&lt;TKey,TValue&gt;是基于数组的列表，而有序字典类为一个字典。多以它们也有不同之处：</p>
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a><strong>前言</strong></h2><p>　　泛型是C#和.Net的一个重要概念，泛型不仅是C#编程语言中的一部分，而且与程序集中的IL(Intermediate Language)代码紧密的集成。</p>
+<p>　　在平时编程过程中，常常会出现编写一些差不多的代码块，不同的仅是处理不同的数据类型。比如一个处理int数据的方法，现在新加了string类型的数据。是不是把之前的方法复制一遍，然后修改类型int为string。当然这样的方法是没有错的，那么后面又新增了其他的许多类型怎么办？还是复制修改吗？这样代码看上去很冗余，很复杂。这时候泛型就出现了。下面我们看下为何使用泛型吧。</p>
+<h2 id="优点"><a href="#优点" class="headerlink" title="优点"></a><strong>优点</strong></h2><p>　　下面介绍下泛型的优点，尤其是下面几个：</p>
 <ul>
-<li><strong>SortedList&lt;TKey,TValue&gt;使用的内存比SortedDictionary&lt;TKey,TValue&gt;少</strong><ul>
-<li><strong>SortedDictionary&lt;TKey,TValue&gt;的元素插入和删除比较快</strong></li>
-<li><strong>在用已排好序的数据填充集合时，若不需要修改容量，SortedList&lt;TKey,TValue&gt;就比较快</strong></li>
+<li>l <strong>性能</strong><ul>
+<li>l <strong>类型安全</strong></li>
+<li>l <strong>二进制代码重用</strong></li>
 </ul>
 </li>
 </ul>
-<h3 id="六、集"><a href="#六、集" class="headerlink" title="六、集"></a>六、<strong>集</strong></h3><p>　　包含不重复元素的的集合称为<strong>”集(set)”</strong>，.Net Core 包含两个集(<strong>HashSet<t>**</t></strong>和SortedSet<t>)**，它们都实现ISet<t>接口，HashSet<t>集包含不重复元素的无序列表，SortedSet<t>集包含不重复元素的有序列表。</t></t></t></t></p>
-<p>　　<strong>ISet<t></t></strong>接口提供的方法可以创建合集、交集，或者给出一个集是另一个集的超集或子集的信息。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">static void Main(string[] args)</span><br><span class="line">        &#123; var teams = new HashSet&lt;string&gt;() &#123; &quot;one&quot;,&quot;two&quot;,&quot;three&quot;&#125;; var teams1= new HashSet&lt;string&gt;() &#123; &quot;开始&quot;,&quot;one&quot;, &quot;two&quot;, &quot;three&quot; &#125;; //Add方法如果集中存在该元素则不添加，返回bool值</span><br><span class="line">            if (!teams.Add(&quot;one&quot;))</span><br><span class="line">            &#123;</span><br><span class="line">                Console.WriteLine(&quot;one 已经存在集中&quot;);</span><br><span class="line">            &#125; //IsSubsetOf方法判断teams集合中的元素是否都包含在teams1中，返回bool值</span><br><span class="line">            if (teams.IsSubsetOf(teams1))</span><br><span class="line">            &#123;</span><br><span class="line">                Console.WriteLine(&quot;teams中的值都包含在teams1中&quot;);</span><br><span class="line">            &#125; //IsSupersetOf方法判断teams1集合是否是teams集合超集，返回bool值</span><br><span class="line">            if (teams1.IsSupersetOf(teams))</span><br><span class="line">            &#123;</span><br><span class="line">                Console.WriteLine(&quot;teams1是teams的超集&quot;);</span><br><span class="line">            &#125; //Overlaps方法判断teams集合与teams是否存在重叠的元素，返回bool值</span><br><span class="line">            if (teams.Overlaps(teams1))</span><br><span class="line">            &#123;</span><br><span class="line">                Console.WriteLine(&quot;teams与teams1有重叠元素&quot;);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+<p>　　一、<strong>性能</strong></p>
+<p>**　　　　泛型的一个主要优点就是性能，在泛型集合类和非泛型集合类中，对值类型使用非泛型集合类，在把值类型转换为引用类型和把引用类型转换为值类型的时候，需要进行装箱和拆箱的操作（前面的文章中讲到了拆箱和装箱会造成一定的性能损失），当集合数据量大的时候造成的性能损失也就随之的增大了。**</p>
+<p>　　　　使用非泛型集合时：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">var list = new ArrayList();</span><br><span class="line">           list.Add(100);//装箱  int-object</span><br><span class="line">           int i = (int)list[0];//拆箱  object-int</span><br><span class="line">           foreach (int item in list)</span><br><span class="line">           &#123;</span><br><span class="line">               Console.WriteLine(item);//遍历拆箱输出</span><br><span class="line">           &#125;</span><br></pre></td></tr></table></figure>
 
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a><strong>总结</strong></h2><p>　　许多的集合都提供了相同的功能，例如SortedList类与SortedDictionary类的功能几乎完全相同。但是其性能常常差别非常巨大，一个集合使用的内存少，另一个元素检索起来速度快，在MSDN文档中，集合的方法常常有性能的提示，给出以O记号表示的操作时间：</p>
-<pre><code>*   ** O(1)**
-*   ** O(log n)**
-*   ** O(n)**</code></pre><p>　　O(1)表示无论集合中有多少数据项，这个操作需要的时间都不变，例如，ArrayList类的Add()方法就具有这个行为，无论列表有多少个集合，在列表末尾添加一个新元素的时间都相同。</p>
-<p>　　O(n)表示对于集合执行一个操作需要的时间最坏的情况是N，如果需要重新给集合分配内存，ArrayList类的Add()方法就是一个O(n)操作。改变容量，需要复制列表，复制的时间随元素的增加而线性的增加。</p>
-<p>　　O(log n)表示操作需要的时间随集合中元素的增加而增加，但每个元素要增加的时间不是线性的，而是呈对数曲线。在集合中执行插入操作时，SortedDictionary&lt;TKey,TValue&gt;集合类具有O(log n)行为，而SortedList&lt;TKey,TValue&gt;集合具有O(n)行为，这里SortedDictionary&lt;TKey,TValue&gt;集合类就要快的多，因为树形结构中插入元素的效率比列表高的多。</p>
-<p>　　下面表格中则列出了集合类及其执行不同操作的性能。可以使用这个表选择性能最佳的集合类进行使用。<br><img src="https://upload-images.jianshu.io/upload_images/15931901-97c061d4d6fff2b6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>　　　　使用泛型集合类时：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">var list = new List&lt;int&gt;();</span><br><span class="line">            list.Add(100);//无装箱操作 </span><br><span class="line">            int i =  list[0];//无拆箱拆箱 </span><br><span class="line">            foreach (int item in list)</span><br><span class="line">            &#123;</span><br><span class="line">                Console.WriteLine(item);//无拆箱操作</span><br><span class="line">            &#125;</span><br></pre></td></tr></table></figure>
+
+<p>  <strong>减少装箱拆箱操作，节省了性能消耗。这也就是泛型的主要优点了。</strong></p>
+<p>　　二、<strong>类型安全</strong></p>
+<p>　　　　<strong>泛型另一个优点就是类型安全，这里我们还是使用非泛型集合类ArrayList()和泛型集合类List<t>来做案例。</t></strong></p>
+<p>　　　　非泛型集合类ArrayList():</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">var list = new ArrayList();</span><br><span class="line">           list.Add(100);// 添加一个int类型</span><br><span class="line">           list.Add(&quot;string&quot;);//添加一个string类型</span><br><span class="line">           foreach (int item in list)</span><br><span class="line">           &#123;</span><br><span class="line">               Console.WriteLine(item);//遍历循环输出</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这里允许输出和抛出异常：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">System.InvalidCastException:“Unable to cast object of type &apos;System.String&apos; to type &apos;System.Int32&apos;.”</span><br></pre></td></tr></table></figure>
+
+<p>　　　　无法强制把”string”转换成int类型。</p>
+<p>　　　　我们再看泛型集合类：</p>
+<figure class="highlight plain"><figcaption><span>list </span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">list.Add(100);// 添加一个int类型 list.Add(&quot;string&quot;);//添加一个string类型,编译器报错，无法从string转换到int</span><br><span class="line">foreach (int item in list)</span><br><span class="line">&#123;</span><br><span class="line">    Console.WriteLine(item);//遍历循环输出 &#125;</span><br></pre></td></tr></table></figure>
+
+<p>　　　　在添加”string”类型的时候编译器报错，无法添加。这里也就杜绝了后续的错误。这也就是保证了类型的安全。</p>
+<p>　　<strong>三、二进制代码重用</strong></p>
+<p>　　　　<strong>泛型允许更好的重用二进制代码，泛型类型可以定义一次，并且可以再许多不同的类型实例化，相比C++来说，不用每次访问源代码。</strong></p>
+<p>　　　　<strong>例如上面使用的泛型集合类，using System.Collections.Generic; 中的List<t>类，可以用int，string，自定义类去实例化。</t></strong></p>
+<p>　　　　<strong>泛型类型还可以在一种语言定义，然后再其他任何.Net语言中使用。</strong></p>
+<h2 id="泛型类的功能"><a href="#泛型类的功能" class="headerlink" title="泛型类的功能"></a><strong>泛型类的功能</strong></h2><p>　　这里我们可以来了解下创建泛型类了之后，泛型类有哪些功能呢？</p>
+<ul>
+<li>l <strong>默认值</strong><ul>
+<li>l <strong>约束</strong></li>
+<li>l <strong>继承</strong></li>
+<li>l <strong>静态成员</strong></li>
+</ul>
+</li>
+</ul>
+<p>　　一、<strong>默认值</strong></p>
+<p>　　　　<strong>在我们定义了泛型类型之后如何赋值呢？</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">public class Tclass&lt;T&gt; &#123; public static T Get()</span><br><span class="line">        &#123;</span><br><span class="line">            T a = default; return a;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p>　　　　因为在泛型中初始给值不好给，你说给null吧，null是给引用类型的，你是给0吧，这又是给值类型的，这时候出现了default，当时引用类型调用时就给null，当时值类型时就0。</p>
+<p>　　二、<strong>约束</strong></p>
+<p>　　　　<strong>说到泛型类型的约束时，不得不提关键字where，where是用来限制参数的范围的，如果不符合where条件指定的参数范围，编译是不允许通过的。</strong></p>
+<p>　　　　<strong>这里泛型类型的约束主要可以分为以下6中</strong></p>
+<ul>
+<li>l <strong>Where T: class（类型参数必须是引用类型）</strong><ul>
+<li>l <strong>Where T:struct（类型参数必须是值类型）</strong></li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">public class Tclass&lt;T,U&gt;</span><br><span class="line">       where T:class //类型参数为引用类型</span><br><span class="line">       where U:struct  //类型参数为值类型</span><br><span class="line">            &#123;&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><ul>
+<li>l <strong>Where T：&lt;接口名称&gt;（类型参数必须是指定的接口或者实现指定的接口）</strong></li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">/// &lt;summary&gt;</span><br><span class="line">    /// 接口 /// &lt;/summary&gt;</span><br><span class="line">    interface Itest</span><br><span class="line">    &#123;</span><br><span class="line">    &#125; /// &lt;summary&gt;</span><br><span class="line">    /// 定义一个字典类型 /// &lt;/summary&gt;</span><br><span class="line">    /// &lt;typeparam name=&quot;TK&quot;&gt;&lt;/typeparam&gt;</span><br><span class="line">    /// &lt;typeparam name=&quot;TV&quot;&gt;&lt;/typeparam&gt;</span><br><span class="line">    class Dictionary&lt;TK, TV&gt;</span><br><span class="line">      where TK : IComparable, IEnumerable where TV : Itest</span><br><span class="line">    &#123; public void Add(TK key, TV val)</span><br><span class="line">        &#123;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><ul>
+<li>l <strong>Where T:&lt;基类名&gt;（参数必须是指定的基类或者是派生自指定的基类）</strong></li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">class Ttest &#123; &#125; class Tclass&lt;T&gt; where T:Ttest</span><br><span class="line">    &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><ul>
+<li>l <strong>Where T:new ()（这是一个构造函数的约束，指定参数类型必须有一个默认构造函数，当与其他约束一起使用时必须放在其最后）</strong></li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">　　class EmployeeList&lt;T&gt; where T : Employee, IEmployee, System.IComparable&lt;T&gt;, new()</span><br><span class="line">　　&#123;</span><br><span class="line">    　　// ... &#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><ul>
+<li>l <strong>Where T1:T2（这个约束指定类型T1派生自泛型类型T2，也就是说T1的参数类型要和T2一样）</strong></li>
+</ul>
+</li>
+</ul>
+<pre style="color: rgb(0, 0, 0); font-family: &quot;Courier New&quot;; font-size: 12px; margin: 5px 8px; padding: 5px;">　　public class Tclass<t> where T:IComparable { }</t></pre>
+
+<p>　　三、<strong>继承</strong></p>
+<p>　　　　<strong>泛型类型的继承与普通类的继承相似但不同。</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">/// &lt;summary&gt;</span><br><span class="line">   /// 抽象基类，泛型类型 /// &lt;/summary&gt;</span><br><span class="line">   /// &lt;typeparam name=&quot;T&quot;&gt;&lt;/typeparam&gt;</span><br><span class="line">   public abstract class Ttest&lt;T&gt; &#123; public abstract T Add(T x, T y);</span><br><span class="line">   &#125; /// &lt;summary&gt;</span><br><span class="line">  /// 继承抽象基类，实现int类型 /// &lt;/summary&gt;</span><br><span class="line">  /// &lt;typeparam name=&quot;T&quot;&gt;&lt;/typeparam&gt;</span><br><span class="line">   class Tclass&lt;T&gt; : Ttest&lt;int&gt; &#123; public override int Add(int x, int y) =&gt; x + y;  </span><br><span class="line"></span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+
+<p>　　四、<strong>静态成员</strong></p>
+<p>　　　　<strong>泛型类型的静态成员需要特殊的关注，泛型类的静态成员只能在类的一个实例中共享。</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">/// &lt;summary&gt;</span><br><span class="line">   /// 泛型类型，静态字段x /// &lt;/summary&gt;</span><br><span class="line">   /// &lt;typeparam name=&quot;T&quot;&gt;&lt;/typeparam&gt;</span><br><span class="line">   public class Ttest&lt;T&gt; &#123; public static int x;</span><br><span class="line">   &#125; class Program</span><br><span class="line">   &#123; static void Main(string[] args)</span><br><span class="line">       &#123;</span><br><span class="line">           Ttest&lt;string&gt;.x = 111;</span><br><span class="line">           Ttest&lt;int&gt;.x = 222;</span><br><span class="line">           Console.WriteLine(Ttest&lt;string&gt;.x);</span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+
+<p>　　　　上面事例中最后输出的为111，</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a><strong>总结</strong></h2><p>　　这里我们主要是介绍了泛型的优点及泛型类型的功能。在我们日常的编程中会发现很多地方可以使用泛型。提高代码的扩展性及重用性。同时也可以减少对object类型的使用，采用泛型类型的使用来替代。较少对性能的消耗。我们下一节主要是对泛型类型的协变及抗变进行一定的理解。</p>
 <hr>
-<p>　　　　　　<strong>最糟糕的是人们在生活中经常受到错误志向的阻碍而不自知，真到摆脱了那些阻碍时才能明白过来。——歌德</strong></p>
+<p>　　　　<strong>只要认为是对的就去做，坚持去做，不要在乎别人的看法，哪怕是错，至少你有去做过证明曾经你努力过。</strong></p>
 
       
     </div>
@@ -576,8 +608,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/08/02/抽象类及接口详解/" rel="next" title="抽象类及接口详解">
-                <i class="fa fa-chevron-left"></i> 抽象类及接口详解
+              <a href="/2019/08/07/面向对象三大特性-----封装、继承、多态/" rel="next" title="面向对象三大特效————封装、继承、多态">
+                <i class="fa fa-chevron-left"></i> 面向对象三大特效————封装、继承、多态
               </a>
             
           </div>
@@ -586,8 +618,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/08/05/委托与事件-委托详解（一）/" rel="prev" title="委托与事件-委托详解（一）">
-                委托与事件-委托详解（一） <i class="fa fa-chevron-right"></i>
+              <a href="/2019/08/07/泛型协变与抗变（二）/" rel="prev" title="泛型协变与抗变（二）">
+                泛型协变与抗变（二） <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -770,7 +802,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#集合分类详解"><span class="nav-number">2.</span> <span class="nav-text">集合分类详解</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、列表"><span class="nav-number">2.1.</span> <span class="nav-text">一、列表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、队列"><span class="nav-number">2.2.</span> <span class="nav-text">二、队列</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三、栈"><span class="nav-number">2.3.</span> <span class="nav-text">三、栈</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#四、有序列表"><span class="nav-number">2.4.</span> <span class="nav-text">四、有序列表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#五、字典"><span class="nav-number">2.5.</span> <span class="nav-text">五、字典</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#六、集"><span class="nav-number">2.6.</span> <span class="nav-text">六、集</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">3.</span> <span class="nav-text">总结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#优点"><span class="nav-number">2.</span> <span class="nav-text">优点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#泛型类的功能"><span class="nav-number">3.</span> <span class="nav-text">泛型类的功能</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">4.</span> <span class="nav-text">总结</span></a></li></ol></div>
             
 
           </div>
@@ -969,9 +1001,9 @@
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'http://yoursite.com/2019/08/02/Net集合详解/';
-          this.page.identifier = '2019/08/02/Net集合详解/';
-          this.page.title = 'Net集合详解';
+          this.page.url = 'http://yoursite.com/2019/08/07/泛型程序设计详解（一）/';
+          this.page.identifier = '2019/08/07/泛型程序设计详解（一）/';
+          this.page.title = '泛型程序设计详解（一）';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://.disqus.com/embed.js';
