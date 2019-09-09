@@ -106,7 +106,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content=".Net,">
 
 
 
@@ -117,16 +117,22 @@
 
 
 
-<meta name="description" content="技术分享、生活分享">
-<meta property="og:type" content="website">
-<meta property="og:title" content="小世界的野孩子">
-<meta property="og:url" content="http://yoursite.com/tags/Docker/index.html">
+<meta name="description" content="前言　　在如今，容器化概念越来越盛行，.Net Core项目也可以跨平台部署了，那么思考下Sql Server能不能呢？当然是可以的啦。本文今天就是介绍Docker部署配置和连接Sql Server。本文基于Centos7。 配置Docker链接Sql Server　　前提条件（至少2 GB的磁盘空间。至少2 GB的RAM）。我们现在开始配置安装： **　　查询并找到Docker Hub 上Mic">
+<meta name="keywords" content=".Net">
+<meta property="og:type" content="article">
+<meta property="og:title" content="正向代理与反向代理">
+<meta property="og:url" content="http://yoursite.com/2019/08/12/Docker 安装部署Sql Server/index.html">
 <meta property="og:site_name" content="小世界的野孩子">
-<meta property="og:description" content="技术分享、生活分享">
+<meta property="og:description" content="前言　　在如今，容器化概念越来越盛行，.Net Core项目也可以跨平台部署了，那么思考下Sql Server能不能呢？当然是可以的啦。本文今天就是介绍Docker部署配置和连接Sql Server。本文基于Centos7。 配置Docker链接Sql Server　　前提条件（至少2 GB的磁盘空间。至少2 GB的RAM）。我们现在开始配置安装： **　　查询并找到Docker Hub 上Mic">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/15931901-d9af548e58430a3d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/15931901-872d1952db7a2454.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/15931901-7b8a5e09450ad192.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2019-09-09T04:02:28.702Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="小世界的野孩子">
-<meta name="twitter:description" content="技术分享、生活分享">
+<meta name="twitter:title" content="正向代理与反向代理">
+<meta name="twitter:description" content="前言　　在如今，容器化概念越来越盛行，.Net Core项目也可以跨平台部署了，那么思考下Sql Server能不能呢？当然是可以的啦。本文今天就是介绍Docker部署配置和连接Sql Server。本文基于Centos7。 配置Docker链接Sql Server　　前提条件（至少2 GB的磁盘空间。至少2 GB的RAM）。我们现在开始配置安装： **　　查询并找到Docker Hub 上Mic">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/15931901-d9af548e58430a3d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
 
 
@@ -156,13 +162,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/tags/Docker/">
+  <link rel="canonical" href="http://yoursite.com/2019/08/12/Docker 安装部署Sql Server/">
 
 
 
 
 
-  <title>标签: Docker | 小世界的野孩子</title>
+  <title>正向代理与反向代理 | 小世界的野孩子</title>
   
 
 
@@ -182,7 +188,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -314,78 +320,307 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block tag">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>Docker<small>标签</small>
-        </h1>
-      </div>
+  
 
-      
-        
+  
+  
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/12/Docker 安装部署Sql Server/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Boy">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/Hand.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小世界的野孩子">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2019/08/02/RabbitMQ的介绍及使用进阶（Docker+.Net Core）/" itemprop="url">
-              
-                <span itemprop="name">RabbitMQ的介绍及使用进阶（Docker+.Net Core）</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">正向代理与反向代理</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-08-02T15:50:16+08:00" content="2019-08-02">
-          08-02
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-12T17:22:16+08:00">
+                2019-08-12
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/基础系列/" itemprop="url" rel="index">
+                    <span itemprop="name">基础系列</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/08/12/Docker 安装部署Sql Server/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/08/12/Docker 安装部署Sql Server/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o">本文总阅读量</i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>次
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  710 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  3 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-        
+      
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a><strong>前言</strong></h2><p>　　在如今，容器化概念越来越盛行，.Net Core项目也可以跨平台部署了，那么思考下Sql Server能不能呢？当然是可以的啦。本文今天就是介绍Docker部署配置和连接Sql Server。本文基于Centos7。</p>
+<h2 id="配置Docker链接Sql-Server"><a href="#配置Docker链接Sql-Server" class="headerlink" title="配置Docker链接Sql Server"></a><strong>配置Docker链接Sql Server</strong></h2><p>　　前提条件（至少2 GB的磁盘空间。至少2 GB的RAM）。我们现在开始配置安装：</p>
+<h1 id="查询并找到Docker-Hub-上Microsoft-SQL-Server的介绍。"><a href="#查询并找到Docker-Hub-上Microsoft-SQL-Server的介绍。" class="headerlink" title="**　　查询并找到Docker Hub 上Microsoft SQL Server的介绍。**"></a>**　　查询并找到Docker Hub 上Microsoft SQL Server的介绍。**</h1><p>　　　　　　 <img src="https://upload-images.jianshu.io/upload_images/15931901-d9af548e58430a3d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
+<p>　　然后根据这个上docker拉取镜像</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull mcr.microsoft.com/mssql/server:2017-latest</span><br></pre></td></tr></table></figure>
 
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/08/02/Windows+docker 运行.NetCore/" itemprop="url">
-              
-                <span itemprop="name">Windows+docker 运行.NetCore</span>
-              
-            </a>
-        
-      </h2>
+<p>　　查看镜像并允许此镜像</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker images</span><br><span class="line">sudo docker run -e &quot;ACCEPT_EULA=Y&quot; -e &quot;SA_PASSWORD=MyPassWord123&quot;  -p 1433:1433 --name sql1  -d mcr.microsoft.com/mssql/server:2017-latest</span><br></pre></td></tr></table></figure>
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-08-02T14:50:16+08:00" content="2019-08-02">
-          08-02
-        </time>
-      </div>
+<p>　　然后查看是否允许成功</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Docker ps -a</span><br></pre></td></tr></table></figure>
 
-    </header>
-  </article>
+<p>　　出现下图这样既允许成功，显示UP(如果失败的话通过docker logs 容器名进行查看错误日志)</p>
+<p> <img src="https://upload-images.jianshu.io/upload_images/15931901-872d1952db7a2454.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
+<p>　　然后这里我们就配置了SQL Server，接下来我们实际进入容器内操作。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo docker exec -it sql1 &quot;bash&quot;</span><br><span class="line"></span><br><span class="line">/opt/mssql-tools/bin/sqlcmd -S localhost -U SA -P &quot;MyPassWord123&quot;</span><br></pre></td></tr></table></figure>
 
+<p>　　然后现在就可以进行日常的数据库操作了，输入命令后执行Go结束</p>
+<p> <img src="https://upload-images.jianshu.io/upload_images/15931901-7b8a5e09450ad192.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
+<p>　　　　创建库</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CREATE DATABASE TestDB</span><br></pre></td></tr></table></figure>
+
+<p>　　　　使用库、创建表</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">USE TestDB</span><br><span class="line"></span><br><span class="line">CREATE TABLE Inventory (id INT, LastName NVARCHAR(50), FirstName NVARCHAR(50))</span><br></pre></td></tr></table></figure>
+
+<p>　　　　查询表</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Select * from  Inventory</span><br></pre></td></tr></table></figure>
+
+<p>　　　　查询用户创建的表</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select name from sysobjects where type = &apos;U&apos;</span><br></pre></td></tr></table></figure>
+
+<p>**　　系统表sysobjects保存的都是数据库对象,其中type表示各种对象的类型，具体包括:**</p>
+<p>**　　U = 用户表**</p>
+<p>**　　S = 系统表**</p>
+<p>**　　C = CHECK 约束**</p>
+<p>**　　D = 默认值或 DEFAULT 约束**</p>
+<p>**　　F = FOREIGN KEY 约束**</p>
+<p>**　　L = 日志**</p>
+<p>**　　FN = 标量函数**</p>
+<p>**　　IF = 内嵌表函数**</p>
+<p>**　　P = 存储过程**</p>
+<p>**　　PK = PRIMARY KEY 约束（类型是 K）**</p>
+<p>**　　RF = 复制筛选存储过程**</p>
+<p>**　　TF = 表函数**</p>
+<p>**　　TR = 触发器**</p>
+<p>**　　UQ = UNIQUE 约束（类型是 K）**</p>
+<p>**　　V = 视图**</p>
+<p>**　　X = 扩展存储过程及相关的对象信息。**</p>
+<h2 id="其他配置"><a href="#其他配置" class="headerlink" title="其他配置"></a><strong>其他配置</strong></h2><p>　　一、更改sa的登录密码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo docker exec -it sql1 /opt/mssql-tools/bin/sqlcmd  -S localhost -U SA -P &quot;MyPassWord123&quot;  -Q &apos;ALTER LOGIN SA WITH PASSWORD=&quot;MyPassWord456&quot;&apos;</span><br></pre></td></tr></table></figure>
+
+<p>　　二、保留数据</p>
+<ul>
+<li><ul>
+<li>将主机目录装载为数据卷</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -e &apos;ACCEPT_EULA=Y&apos; -e &apos;MSSQL_SA_PASSWORD=MyPassWord456&apos; -p 1433:1433 -v  /var/opt/mssql -d mcr.microsoft.com/mssql/server:2017-latest</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><ul>
+<li>使用数据卷容器</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -e &apos;ACCEPT_EULA=Y&apos; -e &apos;MSSQL_SA_PASSWORD=MyPassWord456&apos; -p 1433:1433 -v sqlvolume:/var/opt/mssql -d mcr.microsoft.com/mssql/server:2017-latest</span><br></pre></td></tr></table></figure>
+
+<p>　　三、删除或退出容器</p>
+<p>  　　　删除容器：docker rm 容器名</p>
+<p>　　　 删除镜像：docker rmi 镜像名</p>
+<p>　　　 退出容器;Ctrl+D</p>
+<hr>
+<p>　　　　<strong>夫志当存高远，慕先贤，绝情欲，弃疑滞，使庶几之志，揭然有所存，恻然有所感；忍屈伸，去细碎，广咨问，除嫌吝，虽有淹留，何损于美趣，何患于不济。</strong></p>
+<p>**　　　　若志不强毅，意不慷慨，徒碌碌滞于俗，默默束于情，永窜伏于平庸，不免于下流矣。**</p>
 
       
     </div>
+    
+    
+    
 
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/uploads/WX.jpg" alt="Boy wechat" style="width: 200px; max-width: 100%;">
+    <div>欢迎您扫一扫上面的微信公众号，订阅我的博客！</div>
+</div>
+
+      </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Net/" rel="tag"># .Net</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/08/11/正向代理与反向代理/" rel="next" title="正向代理与反向代理">
+                <i class="fa fa-chevron-left"></i> 正向代理与反向代理
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/08/13/NET----错误和异常处理机制/" rel="prev" title="正向代理与反向代理">
+                正向代理与反向代理 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
+
+
+    <div class="post-spread">
+      
+        
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
 
 
           </div>
@@ -393,6 +628,20 @@
 
 
           
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
 
         </div>
         
@@ -413,8 +662,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -508,6 +766,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置Docker链接Sql-Server"><span class="nav-number">2.</span> <span class="nav-text">配置Docker链接Sql Server</span></a></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#查询并找到Docker-Hub-上Microsoft-SQL-Server的介绍。"><span class="nav-number"></span> <span class="nav-text">**　　查询并找到Docker Hub 上Microsoft SQL Server的介绍。**</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#其他配置"><span class="nav-number">1.</span> <span class="nav-text">其他配置</span></a></li></ol></li></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -677,6 +951,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
@@ -694,6 +972,18 @@
       <script id="dsq-count-scr" src="https://.disqus.com/count.js" async></script>
     
 
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://yoursite.com/2019/08/12/Docker 安装部署Sql Server/';
+          this.page.identifier = '2019/08/12/Docker 安装部署Sql Server/';
+          this.page.title = '正向代理与反向代理';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
     
 
   
