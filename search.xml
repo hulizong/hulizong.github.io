@@ -17,9 +17,10 @@
     <content type="text"><![CDATA[前言 在如今，容器化概念越来越盛行，.Net Core项目也可以跨平台部署了，那么思考下Sql Server能不能呢？当然是可以的啦。本文今天就是介绍Docker部署配置和连接Sql Server。本文基于Centos7。 配置Docker链接Sql Server 前提条件（至少2 GB的磁盘空间。至少2 GB的RAM）。我们现在开始配置安装： ** 查询并找到Docker Hub 上Microsoft SQL Server的介绍。** 然后根据这个上docker拉取镜像 1docker pull mcr.microsoft.com/mssql/server:2017-latest 查看镜像并允许此镜像 12docker imagessudo docker run -e &quot;ACCEPT_EULA=Y&quot; -e &quot;SA_PASSWORD=MyPassWord123&quot; -p 1433:1433 --name sql1 -d mcr.microsoft.com/mssql/server:2017-latest 然后查看是否允许成功 1Docker ps -a 出现下图这样既允许成功，显示UP(如果失败的话通过docker logs 容器名进行查看错误日志) 然后这里我们就配置了SQL Server，接下来我们实际进入容器内操作。 123sudo docker exec -it sql1 &quot;bash&quot;/opt/mssql-tools/bin/sqlcmd -S localhost -U SA -P &quot;MyPassWord123&quot; 然后现在就可以进行日常的数据库操作了，输入命令后执行Go结束 创建库 1CREATE DATABASE TestDB 使用库、创建表 123USE TestDBCREATE TABLE Inventory (id INT, LastName NVARCHAR(50), FirstName NVARCHAR(50)) 查询表 1Select * from Inventory 查询用户创建的表 1select name from sysobjects where type = &apos;U&apos; ** 系统表sysobjects保存的都是数据库对象,其中type表示各种对象的类型，具体包括:** ** U = 用户表** ** S = 系统表** ** C = CHECK 约束** ** D = 默认值或 DEFAULT 约束** ** F = FOREIGN KEY 约束** ** L = 日志** ** FN = 标量函数** ** IF = 内嵌表函数** ** P = 存储过程** ** PK = PRIMARY KEY 约束（类型是 K）** ** RF = 复制筛选存储过程** ** TF = 表函数** ** TR = 触发器** ** UQ = UNIQUE 约束（类型是 K）** ** V = 视图** ** X = 扩展存储过程及相关的对象信息。** 其他配置 一、更改sa的登录密码 1sudo docker exec -it sql1 /opt/mssql-tools/bin/sqlcmd -S localhost -U SA -P &quot;MyPassWord123&quot; -Q &apos;ALTER LOGIN SA WITH PASSWORD=&quot;MyPassWord456&quot;&apos; 二、保留数据 将主机目录装载为数据卷 1docker run -e &apos;ACCEPT_EULA=Y&apos; -e &apos;MSSQL_SA_PASSWORD=MyPassWord456&apos; -p 1433:1433 -v /var/opt/mssql -d mcr.microsoft.com/mssql/server:2017-latest 使用数据卷容器 1docker run -e &apos;ACCEPT_EULA=Y&apos; -e &apos;MSSQL_SA_PASSWORD=MyPassWord456&apos; -p 1433:1433 -v sqlvolume:/var/opt/mssql -d mcr.microsoft.com/mssql/server:2017-latest 三、删除或退出容器 删除容器：docker rm 容器名 删除镜像：docker rmi 镜像名 退出容器;Ctrl+D 夫志当存高远，慕先贤，绝情欲，弃疑滞，使庶几之志，揭然有所存，恻然有所感；忍屈伸，去细碎，广咨问，除嫌吝，虽有淹留，何损于美趣，何患于不济。 ** 若志不强毅，意不慷慨，徒碌碌滞于俗，默默束于情，永窜伏于平庸，不免于下流矣。**]]></content>
       <categories>
         <category>基础系列</category>
+        <category>Docker知识分享</category>
       </categories>
       <tags>
-        <tag>.Net</tag>
+        <tag>.Net,Docker</tag>
       </tags>
   </entry>
   <entry>
@@ -30,7 +31,7 @@
         <category>基础系列</category>
       </categories>
       <tags>
-        <tag>.Net</tag>
+        <tag>.Net,Docker</tag>
       </tags>
   </entry>
   <entry>
