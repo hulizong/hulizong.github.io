@@ -128,7 +128,7 @@
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/15931901-4d8fa2c07020ee1c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/15931901-fa48e9f0430d4df8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/15931901-532519bab5d63cef.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2019-09-09T07:02:49.344Z">
+<meta property="og:updated_time" content="2019-09-09T09:12:26.265Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="NET之反射_元数据详解">
 <meta name="twitter:description" content="前言　　在本节中主要讲述自定义特性、反射。自定义特性允许把自定义元数据与程序元素关联起来。这些元数据是在编译过程中创建的，并嵌入程序集中。反射是一个普通的术语，它描述了在运行过程中检查和处理程序元素的功能。例如，反射运行完成以下任务：  枚举类型的成员 实例化新对象 执行对象的成员 查找类型的信息 查找程序集的信息 检查应用于某个类型的自定义特性 创建和编译新程序集  这个列表列出了许多功能，本章">
@@ -480,7 +480,7 @@
 <li><strong>创建和编译新程序集</strong></li>
 </ul>
 <p>这个列表列出了许多功能，本章中主要介绍部分常用的功能。</p>
-<h2 id="自定义特性"><a href="#自定义特性" class="headerlink" title="自定义特性"></a><strong>自定义特性</strong></h2><h3 id="一、编写自定义特性"><a href="#一、编写自定义特性" class="headerlink" title="一、编写自定义特性"></a>一、<strong>编写自定义特性</strong></h3><h4 id="1-理解自定义特性"><a href="#1-理解自定义特性" class="headerlink" title="　　1. 理解自定义特性"></a>　　1. <strong>理解自定义特性</strong></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[LastModified(&quot;Test&quot;,&quot;Test&quot;)] public class TestNumber &#123;  &#125;</span><br></pre></td></tr></table></figure>
+<h2 id="自定义特性"><a href="#自定义特性" class="headerlink" title="自定义特性"></a><strong>自定义特性</strong></h2><h3 id="一、编写自定义特性"><a href="#一、编写自定义特性" class="headerlink" title="一、编写自定义特性"></a>一、<strong>编写自定义特性</strong></h3><h4 id="1-理解自定义特性"><a href="#1-理解自定义特性" class="headerlink" title="　　1. 理解自定义特性"></a>　　1. <strong>理解自定义特性</strong></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[LastModified(&quot;Test&quot;,&quot;Test&quot;)] </span><br><span class="line">public class TestNumber &#123;  &#125;</span><br></pre></td></tr></table></figure>
 
 <p>　　这个例子首先会发现LastModified这个特性，首先把字符串Attribute追加到这个名称后面，形成一个组合LastModifiedAttribute，然后在其搜多路径的所有名称空间去搜索这个名称的类。注意如果本来就以Attribute结尾了，那么也就不会组合在一起了。编译器会找到含有改名称的类，且这个类直接或间接派生自<strong>System.Attribute。</strong>编译器很认为这个类包含控制特性用法的信息。特别是属性类需要指定：</p>
 <ul>
@@ -806,7 +806,7 @@
 
   
 </div>
-
+<span id="sitetime"></span>
 
  <!-- <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
 
@@ -821,6 +821,41 @@
 
 
 
+<script language="javascript">
+    function siteTime() {
+        window.setTimeout("siteTime()", 1000);
+        var seconds = 1000;
+        var minutes = seconds * 60;
+        var hours = minutes * 60;
+        var days = hours * 24;
+        var years = days * 365;
+        var today = new Date();
+        var todayYear = today.getFullYear();
+        var todayMonth = today.getMonth() + 1;
+        var todayDate = today.getDate();
+        var todayHour = today.getHours();
+        var todayMinute = today.getMinutes();
+        var todaySecond = today.getSeconds();
+        /* Date.UTC() -- 返回date对象距世界标准时间(UTC)1970年1月1日午夜之间的毫秒数(时间戳)
+        year - 作为date对象的年份，为4位年份值
+        month - 0-11之间的整数，做为date对象的月份
+        day - 1-31之间的整数，做为date对象的天数
+        hours - 0(午夜24点)-23之间的整数，做为date对象的小时数
+        minutes - 0-59之间的整数，做为date对象的分钟数
+        seconds - 0-59之间的整数，做为date对象的秒数
+        microseconds - 0-999之间的整数，做为date对象的毫秒数 */
+        var t1 = Date.UTC(2019, 07, 31, 00, 00, 00); //北京时间2018-2-13 00:00:00
+        var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+        var diff = t2 - t1;
+        var diffYears = Math.floor(diff / years);
+        var diffDays = Math.floor((diff / days) - diffYears * 365);
+        var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
+        var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) / minutes);
+        var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours - diffMinutes * minutes) / seconds);
+        document.getElementById("sitetime").innerHTML = "本站已运行 " +diffYears+" 年 "+diffDays + " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+    }/*因为建站时间还没有一年，就将之注释掉了。需要的可以取消*/
+    siteTime();
+</script>
 
         
 <div class="busuanzi-count">

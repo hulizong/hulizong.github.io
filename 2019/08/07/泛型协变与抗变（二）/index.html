@@ -125,7 +125,7 @@
 <meta property="og:site_name" content="小世界的野孩子">
 <meta property="og:description" content="前言　　在.NET 4之前，泛型接口是不变的。.NET 4通过协变和抗变为泛型接口和泛型委托添加了一个重要的扩展。协变和抗变指对参数和返回值的类型进行转换。 　　我们来看下到底什么是协变什么是抗变：　　如果某个返回的类型可以由其基类替换，那么这个类型就是支持协变的　　如果某个参数类型可以由其派生类替换，那么这个类型就是支持逆变（抗变）的。 函数的类型转换　　在理解协变与抗变之前，我们看下面这个例子">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-08-07T09:27:22.780Z">
+<meta property="og:updated_time" content="2019-09-09T09:17:51.212Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="泛型协变与抗变（二）">
 <meta name="twitter:description" content="前言　　在.NET 4之前，泛型接口是不变的。.NET 4通过协变和抗变为泛型接口和泛型委托添加了一个重要的扩展。协变和抗变指对参数和返回值的类型进行转换。 　　我们来看下到底什么是协变什么是抗变：　　如果某个返回的类型可以由其基类替换，那么这个类型就是支持协变的　　如果某个参数类型可以由其派生类替换，那么这个类型就是支持逆变（抗变）的。 函数的类型转换　　在理解协变与抗变之前，我们看下面这个例子">
@@ -468,7 +468,7 @@
         <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a><strong>前言</strong></h2><p>　　在.NET 4之前，泛型接口是不变的。.NET 4通过协变和抗变为泛型接口和泛型委托添加了一个重要的扩展。协变和抗变指对参数和返回值的类型进行转换。</p>
 <p>　　我们来看下到底什么是协变什么是抗变：<br>　　<strong>如果某个返回的类型可以由其基类替换，那么这个类型就是支持协变的</strong><br>　　<strong>如果某个参数类型可以由其派生类替换，那么这个类型就是支持逆变（抗变）的。</strong></p>
 <h2 id="函数的类型转换"><a href="#函数的类型转换" class="headerlink" title="函数的类型转换"></a><strong>函数的类型转换</strong></h2><p>　　在理解协变与抗变之前，我们看下面这个例子：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">class Program</span><br><span class="line">   &#123; public static string Tmain(object o)</span><br><span class="line">      &#123; return &quot;aaa&quot;;</span><br><span class="line">      &#125; static void Main(string[] args)</span><br><span class="line">      &#123; string a = &quot;aaa&quot;; object b = Tmain(a);</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">class Program</span><br><span class="line">   &#123;</span><br><span class="line">      public static string Tmain(object o)</span><br><span class="line">      &#123;</span><br><span class="line">          return &quot;aaa&quot;;</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      static void Main(string[] args)</span><br><span class="line">      &#123;</span><br><span class="line">          string a = &quot;aaa&quot;;</span><br><span class="line">          object b = Tmain(a);</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
 
 <p>　　我们仔细看下这个传值和返回。注意其中发现了两次隐式转换。</p>
 <p>　　　　1、向函数传值的时候 参数a从string类型转换成object类型</p>
@@ -482,14 +482,14 @@
 <p>　　<strong>如果某个返回的类型可以由其基类替换，那么这个类型就是支持协变的　如果某个参数类型可以由其派生类替换，那么这个类型就是支持逆变（抗变）的。</strong></p>
 <h2 id="理解泛型接口的协变和抗变（in、out）"><a href="#理解泛型接口的协变和抗变（in、out）" class="headerlink" title="理解泛型接口的协变和抗变（in、out）"></a><strong>理解泛型接口的协变和抗变（in、out）</strong></h2><p>　　我们下面来看看泛型接口的协变及抗变的例子：</p>
 <p>　　首先我们看下协变，在C#高级编程（第十一版）中指出，<strong>如果泛型类型用out关键字标注，泛型接口就是协变的。这也就意味着返回类型只能是T。</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"> /// &lt;summary&gt;</span><br><span class="line">   /// 标识out，意味着返回类型只能是T /// &lt;/summary&gt;</span><br><span class="line">   /// &lt;typeparam name=&quot;T&quot;&gt;&lt;/typeparam&gt;</span><br><span class="line">   interface Itest&lt;out T&gt; &#123;</span><br><span class="line">       T Tmain(object value);</span><br><span class="line">   &#125; public class Test : Itest&lt;string&gt; &#123; public string Tmain(object value)</span><br><span class="line">       &#123; return value.ToString();</span><br><span class="line">       &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">   /// &lt;summary&gt;</span><br><span class="line">   /// 标识out，意味着返回类型只能是T</span><br><span class="line">   /// &lt;/summary&gt;</span><br><span class="line">   /// &lt;typeparam name=&quot;T&quot;&gt;&lt;/typeparam&gt;</span><br><span class="line">   interface Itest&lt;out T&gt;</span><br><span class="line">   &#123;</span><br><span class="line">       T Tmain(object value);</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">   public class Test : Itest&lt;string&gt;</span><br><span class="line">   &#123;</span><br><span class="line">       public string Tmain(object value)</span><br><span class="line">       &#123;</span><br><span class="line">           return value.ToString();</span><br><span class="line">       &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>我们调用时：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">static void Main(string[] args)</span><br><span class="line">       &#123;</span><br><span class="line">           Itest&lt;string&gt; itest = new Test();</span><br><span class="line">           Itest&lt;object&gt; itestObj = itest;</span><br><span class="line">       &#125;</span><br></pre></td></tr></table></figure>
 
 <p>　　在这里，我们最后接收其返回值的时候，<strong>理应由string类型进行接收的，但是这里我们可以修改，由其基类object类型进行替换。也就是在某个返回类型可以由其基类替换的时候，也就是支持协变了。注意其关键点。返回类型、由基类替换派生类。</strong></p>
 <p>　　然后我们再看看那抗变也可称为逆变。在C#高级编程中指出的概念<strong>：如果泛型类型用in关键字标注，泛型接口就是抗变的。这样，接口只能把泛型类型T用作其方法的输入。</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">　 /// &lt;summary&gt;</span><br><span class="line">    /// 标识in，意味着输入类型只能是T /// &lt;/summary&gt;</span><br><span class="line">    /// &lt;typeparam name=&quot;T&quot;&gt;&lt;/typeparam&gt;</span><br><span class="line">    interface Itest&lt;in T&gt; &#123; string Tmain(T value);</span><br><span class="line">    &#125; public class Test : Itest&lt;object&gt; &#123; public string Tmain(object value)</span><br><span class="line">        &#123; return value.ToString();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; class Program</span><br><span class="line">    &#123; static void Main(string[] args)</span><br><span class="line">        &#123;</span><br><span class="line">            Itest&lt;object&gt; itest = new Test();</span><br><span class="line">            Itest&lt;string&gt; itestStr= itest;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">　 /// &lt;summary&gt;</span><br><span class="line">    /// 标识in，意味着输入类型只能是T</span><br><span class="line">    /// &lt;/summary&gt;</span><br><span class="line">    /// &lt;typeparam name=&quot;T&quot;&gt;&lt;/typeparam&gt;</span><br><span class="line">    interface Itest&lt;in T&gt;</span><br><span class="line">    &#123;</span><br><span class="line">        string Tmain(T value);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    public class Test : Itest&lt;object&gt;</span><br><span class="line">    &#123;</span><br><span class="line">        public string Tmain(object value)</span><br><span class="line">        &#123;</span><br><span class="line">            return value.ToString();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line">    class Program</span><br><span class="line">    &#123;</span><br><span class="line">        static void Main(string[] args)</span><br><span class="line">        &#123;</span><br><span class="line">            Itest&lt;object&gt; itest = new Test();</span><br><span class="line">            Itest&lt;string&gt; itestStr= itest;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>　　这里我们看上面这个例子，其中返回类型已经是固定的string类型了。而泛型接口中的泛型类型用来作为参数传递了。<strong>我们再看调用时，正常传入object类型的参数，，但是我们修改传入参数类型为string类型也是可以的。也就是我们在参入参数时，参数可以由其派生类替换的话，那么这个类也就是支持抗变（逆变）的。注意其中关键点。传入参数，派生类替换基类。</strong></p>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a><strong>总结</strong></h2><p>　　其实在上述例子及其概念中，我们可以发现，泛型接口的协变及抗变，也就是将类型参数返回或者传入的情况，在这情况下进行其类型的隐式转换所遵循的规律。</p>
@@ -757,7 +757,7 @@
 
   
 </div>
-
+<span id="sitetime"></span>
 
  <!-- <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
 
@@ -772,6 +772,41 @@
 
 
 
+<script language="javascript">
+    function siteTime() {
+        window.setTimeout("siteTime()", 1000);
+        var seconds = 1000;
+        var minutes = seconds * 60;
+        var hours = minutes * 60;
+        var days = hours * 24;
+        var years = days * 365;
+        var today = new Date();
+        var todayYear = today.getFullYear();
+        var todayMonth = today.getMonth() + 1;
+        var todayDate = today.getDate();
+        var todayHour = today.getHours();
+        var todayMinute = today.getMinutes();
+        var todaySecond = today.getSeconds();
+        /* Date.UTC() -- 返回date对象距世界标准时间(UTC)1970年1月1日午夜之间的毫秒数(时间戳)
+        year - 作为date对象的年份，为4位年份值
+        month - 0-11之间的整数，做为date对象的月份
+        day - 1-31之间的整数，做为date对象的天数
+        hours - 0(午夜24点)-23之间的整数，做为date对象的小时数
+        minutes - 0-59之间的整数，做为date对象的分钟数
+        seconds - 0-59之间的整数，做为date对象的秒数
+        microseconds - 0-999之间的整数，做为date对象的毫秒数 */
+        var t1 = Date.UTC(2019, 07, 31, 00, 00, 00); //北京时间2018-2-13 00:00:00
+        var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+        var diff = t2 - t1;
+        var diffYears = Math.floor(diff / years);
+        var diffDays = Math.floor((diff / days) - diffYears * 365);
+        var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
+        var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) / minutes);
+        var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours - diffMinutes * minutes) / seconds);
+        document.getElementById("sitetime").innerHTML = "本站已运行 " +diffYears+" 年 "+diffDays + " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+    }/*因为建站时间还没有一年，就将之注释掉了。需要的可以取消*/
+    siteTime();
+</script>
 
         
 <div class="busuanzi-count">

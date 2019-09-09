@@ -125,7 +125,7 @@
 <meta property="og:site_name" content="小世界的野孩子">
 <meta property="og:description" content="前言　　泛型是C#和.Net的一个重要概念，泛型不仅是C#编程语言中的一部分，而且与程序集中的IL(Intermediate Language)代码紧密的集成。 　　在平时编程过程中，常常会出现编写一些差不多的代码块，不同的仅是处理不同的数据类型。比如一个处理int数据的方法，现在新加了string类型的数据。是不是把之前的方法复制一遍，然后修改类型int为string。当然这样的方法是没有错的，">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-08-07T09:22:42.722Z">
+<meta property="og:updated_time" content="2019-09-09T09:17:08.866Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="泛型程序设计详解（一）">
 <meta name="twitter:description" content="前言　　泛型是C#和.Net的一个重要概念，泛型不仅是C#编程语言中的一部分，而且与程序集中的IL(Intermediate Language)代码紧密的集成。 　　在平时编程过程中，常常会出现编写一些差不多的代码块，不同的仅是处理不同的数据类型。比如一个处理int数据的方法，现在新加了string类型的数据。是不是把之前的方法复制一遍，然后修改类型int为string。当然这样的方法是没有错的，">
@@ -478,23 +478,20 @@
 <p>　　一、<strong>性能</strong></p>
 <p>**　　　　泛型的一个主要优点就是性能，在泛型集合类和非泛型集合类中，对值类型使用非泛型集合类，在把值类型转换为引用类型和把引用类型转换为值类型的时候，需要进行装箱和拆箱的操作（前面的文章中讲到了拆箱和装箱会造成一定的性能损失），当集合数据量大的时候造成的性能损失也就随之的增大了。**</p>
 <p>　　　　使用非泛型集合时：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">var list = new ArrayList();</span><br><span class="line">           list.Add(100);//装箱  int-object</span><br><span class="line">           int i = (int)list[0];//拆箱  object-int</span><br><span class="line">           foreach (int item in list)</span><br><span class="line">           &#123;</span><br><span class="line">               Console.WriteLine(item);//遍历拆箱输出</span><br><span class="line">           &#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">var list = new ArrayList();</span><br><span class="line">list.Add(100);//装箱  int-object</span><br><span class="line">int i = (int)list[0];//拆箱  object-int</span><br><span class="line">foreach (int item in list)</span><br><span class="line">&#123;</span><br><span class="line">    Console.WriteLine(item);//遍历拆箱输出</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>　　　　使用泛型集合类时：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">var list = new List&lt;int&gt;();</span><br><span class="line">            list.Add(100);//无装箱操作 </span><br><span class="line">            int i =  list[0];//无拆箱拆箱 </span><br><span class="line">            foreach (int item in list)</span><br><span class="line">            &#123;</span><br><span class="line">                Console.WriteLine(item);//无拆箱操作</span><br><span class="line">            &#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">var list = new List&lt;int&gt;();</span><br><span class="line">list.Add(100);//无装箱操作   </span><br><span class="line">int i =  list[0];//无拆箱拆箱   </span><br><span class="line">foreach (int item in list)</span><br><span class="line">&#123;</span><br><span class="line">    Console.WriteLine(item);//无拆箱操作</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>  <strong>减少装箱拆箱操作，节省了性能消耗。这也就是泛型的主要优点了。</strong></p>
 <p>　　二、<strong>类型安全</strong></p>
 <p>　　　　<strong>泛型另一个优点就是类型安全，这里我们还是使用非泛型集合类ArrayList()和泛型集合类List<t>来做案例。</t></strong></p>
 <p>　　　　非泛型集合类ArrayList():</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">var list = new ArrayList();</span><br><span class="line">           list.Add(100);// 添加一个int类型</span><br><span class="line">           list.Add(&quot;string&quot;);//添加一个string类型</span><br><span class="line">           foreach (int item in list)</span><br><span class="line">           &#123;</span><br><span class="line">               Console.WriteLine(item);//遍历循环输出</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>这里允许输出和抛出异常：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">System.InvalidCastException:“Unable to cast object of type &apos;System.String&apos; to type &apos;System.Int32&apos;.”</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">            var list = new ArrayList();</span><br><span class="line">            list.Add(100);// 添加一个int类型</span><br><span class="line">            list.Add(&quot;string&quot;);//添加一个string类型</span><br><span class="line">            foreach (int item in list)</span><br><span class="line">            &#123;</span><br><span class="line">                Console.WriteLine(item);//遍历循环输出</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">这里允许输出和抛出异常：</span><br><span class="line"></span><br><span class="line">System.InvalidCastException:“Unable to cast object of type &apos;System.String&apos; to type &apos;System.Int32&apos;.”</span><br></pre></td></tr></table></figure>
 
 <p>　　　　无法强制把”string”转换成int类型。</p>
 <p>　　　　我们再看泛型集合类：</p>
-<figure class="highlight plain"><figcaption><span>list </span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">list.Add(100);// 添加一个int类型 list.Add(&quot;string&quot;);//添加一个string类型,编译器报错，无法从string转换到int</span><br><span class="line">foreach (int item in list)</span><br><span class="line">&#123;</span><br><span class="line">    Console.WriteLine(item);//遍历循环输出 &#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">  　　　　　var list = new List&lt;int&gt;();</span><br><span class="line">list.Add(100);// 添加一个int类型</span><br><span class="line">list.Add(&quot;string&quot;);//添加一个string类型,编译器报错，无法从string转换到int</span><br><span class="line">foreach (int item in list)</span><br><span class="line">&#123;</span><br><span class="line">    Console.WriteLine(item);//遍历循环输出</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>　　　　在添加”string”类型的时候编译器报错，无法添加。这里也就杜绝了后续的错误。这也就是保证了类型的安全。</p>
 <p>　　<strong>三、二进制代码重用</strong></p>
@@ -532,7 +529,7 @@
 </ul>
 </li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">/// &lt;summary&gt;</span><br><span class="line">    /// 接口 /// &lt;/summary&gt;</span><br><span class="line">    interface Itest</span><br><span class="line">    &#123;</span><br><span class="line">    &#125; /// &lt;summary&gt;</span><br><span class="line">    /// 定义一个字典类型 /// &lt;/summary&gt;</span><br><span class="line">    /// &lt;typeparam name=&quot;TK&quot;&gt;&lt;/typeparam&gt;</span><br><span class="line">    /// &lt;typeparam name=&quot;TV&quot;&gt;&lt;/typeparam&gt;</span><br><span class="line">    class Dictionary&lt;TK, TV&gt;</span><br><span class="line">      where TK : IComparable, IEnumerable where TV : Itest</span><br><span class="line">    &#123; public void Add(TK key, TV val)</span><br><span class="line">        &#123;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"> /// &lt;summary&gt;</span><br><span class="line">/// 接口</span><br><span class="line">/// &lt;/summary&gt;</span><br><span class="line">interface Itest</span><br><span class="line">&#123;</span><br><span class="line">&#125;</span><br><span class="line">/// &lt;summary&gt;</span><br><span class="line">/// 定义一个字典类型</span><br><span class="line">/// &lt;/summary&gt;</span><br><span class="line">/// &lt;typeparam name=&quot;TK&quot;&gt;&lt;/typeparam&gt;</span><br><span class="line">/// &lt;typeparam name=&quot;TV&quot;&gt;&lt;/typeparam&gt;</span><br><span class="line">class Dictionary&lt;TK, TV&gt;</span><br><span class="line">  where TK : IComparable, IEnumerable</span><br><span class="line">   where TV : Itest</span><br><span class="line">&#123;</span><br><span class="line">    public void Add(TK key, TV val)</span><br><span class="line">    &#123;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <ul>
 <li><ul>
@@ -560,11 +557,11 @@
 
 <p>　　三、<strong>继承</strong></p>
 <p>　　　　<strong>泛型类型的继承与普通类的继承相似但不同。</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">/// &lt;summary&gt;</span><br><span class="line">   /// 抽象基类，泛型类型 /// &lt;/summary&gt;</span><br><span class="line">   /// &lt;typeparam name=&quot;T&quot;&gt;&lt;/typeparam&gt;</span><br><span class="line">   public abstract class Ttest&lt;T&gt; &#123; public abstract T Add(T x, T y);</span><br><span class="line">   &#125; /// &lt;summary&gt;</span><br><span class="line">  /// 继承抽象基类，实现int类型 /// &lt;/summary&gt;</span><br><span class="line">  /// &lt;typeparam name=&quot;T&quot;&gt;&lt;/typeparam&gt;</span><br><span class="line">   class Tclass&lt;T&gt; : Ttest&lt;int&gt; &#123; public override int Add(int x, int y) =&gt; x + y;  </span><br><span class="line"></span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"> /// &lt;summary&gt;</span><br><span class="line"> /// 抽象基类，泛型类型</span><br><span class="line"> /// &lt;/summary&gt;</span><br><span class="line"> /// &lt;typeparam name=&quot;T&quot;&gt;&lt;/typeparam&gt;</span><br><span class="line"> public abstract class Ttest&lt;T&gt;</span><br><span class="line"> &#123;</span><br><span class="line">     public abstract T Add(T x, T y);</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line">/// &lt;summary&gt;</span><br><span class="line">/// 继承抽象基类，实现int类型</span><br><span class="line">/// &lt;/summary&gt;</span><br><span class="line">/// &lt;typeparam name=&quot;T&quot;&gt;&lt;/typeparam&gt;</span><br><span class="line"> class Tclass&lt;T&gt; : Ttest&lt;int&gt;</span><br><span class="line"> &#123;</span><br><span class="line">     public override int Add(int x, int y) =&gt; x + y;  </span><br><span class="line"></span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
 
 <p>　　四、<strong>静态成员</strong></p>
 <p>　　　　<strong>泛型类型的静态成员需要特殊的关注，泛型类的静态成员只能在类的一个实例中共享。</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">/// &lt;summary&gt;</span><br><span class="line">   /// 泛型类型，静态字段x /// &lt;/summary&gt;</span><br><span class="line">   /// &lt;typeparam name=&quot;T&quot;&gt;&lt;/typeparam&gt;</span><br><span class="line">   public class Ttest&lt;T&gt; &#123; public static int x;</span><br><span class="line">   &#125; class Program</span><br><span class="line">   &#123; static void Main(string[] args)</span><br><span class="line">       &#123;</span><br><span class="line">           Ttest&lt;string&gt;.x = 111;</span><br><span class="line">           Ttest&lt;int&gt;.x = 222;</span><br><span class="line">           Console.WriteLine(Ttest&lt;string&gt;.x);</span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">/// &lt;summary&gt;</span><br><span class="line">/// 泛型类型，静态字段x</span><br><span class="line">/// &lt;/summary&gt;</span><br><span class="line">/// &lt;typeparam name=&quot;T&quot;&gt;&lt;/typeparam&gt;</span><br><span class="line">public class Ttest&lt;T&gt;</span><br><span class="line">&#123;</span><br><span class="line">    public static int x;</span><br><span class="line">&#125;</span><br><span class="line">class Program</span><br><span class="line">&#123;</span><br><span class="line">    static void Main(string[] args)</span><br><span class="line">    &#123;</span><br><span class="line">        Ttest&lt;string&gt;.x = 111;</span><br><span class="line">        Ttest&lt;int&gt;.x = 222;</span><br><span class="line">        Console.WriteLine(Ttest&lt;string&gt;.x);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>　　　　上面事例中最后输出的为111，</p>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a><strong>总结</strong></h2><p>　　这里我们主要是介绍了泛型的优点及泛型类型的功能。在我们日常的编程中会发现很多地方可以使用泛型。提高代码的扩展性及重用性。同时也可以减少对object类型的使用，采用泛型类型的使用来替代。较少对性能的消耗。我们下一节主要是对泛型类型的协变及抗变进行一定的理解。</p>
@@ -831,7 +828,7 @@
 
   
 </div>
-
+<span id="sitetime"></span>
 
  <!-- <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
 
@@ -846,6 +843,41 @@
 
 
 
+<script language="javascript">
+    function siteTime() {
+        window.setTimeout("siteTime()", 1000);
+        var seconds = 1000;
+        var minutes = seconds * 60;
+        var hours = minutes * 60;
+        var days = hours * 24;
+        var years = days * 365;
+        var today = new Date();
+        var todayYear = today.getFullYear();
+        var todayMonth = today.getMonth() + 1;
+        var todayDate = today.getDate();
+        var todayHour = today.getHours();
+        var todayMinute = today.getMinutes();
+        var todaySecond = today.getSeconds();
+        /* Date.UTC() -- 返回date对象距世界标准时间(UTC)1970年1月1日午夜之间的毫秒数(时间戳)
+        year - 作为date对象的年份，为4位年份值
+        month - 0-11之间的整数，做为date对象的月份
+        day - 1-31之间的整数，做为date对象的天数
+        hours - 0(午夜24点)-23之间的整数，做为date对象的小时数
+        minutes - 0-59之间的整数，做为date对象的分钟数
+        seconds - 0-59之间的整数，做为date对象的秒数
+        microseconds - 0-999之间的整数，做为date对象的毫秒数 */
+        var t1 = Date.UTC(2019, 07, 31, 00, 00, 00); //北京时间2018-2-13 00:00:00
+        var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+        var diff = t2 - t1;
+        var diffYears = Math.floor(diff / years);
+        var diffDays = Math.floor((diff / days) - diffYears * 365);
+        var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
+        var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) / minutes);
+        var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours - diffMinutes * minutes) / seconds);
+        document.getElementById("sitetime").innerHTML = "本站已运行 " +diffYears+" 年 "+diffDays + " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+    }/*因为建站时间还没有一年，就将之注释掉了。需要的可以取消*/
+    siteTime();
+</script>
 
         
 <div class="busuanzi-count">

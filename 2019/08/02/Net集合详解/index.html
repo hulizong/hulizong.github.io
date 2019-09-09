@@ -128,7 +128,7 @@
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/15931901-4b5b0a65687e8328.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/15931901-adb50c40a68a5fa2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/15931901-97c061d4d6fff2b6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2019-08-02T10:03:49.262Z">
+<meta property="og:updated_time" content="2019-09-09T09:07:15.534Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Net集合详解">
 <meta name="twitter:description" content="前言　　前面几篇文章讲了泛型、讲了数组，都有提到集合，这一节重点对集合进行详细解说。本文主要使用各种集合类型。以至于评估其性能，针对不同的场景选择不同的集合使用。 集合分类详解一、列表**　　列表的创建** 1var    intList=new   List&amp;lt;int&amp;gt;();  **　　创建一个容量为10 的集合** 1List&amp;lt;int&amp;gt;   intList=new   L">
@@ -508,14 +508,14 @@
 <p>　　其中其他方法与<strong>Queue<t></t></strong>类似，使用<strong>Count()</strong>返回队列中的元素总数，使用<strong>Peek()</strong>方法从队列头部读取一个元素，但不删除它。使用<strong>Contains()</strong>确定某个元素是否存在于栈中，存在则返回True</p>
 <h3 id="四、有序列表"><a href="#四、有序列表" class="headerlink" title="四、有序列表"></a>四、<strong>有序列表</strong></h3><p>　　如果需要基于键对所需的集合进行排序，就可以使用<strong>SortedList&lt;TKey,TValue&gt;</strong>类。这个类按照键给的元素排序，这个集合中的值和键都可以使用任意类型。</p>
 <p>　　下面先创建一个空列表，然后通过<strong>Add()</strong>方法进行添加元素。然后输出结果。我们看下图可以发现自动帮我们已经排序好了然后输出的。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">static void Main(string[] args)</span><br><span class="line"></span><br><span class="line">        &#123; var test = new SortedList&lt;string, string&gt;();</span><br><span class="line"></span><br><span class="line">            test.Add(&quot;First&quot;,&quot;Code1&quot;);</span><br><span class="line"></span><br><span class="line">            test.Add(&quot;Two&quot;, &quot;Code2&quot;);</span><br><span class="line"></span><br><span class="line">            test.Add(&quot;A&quot;, &quot;Code3&quot;); foreach (var item in test)</span><br><span class="line"></span><br><span class="line">            &#123;</span><br><span class="line"></span><br><span class="line">                Console.WriteLine(item.Key+&quot;:&quot;+ item.Value);</span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">static void Main(string[] args)</span><br><span class="line"></span><br><span class="line">        &#123;</span><br><span class="line"></span><br><span class="line">            var test = new SortedList&lt;string, string&gt;();</span><br><span class="line"></span><br><span class="line">            test.Add(&quot;First&quot;,&quot;Code1&quot;);</span><br><span class="line"></span><br><span class="line">            test.Add(&quot;Two&quot;, &quot;Code2&quot;);</span><br><span class="line"></span><br><span class="line">            test.Add(&quot;A&quot;, &quot;Code3&quot;);</span><br><span class="line"></span><br><span class="line">            foreach (var item in test)</span><br><span class="line"></span><br><span class="line">            &#123;</span><br><span class="line"></span><br><span class="line">                Console.WriteLine(item.Key+&quot;:&quot;+ item.Value);</span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
 
 <h3 id="五、字典"><a href="#五、字典" class="headerlink" title="五、字典"></a>五、<strong>字典</strong></h3><p>　　字典表示一种复杂的数据结构，这种数据结构允许按照某个键来访问元素。字典也称为映射或散列表。字典的主要特性是能根据键快速查找值。也可以自由添加和删除元素，这有点像List<t>，但没有在内存中移动后续元素的性能开销。</t></p>
 <p>字典的初始化：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var dict = new Dictionary&lt;int, string&gt;() &#123; &#123;1,&quot;第一个&quot; &#125;,&#123;2,&quot;第二&quot; &#125; &#125;;</span><br></pre></td></tr></table></figure>
 
 <p>添加和输出访问</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">  dict.Add( 3,&quot;第一个&quot; ); foreach (var item in dict)</span><br><span class="line"></span><br><span class="line">    &#123;</span><br><span class="line"></span><br><span class="line">        Console.WriteLine(&quot;Key:&quot;+item.Key+&quot; Value:&quot;+ item.Value);</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"> dict.Add( 3,&quot;第一个&quot; ); foreach (var item in dict)</span><br><span class="line"></span><br><span class="line">   &#123;</span><br><span class="line"></span><br><span class="line">       Console.WriteLine(&quot;Key:&quot;+item.Key+&quot; Value:&quot;+ item.Value);</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>　　有序字典<strong>SortedDictionary&lt;TKey,TValue&gt;</strong>是一个二叉搜索树，其中的元素根据建排序。和前面讲的<strong>SortedList&lt;TKey,TValue&gt;</strong>的功能类似。但是SortedList&lt;TKey,TValue&gt;是基于数组的列表，而有序字典类为一个字典。多以它们也有不同之处：</p>
 <ul>
@@ -527,7 +527,7 @@
 </ul>
 <h3 id="六、集"><a href="#六、集" class="headerlink" title="六、集"></a>六、<strong>集</strong></h3><p>　　包含不重复元素的的集合称为<strong>”集(set)”</strong>，.Net Core 包含两个集(<strong>HashSet<t>**</t></strong>和SortedSet<t>)**，它们都实现ISet<t>接口，HashSet<t>集包含不重复元素的无序列表，SortedSet<t>集包含不重复元素的有序列表。</t></t></t></t></p>
 <p>　　<strong>ISet<t></t></strong>接口提供的方法可以创建合集、交集，或者给出一个集是另一个集的超集或子集的信息。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">static void Main(string[] args)</span><br><span class="line">        &#123; var teams = new HashSet&lt;string&gt;() &#123; &quot;one&quot;,&quot;two&quot;,&quot;three&quot;&#125;; var teams1= new HashSet&lt;string&gt;() &#123; &quot;开始&quot;,&quot;one&quot;, &quot;two&quot;, &quot;three&quot; &#125;; //Add方法如果集中存在该元素则不添加，返回bool值</span><br><span class="line">            if (!teams.Add(&quot;one&quot;))</span><br><span class="line">            &#123;</span><br><span class="line">                Console.WriteLine(&quot;one 已经存在集中&quot;);</span><br><span class="line">            &#125; //IsSubsetOf方法判断teams集合中的元素是否都包含在teams1中，返回bool值</span><br><span class="line">            if (teams.IsSubsetOf(teams1))</span><br><span class="line">            &#123;</span><br><span class="line">                Console.WriteLine(&quot;teams中的值都包含在teams1中&quot;);</span><br><span class="line">            &#125; //IsSupersetOf方法判断teams1集合是否是teams集合超集，返回bool值</span><br><span class="line">            if (teams1.IsSupersetOf(teams))</span><br><span class="line">            &#123;</span><br><span class="line">                Console.WriteLine(&quot;teams1是teams的超集&quot;);</span><br><span class="line">            &#125; //Overlaps方法判断teams集合与teams是否存在重叠的元素，返回bool值</span><br><span class="line">            if (teams.Overlaps(teams1))</span><br><span class="line">            &#123;</span><br><span class="line">                Console.WriteLine(&quot;teams与teams1有重叠元素&quot;);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">static void Main(string[] args)</span><br><span class="line">       &#123;</span><br><span class="line">           var teams = new HashSet&lt;string&gt;() &#123; &quot;one&quot;,&quot;two&quot;,&quot;three&quot;&#125;;</span><br><span class="line">           var teams1= new HashSet&lt;string&gt;() &#123; &quot;开始&quot;,&quot;one&quot;, &quot;two&quot;, &quot;three&quot; &#125;;</span><br><span class="line"></span><br><span class="line">           //Add方法如果集中存在该元素则不添加，返回bool值</span><br><span class="line">           if (!teams.Add(&quot;one&quot;))</span><br><span class="line">           &#123;</span><br><span class="line">               Console.WriteLine(&quot;one 已经存在集中&quot;);</span><br><span class="line">           &#125;</span><br><span class="line"></span><br><span class="line">           //IsSubsetOf方法判断teams集合中的元素是否都包含在teams1中，返回bool值</span><br><span class="line">           if (teams.IsSubsetOf(teams1))</span><br><span class="line">           &#123;</span><br><span class="line">               Console.WriteLine(&quot;teams中的值都包含在teams1中&quot;);</span><br><span class="line">           &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">           //IsSupersetOf方法判断teams1集合是否是teams集合超集，返回bool值</span><br><span class="line">           if (teams1.IsSupersetOf(teams))</span><br><span class="line">           &#123;</span><br><span class="line">               Console.WriteLine(&quot;teams1是teams的超集&quot;);</span><br><span class="line">           &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">           //Overlaps方法判断teams集合与teams是否存在重叠的元素，返回bool值</span><br><span class="line">           if (teams.Overlaps(teams1))</span><br><span class="line">           &#123;</span><br><span class="line">               Console.WriteLine(&quot;teams与teams1有重叠元素&quot;);</span><br><span class="line">           &#125;</span><br><span class="line"></span><br><span class="line">       &#125;</span><br></pre></td></tr></table></figure>
 
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a><strong>总结</strong></h2><p>　　许多的集合都提供了相同的功能，例如SortedList类与SortedDictionary类的功能几乎完全相同。但是其性能常常差别非常巨大，一个集合使用的内存少，另一个元素检索起来速度快，在MSDN文档中，集合的方法常常有性能的提示，给出以O记号表示的操作时间：</p>
 <pre><code>*   ** O(1)**
@@ -799,7 +799,7 @@
 
   
 </div>
-
+<span id="sitetime"></span>
 
  <!-- <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
 
@@ -814,6 +814,41 @@
 
 
 
+<script language="javascript">
+    function siteTime() {
+        window.setTimeout("siteTime()", 1000);
+        var seconds = 1000;
+        var minutes = seconds * 60;
+        var hours = minutes * 60;
+        var days = hours * 24;
+        var years = days * 365;
+        var today = new Date();
+        var todayYear = today.getFullYear();
+        var todayMonth = today.getMonth() + 1;
+        var todayDate = today.getDate();
+        var todayHour = today.getHours();
+        var todayMinute = today.getMinutes();
+        var todaySecond = today.getSeconds();
+        /* Date.UTC() -- 返回date对象距世界标准时间(UTC)1970年1月1日午夜之间的毫秒数(时间戳)
+        year - 作为date对象的年份，为4位年份值
+        month - 0-11之间的整数，做为date对象的月份
+        day - 1-31之间的整数，做为date对象的天数
+        hours - 0(午夜24点)-23之间的整数，做为date对象的小时数
+        minutes - 0-59之间的整数，做为date对象的分钟数
+        seconds - 0-59之间的整数，做为date对象的秒数
+        microseconds - 0-999之间的整数，做为date对象的毫秒数 */
+        var t1 = Date.UTC(2019, 07, 31, 00, 00, 00); //北京时间2018-2-13 00:00:00
+        var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+        var diff = t2 - t1;
+        var diffYears = Math.floor(diff / years);
+        var diffDays = Math.floor((diff / days) - diffYears * 365);
+        var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
+        var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) / minutes);
+        var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours - diffMinutes * minutes) / seconds);
+        document.getElementById("sitetime").innerHTML = "本站已运行 " +diffYears+" 年 "+diffDays + " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+    }/*因为建站时间还没有一年，就将之注释掉了。需要的可以取消*/
+    siteTime();
+</script>
 
         
 <div class="busuanzi-count">

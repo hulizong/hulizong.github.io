@@ -117,20 +117,20 @@
 
 
 
-<meta name="description" content="前言　　今天介绍的是结构型设计模式中的第四个模式，也就是组合模式（Composite Pattern）。组合模式也好理解，就拿我们电脑的文件及文件夹来说吧，这就是一个较好的组合模式的例子。一个目录下面包含文件及文件夹，文件夹下面也包含文件或文件夹。在这样一层层下来，我们可以想象。他似乎像极了那个树状图。而组合模式是依据树型结构来组合对象。用来表示部分—整体层次关系。 组合模式介绍一、来由　　在我们">
+<meta name="description" content="前言　　今天一起来看看外观模式，外观模式也是我们介绍的结构型设计模式的第五个模式了。外观外表，有句话是这么说的人靠衣装 佛靠金装。打扮的好，整理的好。外观靠上去整整齐齐，精气神一下就上来了。在开发中依然如此。客户端完成一个功能，可能需要调用许多的接口来配合。按照开发逻辑一个一个依次对接下来。客户端代码复杂，看上去一团糟。不说其他的，就表面上看起来就不怎么好吧。那么不如我们把调用的接口进行再次的封装">
 <meta name="keywords" content=".Net设计模式">
 <meta property="og:type" content="article">
 <meta property="og:title" content="通俗易懂设计模式解析——组合模式">
 <meta property="og:url" content="http://yoursite.com/2019/08/24/通俗易懂设计模式解析——外观模式/index.html">
 <meta property="og:site_name" content="小世界的野孩子">
-<meta property="og:description" content="前言　　今天介绍的是结构型设计模式中的第四个模式，也就是组合模式（Composite Pattern）。组合模式也好理解，就拿我们电脑的文件及文件夹来说吧，这就是一个较好的组合模式的例子。一个目录下面包含文件及文件夹，文件夹下面也包含文件或文件夹。在这样一层层下来，我们可以想象。他似乎像极了那个树状图。而组合模式是依据树型结构来组合对象。用来表示部分—整体层次关系。 组合模式介绍一、来由　　在我们">
+<meta property="og:description" content="前言　　今天一起来看看外观模式，外观模式也是我们介绍的结构型设计模式的第五个模式了。外观外表，有句话是这么说的人靠衣装 佛靠金装。打扮的好，整理的好。外观靠上去整整齐齐，精气神一下就上来了。在开发中依然如此。客户端完成一个功能，可能需要调用许多的接口来配合。按照开发逻辑一个一个依次对接下来。客户端代码复杂，看上去一团糟。不说其他的，就表面上看起来就不怎么好吧。那么不如我们把调用的接口进行再次的封装">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/15931901-36a8d3f8e20dbd83.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2019-09-09T08:05:31.612Z">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/15931901-601c264c7aed3f09.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2019-09-09T09:34:34.122Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="通俗易懂设计模式解析——组合模式">
-<meta name="twitter:description" content="前言　　今天介绍的是结构型设计模式中的第四个模式，也就是组合模式（Composite Pattern）。组合模式也好理解，就拿我们电脑的文件及文件夹来说吧，这就是一个较好的组合模式的例子。一个目录下面包含文件及文件夹，文件夹下面也包含文件或文件夹。在这样一层层下来，我们可以想象。他似乎像极了那个树状图。而组合模式是依据树型结构来组合对象。用来表示部分—整体层次关系。 组合模式介绍一、来由　　在我们">
-<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/15931901-36a8d3f8e20dbd83.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta name="twitter:description" content="前言　　今天一起来看看外观模式，外观模式也是我们介绍的结构型设计模式的第五个模式了。外观外表，有句话是这么说的人靠衣装 佛靠金装。打扮的好，整理的好。外观靠上去整整齐齐，精气神一下就上来了。在开发中依然如此。客户端完成一个功能，可能需要调用许多的接口来配合。按照开发逻辑一个一个依次对接下来。客户端代码复杂，看上去一团糟。不说其他的，就表面上看起来就不怎么好吧。那么不如我们把调用的接口进行再次的封装">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/15931901-601c264c7aed3f09.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
 
 
@@ -361,7 +361,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-24T17:22:16+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-24T17:26:16+08:00">
                 2019-08-24
               </time>
             
@@ -430,7 +430,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  2.2k 字
+                  1.2k 字
                 </span>
               
 
@@ -446,7 +446,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  8 分钟
+                  4 分钟
                 </span>
               
             </div>
@@ -467,37 +467,27 @@
       
 
       
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a><strong>前言</strong></h2><p>　　今天介绍的是结构型设计模式中的第四个模式，也就是组合模式（Composite Pattern）。组合模式也好理解，就拿我们电脑的文件及文件夹来说吧，这就是一个较好的组合模式的例子。一个目录下面包含文件及文件夹，文件夹下面也包含文件或文件夹。在这样一层层下来，我们可以想象。他似乎像极了那个树状图。而组合模式是依据树型结构来组合对象。用来表示部分—整体层次关系。</p>
-<h2 id="组合模式介绍"><a href="#组合模式介绍" class="headerlink" title="组合模式介绍"></a><strong>组合模式介绍</strong></h2><h3 id="一、来由"><a href="#一、来由" class="headerlink" title="一、来由"></a>一、<strong>来由</strong></h3><p>　　在我们软件系统开发中，会遇到简单对象与复杂对象一起使用的情况，就好比刚刚说的文件目录一样，可以包含文件和文件夹，文件夹下面也可以包含文件和文件夹。但是由于简单对象和复杂对象在功能使用上还是有一定的区别的，可能会造成客户端调用时较为麻烦。这时候就需要将简单对象和复杂对象统一一致对待。然而组合模式也就是解决这一麻烦的。</p>
-<h3 id="二、意图"><a href="#二、意图" class="headerlink" title="二、意图"></a>二、<strong>意图</strong></h3><p>**　　将对象组合成树形结构以表示”部分-整体”的层次结构。组合模式使得用户对单个对象和组合对象的使用具有一致性。**</p>
-<h3 id="三、案例图"><a href="#三、案例图" class="headerlink" title="三、案例图"></a>三、<strong>案例图</strong></h3><p><img src="https://upload-images.jianshu.io/upload_images/15931901-36a8d3f8e20dbd83.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"> </p>
-<h3 id="四、组合模式代码示例"><a href="#四、组合模式代码示例" class="headerlink" title="四、组合模式代码示例"></a>四、<strong>组合模式代码示例</strong></h3><p>　　看上面案例图，可以发现组合模式一般包含以下部分：</p>
-<p><strong>抽象构件角色： 这是一个抽象角色，它给参加组合的对象定义了公共的接口和行为，在透明式的组合模式中，包含了对所有子对象的管理。但是在安全式的组合模式中，这里不定义管理子对象的方法，而是由树枝构件定义给出。</strong></p>
-<p><strong>树叶构件: 树叶构件意味着没有下级对象，定义了参加组合对象的原始行为。</strong></p>
-<p><strong>树枝构件: 代表有下级对象（树枝或树叶都有可能），给出管理其子类的对象。</strong></p>
-<p>在组合模式中，细分为两种形式。1、透明式组合模式。2、安全式组合模式。这里我们可以看看何为透明式何为安全式：</p>
-<p><strong>透明式：</strong></p>
-<p>　　抽象构件角色定义公共的接口和行为，这里呢就包括对本对象的操作也包含其子对象的操作的。但是树叶构件对象没有其子类。但是依然继承其功能接口和行为。这里在接口和行为上，无论调用树枝构件还是树叶构件都是一样的。这就属于透明式了。</p>
-<p><strong>安全式：</strong>　　由上面透明式讲的，树叶构件也会包含操作自己和子对象的接口和行为，但是没有其子对象怎么办呢？当然是可以空着不写，但会空。但是万一实现调用了呢？对吧，还是有一定的安全隐患的。那么安全式也就是说抽象构件包含操作本身对象的接口和行为，那么树叶构件也就包含操作本身对象的接口和行为了。树枝构件则实现操作自身对象的接口和行为的同时，还需要实现操作其子类的对象的接口和行为。</p>
-<p>就按开始所讲的文件目录的案例，我们通过代码一起看看，在代码中如何实现组合模式的，这样也可以更方便快捷的了解记忆：</p>
-<p>** 透明式：**</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line">namespace Composite_Pattern</span><br><span class="line">&#123; /// &lt;summary&gt;</span><br><span class="line">    /// 透明式组合模式 /// &lt;/summary&gt;</span><br><span class="line">    class CompositePattern</span><br><span class="line">    &#123;</span><br><span class="line">    &#125; #region 抽象构件角色——抽象文件目录============</span><br><span class="line">    public abstract class Files </span><br><span class="line">    &#123; /// &lt;summary&gt;</span><br><span class="line">        /// 增加子对象 /// &lt;/summary&gt;</span><br><span class="line">        public abstract void Add(Files files = null, string Name = null); /// &lt;summary&gt;</span><br><span class="line">        /// 删除子对象 /// &lt;/summary&gt;</span><br><span class="line">        public abstract void Remove(Files files=null, string Name = null); /// &lt;summary&gt;</span><br><span class="line">        /// 操作本身对象 /// &lt;/summary&gt;</span><br><span class="line">        public abstract void Open(string Name);</span><br><span class="line">    &#125; #endregion</span><br><span class="line"></span><br><span class="line">    #region 树叶构件——文件类型========================</span><br><span class="line">    /// &lt;summary&gt;</span><br><span class="line">    /// TXT文本 /// &lt;/summary&gt;</span><br><span class="line">    public sealed class BookTxt : Files</span><br><span class="line">    &#123; public override void Add(Files files=null, string Name = null)</span><br><span class="line">        &#123; throw new NotImplementedException(&quot;不存在添加子类操作&quot;);</span><br><span class="line">        &#125; public override void Remove(Files files=null, string Name = null)</span><br><span class="line">        &#123; throw new NotImplementedException(&quot;不存在删除子类操作&quot;);</span><br><span class="line">        &#125; public override void Open(string Name)</span><br><span class="line">        &#123;</span><br><span class="line">            Console.WriteLine($&quot;打开一个名为【&#123;Name&#125;】txt文本&quot;);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125; #endregion</span><br><span class="line"></span><br><span class="line">    #region 树枝构件——文件夹类型=================</span><br><span class="line">    public class SubFiles : Files</span><br><span class="line">    &#123; public override void Add(Files files=null, string Name = null)</span><br><span class="line">        &#123; if (files != null)</span><br><span class="line">            &#123;</span><br><span class="line">                Console.WriteLine($&quot;添加一个名为【&#123;Name&#125;】的文件夹&quot;);</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                Console.WriteLine($&quot;添加一个名为【&#123;Name&#125;】的txt文本&quot;);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        &#125; public override void Remove(Files files=null, string Name = null)</span><br><span class="line">        &#123; if (files != null )</span><br><span class="line">            &#123;</span><br><span class="line">                Console.WriteLine($&quot;删除一个名为【&#123;Name&#125;】的文件夹&quot;);</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                Console.WriteLine($&quot;删除一个名为【&#123;Name&#125;】的txt文本&quot;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; public override void Open(string Name)</span><br><span class="line">        &#123;</span><br><span class="line">            Console.WriteLine($&quot;打开当前名为【&#123;Name&#125;】文件夹文件夹&quot;);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125; #endregion &#125;</span><br></pre></td></tr></table></figure>
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a><strong>前言</strong></h2><p>　　今天一起来看看外观模式，外观模式也是我们介绍的结构型设计模式的第五个模式了。外观外表，有句话是这么说的人靠衣装 佛靠金装。打扮的好，整理的好。外观靠上去整整齐齐，精气神一下就上来了。在开发中依然如此。客户端完成一个功能，可能需要调用许多的接口来配合。按照开发逻辑一个一个依次对接下来。客户端代码复杂，看上去一团糟。不说其他的，就表面上看起来就不怎么好吧。那么不如我们把调用的接口进行再次的封装。统一规范。这样整理下来。客户端就明了多了。</p>
+<h2 id="外观模式介绍"><a href="#外观模式介绍" class="headerlink" title="外观模式介绍"></a><strong>外观模式介绍</strong></h2><h3 id="一、来由"><a href="#一、来由" class="headerlink" title="一、来由"></a>一、<strong>来由</strong></h3><p>　　在软件系统开发中，我们经常会遇到客户端与内部子系统进行负责耦合的情况。从而导致客户端随着子系统的变化而变化。为了解决客户端与子系统直接的高耦合，并且简化接口的调用。也就有了外观模式。</p>
+<h3 id="二、意图"><a href="#二、意图" class="headerlink" title="二、意图"></a>二、<strong>意图</strong></h3><p>**　　为子系统中的一组接口提供一个一致的界面，外观模式定义了一个高层接口，这个接口使得这一子系统更加容易使用。**</p>
+<h3 id="三、案例图"><a href="#三、案例图" class="headerlink" title="三、案例图"></a>三、<strong>案例图</strong></h3><p><img src="https://upload-images.jianshu.io/upload_images/15931901-601c264c7aed3f09.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"> </p>
+<h3 id="四、外观模式代码示例"><a href="#四、外观模式代码示例" class="headerlink" title="四、外观模式代码示例"></a>四、<strong>外观模式代码示例</strong></h3><p>　　看上面我们发现外观模式包含以下角色：</p>
+<p>**　　　　外观角色： 在客户端调用外观角色的方法，其中与一个或多个子系统相关联。在运行情况下，客户端请求传递到外观角色然后传递给对应的子系统。**</p>
+<p>**　　　　子系统： 在软件系统中包含一个或者多个子系统，子系统可以单独被客户端调用，子系统不知道外观角色的存在。相对而言，也可以当外观角色为客户端。**</p>
+<p>　　我们看这么一个案例，通过案例我们来详细了解外观模式到底是怎么一回事以及如何运行的。例如我们现在有的软件系统。新用户在输入手机号填入验证码就登录注册都搞定了。同时还附加了一些第一次登录注册的奖励。如果不按外观模式来的话，我们在登录按钮后面的客户端依次调用了注册、登录、赠送奖励等等方法。那么我们看看外观模式如何解决呢：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">namespace Facade_Pattern</span><br><span class="line">&#123; </span><br><span class="line"></span><br><span class="line">    #region 外观角色</span><br><span class="line">    public class FacadePattern</span><br><span class="line">    &#123;</span><br><span class="line">        private RegisteredClass registeredClass;</span><br><span class="line">        private LoginClass loginClass;</span><br><span class="line">        private SendClass sendClass;</span><br><span class="line">        public FacadePattern() </span><br><span class="line">        &#123;</span><br><span class="line">             registeredClass = new RegisteredClass();</span><br><span class="line">            loginClass = new LoginClass();</span><br><span class="line">            sendClass = new SendClass();</span><br><span class="line">        &#125;</span><br><span class="line">        public  void LoginFirst() </span><br><span class="line">        &#123;</span><br><span class="line">            registeredClass.Registered();</span><br><span class="line">            loginClass.Login();</span><br><span class="line">            sendClass.Send();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    #endregion</span><br><span class="line"></span><br><span class="line">    #region 子系统</span><br><span class="line">    public class RegisteredClass </span><br><span class="line">    &#123;</span><br><span class="line">        public  void Registered() </span><br><span class="line">        &#123;</span><br><span class="line">            Console.WriteLine(&quot;注册成功&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    public class LoginClass </span><br><span class="line">    &#123;</span><br><span class="line">        public  void Login()</span><br><span class="line">        &#123;</span><br><span class="line">            Console.WriteLine(&quot;登录成功&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    public class SendClass </span><br><span class="line">    &#123;</span><br><span class="line">        public  void Send()</span><br><span class="line">        &#123;</span><br><span class="line">            Console.WriteLine(&quot;赠送成功&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    #endregion</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">class Program</span><br><span class="line">   &#123; static void Main(string[] args)</span><br><span class="line">       &#123; //操作树叶本身文件</span><br><span class="line">           Files bookTxt = new BookTxt();</span><br><span class="line">           bookTxt.Open(&quot;文本文件一&quot;); //新增文件夹</span><br><span class="line">           Files subFiles = new SubFiles();</span><br><span class="line">           subFiles.Open(&quot;文件一&quot;);</span><br><span class="line">           subFiles.Add(new SubFiles(), &quot;文件二&quot;); //删除文件</span><br><span class="line">           subFiles.Remove(Name: &quot;文本文件二&quot;);</span><br><span class="line"></span><br><span class="line">           Console.ReadLine();</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">class Program</span><br><span class="line">&#123;</span><br><span class="line">    static void Main(string[] args)</span><br><span class="line">    &#123;</span><br><span class="line">        //第一次注册登录</span><br><span class="line">        FacadePattern facadePattern = new FacadePattern();</span><br><span class="line">        facadePattern.LoginFirst();</span><br><span class="line">         </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>** 安全式：**</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line">namespace Composite_Pattern1</span><br><span class="line">&#123; /// &lt;summary&gt;</span><br><span class="line">    /// 安全式组合模式 /// &lt;/summary&gt;</span><br><span class="line">    class CompositePattern</span><br><span class="line">    &#123;</span><br><span class="line">    &#125; #region 抽象构件角色——抽象文件目录============</span><br><span class="line">    public abstract class Files</span><br><span class="line">    &#123; /// &lt;summary&gt;</span><br><span class="line">        /// 操作本身对象 /// &lt;/summary&gt;</span><br><span class="line">        public abstract void Open(string Name);</span><br><span class="line">    &#125; #endregion</span><br><span class="line"></span><br><span class="line">    #region 树叶构件——文件类型========================</span><br><span class="line">    /// &lt;summary&gt;</span><br><span class="line">    /// TXT文本 /// &lt;/summary&gt;</span><br><span class="line">    public sealed class BookTxt : Files</span><br><span class="line">    &#123; public override void Open(string Name)</span><br><span class="line">        &#123;</span><br><span class="line">            Console.WriteLine($&quot;打开一个名为【&#123;Name&#125;】txt文本&quot;);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125; #endregion</span><br><span class="line"></span><br><span class="line">    #region 抽象树枝构件——安全模式，开始定义子类对象操作接口和行为=================</span><br><span class="line">    public abstract  class SubFiles : Files</span><br><span class="line">    &#123; public abstract void Add(Files files = null, string Name = null); public abstract void Remove(Files files = null, string Name = null); public override void Open(string Name)</span><br><span class="line">        &#123;</span><br><span class="line">            Console.WriteLine($&quot;打开当前名为【&#123;Name&#125;】文件夹&quot;);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125; #endregion</span><br><span class="line"></span><br><span class="line">    #region 具体树枝构件——具体实现类</span><br><span class="line">    public class AbSubFiles : SubFiles</span><br><span class="line">    &#123; public override void Add(Files files = null, string Name = null)</span><br><span class="line">        &#123; if (files != null)</span><br><span class="line">            &#123;</span><br><span class="line">                Console.WriteLine($&quot;添加一个名为【&#123;Name&#125;】的文件夹&quot;);</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                Console.WriteLine($&quot;添加一个名为【&#123;Name&#125;】的txt文本&quot;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; public override void Remove(Files files = null, string Name = null)</span><br><span class="line">        &#123; if (files != null)</span><br><span class="line">            &#123;</span><br><span class="line">                Console.WriteLine($&quot;删除一个名为【&#123;Name&#125;】的文件夹&quot;);</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                Console.WriteLine($&quot;删除一个名为【&#123;Name&#125;】的txt文本&quot;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; public override void Open(string Name)</span><br><span class="line">        &#123;</span><br><span class="line">            Console.WriteLine($&quot;打开当前名为【&#123;Name&#125;】文件夹&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; #endregion &#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">class Program1</span><br><span class="line">   &#123; static void Main(string[] args)</span><br><span class="line">       &#123; //操作树叶本身文件</span><br><span class="line">           BookTxt bookTxt = new BookTxt();</span><br><span class="line">           bookTxt.Open(&quot;文本文件一&quot;); //新增文件夹</span><br><span class="line">           AbSubFiles subFiles = new AbSubFiles();</span><br><span class="line">           subFiles.Open(&quot;文件一&quot;);</span><br><span class="line">           subFiles.Add(new AbSubFiles(), &quot;文件二&quot;); //删除文件</span><br><span class="line">           subFiles.Remove(Name: &quot;文本文件二&quot;);</span><br><span class="line"></span><br><span class="line">           Console.ReadLine();</span><br><span class="line"></span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="使用场景及优缺点"><a href="#使用场景及优缺点" class="headerlink" title="使用场景及优缺点"></a><strong>使用场景及优缺点</strong></h2><h3 id="一、使用场景"><a href="#一、使用场景" class="headerlink" title="一、使用场景"></a>一、<strong>使用场景</strong></h3><p>1、部分——整体的环境。例如树型菜单，文件管理</p>
-<p>2、用户希望对简单对象与复杂对象拥有一致的操作时</p>
-<h3 id="二、优点"><a href="#二、优点" class="headerlink" title="二、优点"></a>二、<strong>优点</strong></h3><p>1、组合模式使得处理简单对象和复杂对象有一致的操作，无需关心处理的简单对象还是复杂对象</p>
-<p>2、更简单快捷的加入新的节点</p>
-<h3 id="三、缺点"><a href="#三、缺点" class="headerlink" title="三、缺点"></a>三、<strong>缺点</strong></h3><p>1、使得设计复杂，难于理清层次</p>
-<p>2、在使用透明式的时候违背了接口分离原则，但是在使用安全式的时候又违背了依赖倒置原则</p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a><strong>总结</strong></h2><p>　　到这里组合模式就介绍完了。这里需要提及的是在使用透明式组合模式时，树叶构件继承了操作子类的接口和行为，但是它并没有子类。在接口分离原则中提到——客户不应被强迫依赖它不使用的方法。所以这里违背了其原则，但是都遵循了依赖倒置原则，依赖于抽象。在实现安全式组合模式时，在客户端调用时依赖于具体实现，也就违背了依赖倒置原则，但是却将树叶操作与树枝构件操作分离，符合接口分离原则。在实现组合模式中不同形式实现有不同的问题。这就需要根据我们实际情况去衡量该如何使用了。</p>
-<p><strong>只有经历过地狱般的折磨，才有征服天堂的力量。只有流过血的手指才能弹出世间的绝唱。</strong></p>
+<h2 id="使用场景及优缺点"><a href="#使用场景及优缺点" class="headerlink" title="使用场景及优缺点"></a><strong>使用场景及优缺点</strong></h2><p>　　在软件开发中，外观模式提供了一个统一的接口，用来访问那么一群接口，相当与外观模式是一个高层接口，使子系统使用更加方便，避免了客户端与子系统之间的紧耦合。客户端直接通过调用外观角色就可以调用子系统中的方法了。</p>
+<h3 id="一、使用场景"><a href="#一、使用场景" class="headerlink" title="一、使用场景"></a>一、<strong>使用场景</strong></h3><p>1、为复杂的模块或子模块提供外界访问的模块</p>
+<p>2、提供子系统的独立性</p>
+<p>3、在层次分明的结构下可以使用外观模式提供入口。三层架构就是这样的</p>
+<h3 id="二、优点"><a href="#二、优点" class="headerlink" title="二、优点"></a>二、<strong>优点</strong></h3><p>1、减少了系统间的相互依赖</p>
+<p>2、提高了灵活性，简化了接口，使用更加方便了</p>
+<h3 id="三、缺点"><a href="#三、缺点" class="headerlink" title="三、缺点"></a>三、<strong>缺点</strong></h3><p>1、不符合开闭原则，如果要修改较为麻烦</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a><strong>总结</strong></h2><p>　　到这里外观模式就介绍完了，外观模式为一个或者多个子系统提供一个统一的接口，该模式定义了一个高层，使得使用子系统更加方便容易。并且外观模式可以解决层次分离结构，降低客户端与子系统之间的耦合。对于外观模式侧重点是整个系统的一种架构设计，与之相比我们可以看看结构型的四种设计模式。适配器模式——注重接口转换，达到适配使用。桥接模式——注重分离现象与实现，并联合。装饰模式——注重动态的增加职责功能。组合模式——注重部分—整体，对对象进行扩展。</p>
+<p>　　<strong>人都有以第一印象定好坏的习惯,认为一个人好时，就会爱屋及乌，认为一个人不好时，就会全盘否认。</strong></p>
 <hr>
 
       
@@ -537,8 +527,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/08/24/通俗易懂设计模式解析——组合模式/" rel="next" title="通俗易懂设计模式解析——组合模式">
-                <i class="fa fa-chevron-left"></i> 通俗易懂设计模式解析——组合模式
+              <a href="/2019/08/24/通俗易懂设计模式解析——装饰模式/" rel="next" title="通俗易懂设计模式解析——装饰模式">
+                <i class="fa fa-chevron-left"></i> 通俗易懂设计模式解析——装饰模式
               </a>
             
           </div>
@@ -546,10 +536,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/08/24/通俗易懂设计模式解析——装饰模式/" rel="prev" title="通俗易懂设计模式解析——装饰模式">
-                通俗易懂设计模式解析——装饰模式 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -731,7 +717,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#组合模式介绍"><span class="nav-number">2.</span> <span class="nav-text">组合模式介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、来由"><span class="nav-number">2.1.</span> <span class="nav-text">一、来由</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、意图"><span class="nav-number">2.2.</span> <span class="nav-text">二、意图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三、案例图"><span class="nav-number">2.3.</span> <span class="nav-text">三、案例图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#四、组合模式代码示例"><span class="nav-number">2.4.</span> <span class="nav-text">四、组合模式代码示例</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用场景及优缺点"><span class="nav-number">3.</span> <span class="nav-text">使用场景及优缺点</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、使用场景"><span class="nav-number">3.1.</span> <span class="nav-text">一、使用场景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、优点"><span class="nav-number">3.2.</span> <span class="nav-text">二、优点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三、缺点"><span class="nav-number">3.3.</span> <span class="nav-text">三、缺点</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">4.</span> <span class="nav-text">总结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#外观模式介绍"><span class="nav-number">2.</span> <span class="nav-text">外观模式介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、来由"><span class="nav-number">2.1.</span> <span class="nav-text">一、来由</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、意图"><span class="nav-number">2.2.</span> <span class="nav-text">二、意图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三、案例图"><span class="nav-number">2.3.</span> <span class="nav-text">三、案例图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#四、外观模式代码示例"><span class="nav-number">2.4.</span> <span class="nav-text">四、外观模式代码示例</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用场景及优缺点"><span class="nav-number">3.</span> <span class="nav-text">使用场景及优缺点</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、使用场景"><span class="nav-number">3.1.</span> <span class="nav-text">一、使用场景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、优点"><span class="nav-number">3.2.</span> <span class="nav-text">二、优点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三、缺点"><span class="nav-number">3.3.</span> <span class="nav-text">三、缺点</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">4.</span> <span class="nav-text">总结</span></a></li></ol></div>
             
 
           </div>
@@ -760,7 +746,7 @@
 
   
 </div>
-
+<span id="sitetime"></span>
 
  <!-- <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
 
@@ -775,6 +761,41 @@
 
 
 
+<script language="javascript">
+    function siteTime() {
+        window.setTimeout("siteTime()", 1000);
+        var seconds = 1000;
+        var minutes = seconds * 60;
+        var hours = minutes * 60;
+        var days = hours * 24;
+        var years = days * 365;
+        var today = new Date();
+        var todayYear = today.getFullYear();
+        var todayMonth = today.getMonth() + 1;
+        var todayDate = today.getDate();
+        var todayHour = today.getHours();
+        var todayMinute = today.getMinutes();
+        var todaySecond = today.getSeconds();
+        /* Date.UTC() -- 返回date对象距世界标准时间(UTC)1970年1月1日午夜之间的毫秒数(时间戳)
+        year - 作为date对象的年份，为4位年份值
+        month - 0-11之间的整数，做为date对象的月份
+        day - 1-31之间的整数，做为date对象的天数
+        hours - 0(午夜24点)-23之间的整数，做为date对象的小时数
+        minutes - 0-59之间的整数，做为date对象的分钟数
+        seconds - 0-59之间的整数，做为date对象的秒数
+        microseconds - 0-999之间的整数，做为date对象的毫秒数 */
+        var t1 = Date.UTC(2019, 07, 31, 00, 00, 00); //北京时间2018-2-13 00:00:00
+        var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+        var diff = t2 - t1;
+        var diffYears = Math.floor(diff / years);
+        var diffDays = Math.floor((diff / days) - diffYears * 365);
+        var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
+        var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) / minutes);
+        var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours - diffMinutes * minutes) / seconds);
+        document.getElementById("sitetime").innerHTML = "本站已运行 " +diffYears+" 年 "+diffDays + " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+    }/*因为建站时间还没有一年，就将之注释掉了。需要的可以取消*/
+    siteTime();
+</script>
 
         
 <div class="busuanzi-count">

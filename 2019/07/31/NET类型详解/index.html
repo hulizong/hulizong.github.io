@@ -117,18 +117,18 @@
 
 
 
-<meta name="description" content="一、类型成员类成员定义有（public、private、internal、protected）。 Public–对任何类和成员都是公开的，无限制 Private–是私有的，仅能由类内部代码访问，如果没有声明，默认使用此关键字 Internal–仅能在所属命名空间内部访问 Protected–可以由类或者其派生类中的代码访问 类成员–字段、方法、属性 12345678910public class">
+<meta name="description" content="一、类型成员类成员定义有（public、private、internal、protected）。 Public–对任何类和成员都是公开的，无限制 Private–是私有的，仅能由类内部代码访问，如果没有声明，默认使用此关键字 Internal–仅能在所属命名空间内部访问 Protected–可以由类或者其派生类中的代码访问 类成员–字段、方法、属性 12345678910 public class">
 <meta name="keywords" content=".Net">
 <meta property="og:type" content="article">
 <meta property="og:title" content="NET类型详解">
 <meta property="og:url" content="http://yoursite.com/2019/07/31/NET类型详解/index.html">
 <meta property="og:site_name" content="小世界的野孩子">
-<meta property="og:description" content="一、类型成员类成员定义有（public、private、internal、protected）。 Public–对任何类和成员都是公开的，无限制 Private–是私有的，仅能由类内部代码访问，如果没有声明，默认使用此关键字 Internal–仅能在所属命名空间内部访问 Protected–可以由类或者其派生类中的代码访问 类成员–字段、方法、属性 12345678910public class">
+<meta property="og:description" content="一、类型成员类成员定义有（public、private、internal、protected）。 Public–对任何类和成员都是公开的，无限制 Private–是私有的，仅能由类内部代码访问，如果没有声明，默认使用此关键字 Internal–仅能在所属命名空间内部访问 Protected–可以由类或者其派生类中的代码访问 类成员–字段、方法、属性 12345678910 public class">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-09-09T07:03:12.036Z">
+<meta property="og:updated_time" content="2019-09-09T09:08:34.013Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="NET类型详解">
-<meta name="twitter:description" content="一、类型成员类成员定义有（public、private、internal、protected）。 Public–对任何类和成员都是公开的，无限制 Private–是私有的，仅能由类内部代码访问，如果没有声明，默认使用此关键字 Internal–仅能在所属命名空间内部访问 Protected–可以由类或者其派生类中的代码访问 类成员–字段、方法、属性 12345678910public class">
+<meta name="twitter:description" content="一、类型成员类成员定义有（public、private、internal、protected）。 Public–对任何类和成员都是公开的，无限制 Private–是私有的，仅能由类内部代码访问，如果没有声明，默认使用此关键字 Internal–仅能在所属命名空间内部访问 Protected–可以由类或者其派生类中的代码访问 类成员–字段、方法、属性 12345678910 public class">
 
 
 
@@ -471,7 +471,7 @@
 <p><strong>Internal–仅能在所属命名空间内部访问</strong></p>
 <p><strong>Protected–可以由类或者其派生类中的代码访问</strong></p>
 <p>类成员–字段、方法、属性</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">public class MyClass</span><br><span class="line"></span><br><span class="line">   &#123; public int MyInt = 2019;//字段</span><br><span class="line"></span><br><span class="line">       public static string MyMain()</span><br><span class="line"></span><br><span class="line">       &#123; return &quot;这是方法&quot;;</span><br><span class="line"></span><br><span class="line">       &#125; public int MyProperty &#123; get; set; &#125;//属性</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"> public class MyClass </span><br><span class="line">    &#123; </span><br><span class="line">        public int MyInt = 2019;//字段</span><br><span class="line"></span><br><span class="line">        public static string MyMain() </span><br><span class="line">        &#123; </span><br><span class="line">            return &quot;这是方法&quot;; </span><br><span class="line">        &#125; </span><br><span class="line">        public int MyProperty &#123; get; set; &#125;//属性 </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p><strong>字段–一个只读、可读/写的数据值</strong></p>
 <p><strong>方法–对类型或对象状态数据操作的一个过程实现</strong></p>
@@ -489,7 +489,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var a = &quot;yi&quot;; int b; int.TryParse(a, out b);&lt;/pre&gt;</span><br></pre></td></tr></table></figure>
 
 <p><strong>类型操作转换–装箱、拆箱</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">public void Test()</span><br><span class="line"></span><br><span class="line">        &#123; //装箱</span><br><span class="line"></span><br><span class="line">            int a = 1; object obj = a; //拆箱</span><br><span class="line"></span><br><span class="line">            object obj2 = 2; int b = (int)obj2;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">public void Test() </span><br><span class="line">    &#123; </span><br><span class="line">		//装箱 </span><br><span class="line">        int a = 1; object obj = a; </span><br><span class="line">		</span><br><span class="line">		//拆箱 </span><br><span class="line">        object obj2 = 2; int b = (int)obj2; </span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
 
 <p><strong>首先我们得了解，值类型是分配在线程栈中的，不受垃圾回收机制管理。而引用类型分配在托管堆中的。</strong></p>
 <p><strong>装箱–简单来说值类型转换引用类型是装箱，详细来说是。先在托管内存中分配内存，然后将值类型的值复制到内存堆中，然后返回新对象的地址，这一过程为装箱。</strong></p>
@@ -794,7 +794,7 @@
 
   
 </div>
-
+<span id="sitetime"></span>
 
  <!-- <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
 
@@ -809,6 +809,41 @@
 
 
 
+<script language="javascript">
+    function siteTime() {
+        window.setTimeout("siteTime()", 1000);
+        var seconds = 1000;
+        var minutes = seconds * 60;
+        var hours = minutes * 60;
+        var days = hours * 24;
+        var years = days * 365;
+        var today = new Date();
+        var todayYear = today.getFullYear();
+        var todayMonth = today.getMonth() + 1;
+        var todayDate = today.getDate();
+        var todayHour = today.getHours();
+        var todayMinute = today.getMinutes();
+        var todaySecond = today.getSeconds();
+        /* Date.UTC() -- 返回date对象距世界标准时间(UTC)1970年1月1日午夜之间的毫秒数(时间戳)
+        year - 作为date对象的年份，为4位年份值
+        month - 0-11之间的整数，做为date对象的月份
+        day - 1-31之间的整数，做为date对象的天数
+        hours - 0(午夜24点)-23之间的整数，做为date对象的小时数
+        minutes - 0-59之间的整数，做为date对象的分钟数
+        seconds - 0-59之间的整数，做为date对象的秒数
+        microseconds - 0-999之间的整数，做为date对象的毫秒数 */
+        var t1 = Date.UTC(2019, 07, 31, 00, 00, 00); //北京时间2018-2-13 00:00:00
+        var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+        var diff = t2 - t1;
+        var diffYears = Math.floor(diff / years);
+        var diffDays = Math.floor((diff / days) - diffYears * 365);
+        var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
+        var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) / minutes);
+        var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours - diffMinutes * minutes) / seconds);
+        document.getElementById("sitetime").innerHTML = "本站已运行 " +diffYears+" 年 "+diffDays + " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+    }/*因为建站时间还没有一年，就将之注释掉了。需要的可以取消*/
+    siteTime();
+</script>
 
         
 <div class="busuanzi-count">
