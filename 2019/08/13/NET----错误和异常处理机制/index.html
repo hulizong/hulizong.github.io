@@ -126,7 +126,7 @@
 <meta property="og:description" content="前言　　错误的出现并不总是编写程序的人的原因，有时应用程序会因为应用程序的最终用户引发的动作或运行代码的环境发生错误。无论如何，我们都应预测应用程序中出现的错误，并相应的进行编码。 　　.Net改进了处理错误的方式。C#处理错误的机制可以为每种错误提供自定义处理方式，并把识别错误的代码与处理错误的代码分别开来。 异常类　　在C#中当出现某个特殊的异常错误条件时，就会创建抛出一个异常对象，这个对象包">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/15931901-4123ec11791be87e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2019-09-09T04:05:29.154Z">
+<meta property="og:updated_time" content="2019-09-09T05:56:23.769Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="NET----错误和异常处理机制">
 <meta name="twitter:description" content="前言　　错误的出现并不总是编写程序的人的原因，有时应用程序会因为应用程序的最终用户引发的动作或运行代码的环境发生错误。无论如何，我们都应预测应用程序中出现的错误，并相应的进行编码。 　　.Net改进了处理错误的方式。C#处理错误的机制可以为每种错误提供自定义处理方式，并把识别错误的代码与处理错误的代码分别开来。 异常类　　在C#中当出现某个特殊的异常错误条件时，就会创建抛出一个异常对象，这个对象包">
@@ -471,7 +471,7 @@
 <p>　　.Net改进了处理错误的方式。C#处理错误的机制可以为每种错误提供自定义处理方式，并把识别错误的代码与处理错误的代码分别开来。</p>
 <h2 id="异常类"><a href="#异常类" class="headerlink" title="异常类"></a><strong>异常类</strong></h2><p>　　在C#中当出现某个特殊的异常错误条件时，就会创建抛出一个异常对象，这个对象包含有助于跟踪问题的信息。.Net提供了许多预定义的异常类，我们下面看看一些常见特别的异常类吧（异常类太多了，这里就介绍几个常见的）。</p>
 <p>　　对于.Net类，一般的异常类System.Exception派生自System.Object,通常不在代码中抛出System.Exception泛型对象，因为他们无法确定错误情况的本质。</p>
-<p>**　　在该层次中有两个重要的类，他们派生自System.Exception类：**</p>
+<p>　　<strong>在该层次中有两个重要的类，他们派生自System.Exception类：</strong></p>
 <ul>
 <li><ul>
 <li><strong>SystemException——该类用于通常由.NET允许库抛出的异常，或者由几乎所有的应用程序抛出的异常。例如，如果.NET运行库检测到栈已满，他就会抛出StackOverflowException异常。另一方面，如果检测到调用方法时参数不对，就可以在自己的代码中选择抛出ArgumentException异常或其子类。SystemException异常的子类包括表示致命错误和非致命错误的异常。</strong></li>
@@ -479,7 +479,7 @@
 </ul>
 </li>
 </ul>
-<p>**　　其他可能会用到的异常类包括：**</p>
+<p>　　<strong>其他可能会用到的异常类包括：</strong></p>
 <ul>
 <li><ul>
 <li><strong>StackOverflowException——-如果分配给栈的内存区域已满，就会抛出这个异常。如果一个方法连续地递归调用自己，就可能发生栈溢出。这一般是一个致命错误，因为它禁止应用程序执行除了中断以外的其他任务。在这种情况下，甚至也不可能执行到finally块。通常用户自己不能处理像这样的错误，而应退出应用程序。</strong></li>
@@ -495,18 +495,18 @@
 <li><strong>catch块包含的代码处理各种错误，这些错误是执行try块中的代码时遇到的问题。这个快可以用来记录错误。</strong></li>
 <li><strong>finally快包含的代码清理资源或执行通常要在try块或者catch块末尾执行的其他操作。无论是否抛出异常，都会执行finally块。finally块中防止return语句，编译器会标记一个错误。另外此块可以如果没有需要关闭或者处理的其他操作可以省略此块。</strong></li>
 </ul>
-<p>**　　异常处理具有性能含义，在常见的情况下，不应该使用异常处理错误。应尽量编写好避免错误出现的代码。**</p>
-<p>**　　在异常捕获中，我们可以实现多个catch块来针对不同的错误做出对应的错误处理。下面我们看一个例子：**</p>
+<p>　　<strong>异常处理具有性能含义，在常见的情况下，不应该使用异常处理错误。应尽量编写好避免错误出现的代码。</strong></p>
+<p>　　<strong>在异常捕获中，我们可以实现多个catch块来针对不同的错误做出对应的错误处理。下面我们看一个例子：</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">class Program</span><br><span class="line">    &#123; static void Main(string[] args)</span><br><span class="line">        &#123; while (true)</span><br><span class="line">            &#123; try &#123; string userInput;</span><br><span class="line">                    Console.WriteLine(&quot;请输入0-5之间任意一个数字：&quot;);</span><br><span class="line">                    userInput = Console.ReadLine(); if (string.IsNullOrWhiteSpace(userInput))</span><br><span class="line">                    &#123; break;</span><br><span class="line">                    &#125; if (int.TryParse(userInput, out int index))</span><br><span class="line">                    &#123; if (index &lt; 0 || index &gt; 5)</span><br><span class="line">                        &#123; throw new IndexOutOfRangeException($&quot;你输入的数字是&#123;index&#125;&quot;);</span><br><span class="line"></span><br><span class="line">                        &#125;</span><br><span class="line">                        Console.WriteLine($&quot;你输入的数字是&#123;index&#125;&quot;);</span><br><span class="line">                    &#125; else &#123; throw new Exception(&quot;请输入数字&quot;);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125; catch (IndexOutOfRangeException ex)</span><br><span class="line">                &#123;</span><br><span class="line">                    Console.WriteLine($&quot;你输入的数字不在此范围内.&#123;ex.Message&#125;&quot;);</span><br><span class="line">                &#125; catch (Exception ex)</span><br><span class="line">                &#123;</span><br><span class="line"></span><br><span class="line">                    Console.WriteLine(ex.Message);</span><br><span class="line">                &#125; finally &#123;</span><br><span class="line">                    Console.WriteLine(&quot;谢谢合作&quot;);</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 
-<p>**　　在此事例中，定义了两个catch块。如果输入的超过规定返回的数字，则会抛出超出范围的错误也就进入对应的catch块。而输入的非数字也就进入了另外一个catch块进行处理。**</p>
-<p>**　　下面我们看一看关于System.Exception属性。熟悉了解其中熟悉能更好的去观察理解抛出的异常错误。**<br>  <img src="https://upload-images.jianshu.io/upload_images/15931901-4123ec11791be87e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>　　<strong>在此事例中，定义了两个catch块。如果输入的超过规定返回的数字，则会抛出超出范围的错误也就进入对应的catch块。而输入的非数字也就进入了另外一个catch块进行处理。</strong></p>
+<p>　　<strong>下面我们看一看关于System.Exception属性。熟悉了解其中熟悉能更好的去观察理解抛出的异常错误。</strong><br>  <img src="https://upload-images.jianshu.io/upload_images/15931901-4123ec11791be87e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
 <h2 id="过滤异常、创建用户定义的异常"><a href="#过滤异常、创建用户定义的异常" class="headerlink" title="过滤异常、创建用户定义的异常"></a><strong>过滤异常、创建用户定义的异常</strong></h2><p>　　自从C#6开始就支持异常过滤器。Catch块仅在过滤器但会true时执行。捕获不同的异常类型时，可以有行为不同的代码块。在某些情况下，catch块基于异常的内容执行不同的操作。下面我们看下如何来使用异常过滤器吧：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">public class MyIndexOutOfException :SystemException</span><br><span class="line">   &#123; public MyIndexOutOfException(string message) : base(message)</span><br><span class="line">       &#123;</span><br><span class="line"></span><br><span class="line">       &#125; public int ErrorCode &#123; get; set; &#125;</span><br><span class="line">   &#125; class Program</span><br><span class="line">   &#123; static void Main(string[] args)</span><br><span class="line">       &#123; try &#123; int steInput = 12; if (steInput &gt; 10)</span><br><span class="line">               &#123; throw new MyIndexOutOfException(&quot;数据超出了范围&quot;) &#123; ErrorCode = 1 &#125;;</span><br><span class="line">               &#125;</span><br><span class="line"></span><br><span class="line">           &#125; catch (MyIndexOutOfException ex) when (ex.ErrorCode!=1)</span><br><span class="line"></span><br><span class="line">           &#123;</span><br><span class="line">               Console.WriteLine(&quot;出现了自定义错误&quot;);</span><br><span class="line">           &#125; catch (MyIndexOutOfException ex) when (ex.ErrorCode == 1)</span><br><span class="line">           &#123;</span><br><span class="line">               Console.WriteLine(ex.Message);</span><br><span class="line">           &#125; catch (Exception ex)</span><br><span class="line">           &#123; throw;</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
 
-<p>**　　上面例子中，自定义了一个异常处理，同时增加ErrorCode，以此来作为过滤条件，利用关键字When+条件来进行过滤。**</p>
+<p>　　<strong>上面例子中，自定义了一个异常处理，同时增加ErrorCode，以此来作为过滤条件，利用关键字When+条件来进行过滤。</strong></p>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a><strong>总结</strong></h2><p>　　本篇文章介绍了异常处理错误的情况及机制，我们不仅可以输出代码好难过的一般错误代码，也可以输出我们自己定义的特殊错误情况。无论编程技术有多好，程序都必须能处理可能出现的任何错误。对不同的错误采取相应的应对措施，才是正确编码的其中一步。</p>
-<p>**　　　　　　不是井里没有水，而是你挖的不够深。不是成功来得慢，而是你努力的不够多。**</p>
+<p>　　　　　　<strong>不是井里没有水，而是你挖的不够深。不是成功来得慢，而是你努力的不够多。</strong></p>
 <hr>
 
       
@@ -671,7 +671,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">2</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
