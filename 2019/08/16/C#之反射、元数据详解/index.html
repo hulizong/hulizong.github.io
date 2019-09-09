@@ -1,0 +1,1359 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content=".Net,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="前言　　在本节中主要讲述自定义特性、反射。自定义特性允许把自定义元数据与程序元素关联起来。这些元数据是在编译过程中创建的，并嵌入程序集中。反射是一个普通的术语，它描述了在运行过程中检查和处理程序元素的功能。例如，反射运行完成以下任务：  枚举类型的成员 实例化新对象 执行对象的成员 查找类型的信息 查找程序集的信息 检查应用于某个类型的自定义特性 创建和编译新程序集  这个列表列出了许多功能，本章">
+<meta name="keywords" content=".Net">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C#之反射、元数据详解">
+<meta property="og:url" content="http://yoursite.com/2019/08/16/C#之反射、元数据详解/index.html">
+<meta property="og:site_name" content="小世界的野孩子">
+<meta property="og:description" content="前言　　在本节中主要讲述自定义特性、反射。自定义特性允许把自定义元数据与程序元素关联起来。这些元数据是在编译过程中创建的，并嵌入程序集中。反射是一个普通的术语，它描述了在运行过程中检查和处理程序元素的功能。例如，反射运行完成以下任务：  枚举类型的成员 实例化新对象 执行对象的成员 查找类型的信息 查找程序集的信息 检查应用于某个类型的自定义特性 创建和编译新程序集  这个列表列出了许多功能，本章">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/15931901-4d8fa2c07020ee1c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/15931901-fa48e9f0430d4df8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/15931901-532519bab5d63cef.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2019-09-09T06:52:43.099Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="C#之反射、元数据详解">
+<meta name="twitter:description" content="前言　　在本节中主要讲述自定义特性、反射。自定义特性允许把自定义元数据与程序元素关联起来。这些元数据是在编译过程中创建的，并嵌入程序集中。反射是一个普通的术语，它描述了在运行过程中检查和处理程序元素的功能。例如，反射运行完成以下任务：  枚举类型的成员 实例化新对象 执行对象的成员 查找类型的信息 查找程序集的信息 检查应用于某个类型的自定义特性 创建和编译新程序集  这个列表列出了许多功能，本章">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/15931901-4d8fa2c07020ee1c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/08/16/C#之反射、元数据详解/">
+
+
+
+
+
+  <title>C#之反射、元数据详解 | 小世界的野孩子</title>
+  
+
+
+
+
+
+
+
+
+</head>
+<script type="text/javascript" src="/js/src/particle.js"></script>
+<script type="text/javascript" src="/js/src/love.js"></script> 
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">小世界的野孩子</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">小世界的野孩子</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+	
+	 
+	
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+	  
+
+ 
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/16/C#之反射、元数据详解/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Boy">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/Hand.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小世界的野孩子">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">C#之反射、元数据详解</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-16T17:22:16+08:00">
+                2019-08-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/基础系列/" itemprop="url" rel="index">
+                    <span itemprop="name">基础系列</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/08/16/C#之反射、元数据详解/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/08/16/C#之反射、元数据详解/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o">本文总阅读量</i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>次
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  3.1k 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  12 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a><strong>前言</strong></h2><p>　　在本节中主要讲述自定义特性、反射。自定义特性允许把自定义元数据与程序元素关联起来。这些元数据是在编译过程中创建的，并嵌入程序集中。反射是一个普通的术语，它描述了在运行过程中检查和处理程序元素的功能。例如，反射运行完成以下任务：</p>
+<ul>
+<li><strong>枚举类型的成员</strong></li>
+<li><strong>实例化新对象</strong></li>
+<li><strong>执行对象的成员</strong></li>
+<li><strong>查找类型的信息</strong></li>
+<li><strong>查找程序集的信息</strong></li>
+<li><strong>检查应用于某个类型的自定义特性</strong></li>
+<li><strong>创建和编译新程序集</strong></li>
+</ul>
+<p>这个列表列出了许多功能，本章中主要介绍部分常用的功能。</p>
+<h2 id="自定义特性"><a href="#自定义特性" class="headerlink" title="自定义特性"></a><strong>自定义特性</strong></h2><h3 id="一、编写自定义特性"><a href="#一、编写自定义特性" class="headerlink" title="一、编写自定义特性"></a>一、<strong>编写自定义特性</strong></h3><h4 id="1-理解自定义特性"><a href="#1-理解自定义特性" class="headerlink" title="　　1. 理解自定义特性"></a>　　1. <strong>理解自定义特性</strong></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[LastModified(&quot;Test&quot;,&quot;Test&quot;)] public class TestNumber &#123;  &#125;</span><br></pre></td></tr></table></figure>
+
+<p>　　这个例子首先会发现LastModified这个特性，首先把字符串Attribute追加到这个名称后面，形成一个组合LastModifiedAttribute，然后在其搜多路径的所有名称空间去搜索这个名称的类。注意如果本来就以Attribute结尾了，那么也就不会组合在一起了。编译器会找到含有改名称的类，且这个类直接或间接派生自<strong>System.Attribute。</strong>编译器很认为这个类包含控制特性用法的信息。特别是属性类需要指定：</p>
+<ul>
+<li>特性可以应用到那些类型的程序元素上（类、结构、属性和方法等）</li>
+<li>是否可以多次应用到同一个应用程序元素上</li>
+<li>在应用到类和接口上时，是否由派生类和接口继承</li>
+<li>这个特性有那些必选和可选参数</li>
+</ul>
+<p>　　如果哦编译器找不到对应的特性类，或者找到了但是使用方式或者信息不对，编译器就会产生一个编译错误。</p>
+<p>　　下面我们看看自定义特性其中的各个元素如何定义吧</p>
+<h4 id="2-指定AttributeUsage特性"><a href="#2-指定AttributeUsage特性" class="headerlink" title="　　2. 指定AttributeUsage特性"></a>　　2. <strong>指定AttributeUsage特性</strong></h4><p>　　第一个要注意的就是<strong>AttributeUsage</strong>特性，它是特性类的标记。<strong>AttributeUsage</strong>主要用于标识自定义特性可以应用到那些类型的程序元素上。 这些信息都是由第一个参数提供的，该参数输入必选参数，其类型是枚举类型AttributeTargets。其成员如下：</p>
+<p> <img src="https://upload-images.jianshu.io/upload_images/15931901-4d8fa2c07020ee1c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p> 　　<strong>在上面列表中，有两个值不对应于任何程序元素：Assembly和Module。特性可以应用到整个程序集或模块中，而不是应用到代码中的一个元素上，在这种情况下，这个特性可以放在源代码的任何地方，但需要关键字Assembly和Module作为前缀</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[assembly:SupportsWhatsNew] </span><br><span class="line">[module: SupportsWhatsNew]</span><br></pre></td></tr></table></figure>
+
+<p>　　<strong>下面我们再介绍几个参数AllowMultiple表示一个特性是否可以多次应用到同一项，Inherited表示应用到类或接口上的特性是否可以自动应用到所以的派生的类或接口上。如果特性应用到方法或者属性上，就表示是否可以自动应用到该方法或属性等的重新版本上。</strong></p>
+<h3 id="二、自定义特性示例"><a href="#二、自定义特性示例" class="headerlink" title="二、自定义特性示例"></a>二、<strong>自定义特性示例</strong></h3><p>　　经过上面的介绍，下面我们开始定义自定义特性示例。这里我们将创建两个类库，第一个WhatsNewAttributes库程序集，其中定义了两个特性，LastModifiedAttribute和SupportsWhatsNewAttribute。</p>
+<p>　　<strong>LastModifiedAttribute特性可以用于标记最后一次修改数据项的时间，它有两个必选参数：修改的日期和包含描述修改的信息。还有一个可选参数issues，它可以用来描述该数据项的任何重要问题。</strong></p>
+<p>　　<strong>SupportsWhatsNewAttribute是一个较小的类，不带有任何参数的特性。这个特性是一个程序集的特性，用于把程序集标记为通过**</strong>SupportsWhatsNewAttribute<strong>**维护的文档。</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"> /// &lt;summary&gt;</span><br><span class="line">    /// 用于标记最后一次修改数据项的时间和信息。</span><br><span class="line">    /// &lt;/summary&gt;</span><br><span class="line">    [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method | AttributeTargets.Constructor,</span><br><span class="line">        AllowMultiple = true, Inherited = false)]</span><br><span class="line">    public class LastModifiedAttribute : Attribute</span><br><span class="line">    &#123;</span><br><span class="line">        private readonly DateTime _dateModified;</span><br><span class="line">        private readonly string _changes;</span><br><span class="line">        public LastModifiedAttribute(string dateModified, string changes)</span><br><span class="line">        &#123;</span><br><span class="line">            _dateModified = DateTime.Parse(dateModified);</span><br><span class="line">            _changes = changes;</span><br><span class="line">        &#125;</span><br><span class="line">        public DateTime DateModified =&gt; _dateModified;</span><br><span class="line">        public string Changes =&gt; _changes;</span><br><span class="line">        public string Issues &#123; get; set; &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    /// &lt;summary&gt;</span><br><span class="line">    /// 用于把程序集标记为通过LastModifiedAttribute维护的文档</span><br><span class="line">    /// &lt;/summary&gt;</span><br><span class="line">    [AttributeUsage(AttributeTargets.Assembly)]</span><br><span class="line">    public class SupportsWhatsNewAttribute : Attribute</span><br><span class="line">    &#123;</span><br><span class="line"> </span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p>　　接下来我们介绍第二个库VectorClass。VectorClass库引用了WhatsNewAttributes库，添加声明后我们使用全局程序集特性标记程序集。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br></pre></td><td class="code"><pre><span class="line">[assembly:SupportsWhatsNew]</span><br><span class="line">namespace VectorClass</span><br><span class="line">&#123;</span><br><span class="line">    [LastModified(&quot;2017-7-19&quot;, &quot;更新C#7，.NET Core 2&quot;)]</span><br><span class="line">    [LastModified(&quot;2015-6-6&quot;, &quot;更新C#6,.NET Core&quot;)]</span><br><span class="line">    [LastModified(&quot;2010-2-14&quot;, &quot;修改第一步&quot;)]</span><br><span class="line">    public class Vector : IFormattable, IEnumerable&lt;double&gt;</span><br><span class="line">    &#123;</span><br><span class="line">        public Vector(double x, double y, double z)</span><br><span class="line">        &#123;</span><br><span class="line">            X = x;</span><br><span class="line">            Y = y;</span><br><span class="line">            Z = z;</span><br><span class="line">        &#125;</span><br><span class="line">        public Vector(Vector vector) : this(vector.X, vector.Y, vector.Z)</span><br><span class="line">        &#123;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">        public double X &#123; get; &#125;</span><br><span class="line">        public double Y &#123; get; &#125;</span><br><span class="line">        public double Z &#123; get; &#125;</span><br><span class="line">        public IEnumerator&lt;double&gt; GetEnumerator()</span><br><span class="line">        &#123;</span><br><span class="line">            throw new NotImplementedException();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        [LastModified(&quot;2017-7-19&quot;, &quot;将ijk格式从StringBuilder更改为格式字符串&quot;)]</span><br><span class="line">        public string ToString(string format, IFormatProvider formatProvider)</span><br><span class="line">        &#123;</span><br><span class="line">            if (format == null)</span><br><span class="line">            &#123;</span><br><span class="line">                return ToString();</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            switch (format.ToUpper())</span><br><span class="line">            &#123;</span><br><span class="line">                case &quot;N&quot;:</span><br><span class="line">                    return &quot;|| &quot; + Norm().ToString() + &quot; ||&quot;;</span><br><span class="line">                case &quot;VE&quot;:</span><br><span class="line">                    return $&quot;( &#123;X:E&#125;, &#123;Y:E&#125;, &#123;Z:E&#125; )&quot;;</span><br><span class="line">                case &quot;IJK&quot;:</span><br><span class="line">                    return $&quot;&#123;X&#125; i + &#123;Y&#125; j + &#123;Z&#125; k&quot;;</span><br><span class="line">                default:</span><br><span class="line">                    return ToString();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line"></span><br><span class="line">        public double Norm() =&gt; X * X + Y * Y + Z * Z;</span><br><span class="line"></span><br><span class="line">        IEnumerator IEnumerable.GetEnumerator()</span><br><span class="line">        &#123;</span><br><span class="line">            throw new NotImplementedException();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        [LastModified(&quot;2015-6-6&quot;, &quot;修改&quot;)]</span><br><span class="line">        [LastModified(&quot;2010-2-14&quot;, &quot; 类创建&quot;)]</span><br><span class="line">        public class VectorEnumerator : IEnumerator&lt;double&gt;</span><br><span class="line">        &#123;</span><br><span class="line">            public double Current =&gt; throw new NotImplementedException();</span><br><span class="line"></span><br><span class="line">            object IEnumerator.Current =&gt; throw new NotImplementedException();</span><br><span class="line"></span><br><span class="line">            public void Dispose()</span><br><span class="line">            &#123;</span><br><span class="line">                throw new NotImplementedException();</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            public bool MoveNext()</span><br><span class="line">            &#123;</span><br><span class="line">                throw new NotImplementedException();</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            public void Reset()</span><br><span class="line">            &#123;</span><br><span class="line">                throw new NotImplementedException();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>　　这里我们还需要设置下csproj项目文件添加</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;version&gt;2.1.0&lt;/version&gt;</span><br></pre></td></tr></table></figure>
+
+<p>　　<strong>到这里我们介绍了自定义特性相关。接下来我们介绍反射，然后根据反射示例加上自定义特性示例去完成一个小的demo。</strong></p>
+<h2 id="反射"><a href="#反射" class="headerlink" title="反射"></a><strong>反射</strong></h2><p>　　反射是.NET中的重要机制，通过反射，可以在运行时获得程序或程序集中每一个类型（包括类、结构、委托、接口和枚举等）的成员和成员的信息。有了反射，即可对每一个类型了如指掌。另外我还可以直接创建对象，即使这个对象的类型在编译时还不知道。</p>
+<h3 id="一、System-Type类"><a href="#一、System-Type类" class="headerlink" title="一、System.Type类"></a>一、<strong>System.Type类</strong></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Type t=typeof(double);</span><br></pre></td></tr></table></figure>
+
+<p>　　这里使用Type类只为了存储类型的引用，以前把Type看做一个类，实际上时一个抽象的基类。实例化一个Type对象，实际上就实例化了Type的一个派生类。尽管一般情况下派生类只提供各种Type方法和属性的不同重载，但是这些方法和属性返回对应数据类型的正确数据。通常，获取指定任何给定类型的Type引用有3中常用的方式：</p>
+<ul>
+<li><strong>使用typeof运算符，就想上面的例子一样</strong></li>
+<li><strong>使用GetType()方法，所有的类都会从System.Object继承这个方法。</strong></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">double d = 10;</span><br><span class="line"></span><br><span class="line">Type t = d.GetType();</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>调用Type类的静态方法GetType()</strong></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Type t = Type.GetType(&quot;System.Double&quot;);</span><br></pre></td></tr></table></figure>
+
+<p>　　Type是实现许多反射功能的入口，它实现了许多方法和属性，这里我们将介绍如何使用这个类。<br><img src="https://upload-images.jianshu.io/upload_images/15931901-fa48e9f0430d4df8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>　　<strong>其中还有许多布尔属性表示这种类型是否是一个类。还是一个枚举等等。这些特性包括IsAbstract、IsArray、IsClass、IsEnum、IsInterface、IsPointer、IsPrimitive（一种预定义的基元数据类型）、IsPublic、IsSealed以及IsValueType。</strong><br><strong>例如判断类型是否是数组：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"> Type t = typeof(double); if (t.IsArray)//返回布尔值</span><br><span class="line">&#123; </span><br><span class="line"></span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="二、方法"><a href="#二、方法" class="headerlink" title="二、方法"></a>二、<strong>方法</strong></h3><p>　　System.Type的大多数方法都用于获取对应数据类型的成员信息:构造函数、属性、方法和事件等。下面我们看看Type的成员方法，这里遵循一个模式。注意名称为复数形式的方法返回一个数组。<br><img src="https://upload-images.jianshu.io/upload_images/15931901-532519bab5d63cef.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>　　<strong>GetMember()和GetMembers()方法返回的数据类型的任何成员或所有成员的详细信息，不管这些成员是构造函数、属性、方法等</strong></p>
+<h3 id="三、Assembly类"><a href="#三、Assembly类" class="headerlink" title="三、Assembly类"></a>三、<strong>Assembly类</strong></h3><p>　　Assembly类在System.Reflection名称空间定义，它允许访问给定程序集的元数据，它也可以包含可以加载和执行程序集的方法。</p>
+<p>　　我们可以先看第一个方法Assembly.Load()或者Assembly.LoadFrom()。这两个方法的区别在于Load方法的参数时程序集的名称，运行库会在各个位置搜索该程序集，试图找到该程序集，这些位置包括本地目录和群居程序集缓存。</p>
+<h4 id="1、获取在程序集好难过定义的类型的详细信息"><a href="#1、获取在程序集好难过定义的类型的详细信息" class="headerlink" title="　　1、获取在程序集好难过定义的类型的详细信息"></a>　　1、<strong>获取在程序集好难过定义的类型的详细信息</strong></h4><p>　　这里我跟根据Assembly类的一个功能来获取程序集中定义的所有类型的详细信息，只要调用Assembly.GetTypes()方法，他就可以返回一个包含所有类型的详细信息的System.Type引用数组。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Assembly theAssembly = Assembly.Load(new AssemblyName(&quot;VectorClass&quot;));</span><br><span class="line"></span><br><span class="line">            Type[] types = theAssembly.GetTypes();</span><br></pre></td></tr></table></figure>
+
+<h4 id="2、获取自定义特性的详细信息"><a href="#2、获取自定义特性的详细信息" class="headerlink" title="　　2、获取自定义特性的详细信息"></a>　　2、<strong>获取自定义特性的详细信息</strong></h4><p>　　用于查找在程序集或类型中定义了什么自定义特性的方法取决于与该特性相关的对象类型。如果要确定程序集从整体上关联了什么自定义特性，就需要调用Assembly类的一个静态方法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Attribute[] attributes = Attribute.GetCustomAttributes(theAssembly);</span><br></pre></td></tr></table></figure>
+
+<h2 id="完成示例"><a href="#完成示例" class="headerlink" title="完成示例"></a><strong>完成示例</strong></h2><p>　　到这里我们就简单的介绍了自定义特性以及反射，我们就接着完成我们的示例，刚刚以及定义了两个程序集以及自定义特性。现在我们要做的就是配合反射来获取相关程序集的信息。主要实现效果是：说明公司如何定期升级软件，自动记录升级的信息。</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br></pre></td><td class="code"><pre><span class="line">class Program</span><br><span class="line">    &#123;</span><br><span class="line">        /// &lt;summary&gt;</span><br><span class="line">        /// 输出的消息</span><br><span class="line">        /// &lt;/summary&gt;</span><br><span class="line">        private static readonly StringBuilder outputText = new StringBuilder(1000);</span><br><span class="line"></span><br><span class="line">        /// &lt;summary&gt;</span><br><span class="line">        /// 存储的时间</span><br><span class="line">        /// &lt;/summary&gt;</span><br><span class="line">        private static DateTime backDateTo = new DateTime(2017,2,1);</span><br><span class="line">        static void Main(string[] args)</span><br><span class="line">        &#123; </span><br><span class="line">            //获取访问的程序集</span><br><span class="line">            Assembly theAssembly = Assembly.Load(new AssemblyName(&quot;VectorClass&quot;));</span><br><span class="line">            //获取自定义特性的详细信息</span><br><span class="line">            Attribute supportsAttribute = theAssembly.GetCustomAttribute(typeof(SupportsWhatsNewAttribute));</span><br><span class="line">            AddToOutput($&quot;assembly:&#123;theAssembly.FullName&#125;&quot;);</span><br><span class="line">            if (supportsAttribute==null)</span><br><span class="line">            &#123;</span><br><span class="line">                AddToOutput(&quot;这个程序集不支持&quot;);</span><br><span class="line">                return;</span><br><span class="line">            &#125;</span><br><span class="line">            else</span><br><span class="line">            &#123;</span><br><span class="line">                AddToOutput(&quot;定义的类型是：&quot;);</span><br><span class="line">            &#125;</span><br><span class="line">            //获取程序集中定义的公共类型集合</span><br><span class="line">            IEnumerable&lt;Type&gt; types = theAssembly.ExportedTypes;</span><br><span class="line">            foreach ( Type definedType in types)</span><br><span class="line">            &#123;</span><br><span class="line">                DisplayTypeInfo(definedType);</span><br><span class="line">            &#125;</span><br><span class="line">            Console.WriteLine(backDateTo);</span><br><span class="line">            Console.WriteLine(outputText.ToString());</span><br><span class="line">            Console.ReadLine();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        public static void DisplayTypeInfo(Type type)</span><br><span class="line">        &#123;</span><br><span class="line">            if (!type.GetTypeInfo().IsClass)</span><br><span class="line">            &#123;</span><br><span class="line">                return;</span><br><span class="line">            &#125;</span><br><span class="line">            AddToOutput($&quot;&#123;Environment.NewLine&#125;类 &#123;type.Name&#125;&quot;);</span><br><span class="line">            //获取类型的详细信息然后获取其自定义详细信息选择自定义特性再筛选时间</span><br><span class="line">            IEnumerable&lt;LastModifiedAttribute&gt; lastModifiedAttributes = type.GetTypeInfo().GetCustomAttributes()</span><br><span class="line">                .OfType&lt;LastModifiedAttribute&gt;().Where(a =&gt; a.DateModified &gt;= backDateTo).ToArray();</span><br><span class="line"></span><br><span class="line">            if (lastModifiedAttributes.Count()==0)</span><br><span class="line">            &#123;</span><br><span class="line">                AddToOutput($&quot;\t这个&#123;type.Name&#125;没有改变&#123;Environment.NewLine&#125;&quot;);</span><br><span class="line">            &#125;</span><br><span class="line">            else</span><br><span class="line">            &#123;</span><br><span class="line">                foreach (LastModifiedAttribute item in lastModifiedAttributes)</span><br><span class="line">                &#123;</span><br><span class="line">                    WriteAttributeInfo(item);</span><br><span class="line">                &#125;</span><br><span class="line">                AddToOutput(&quot;这些类的修改方法：&quot;);</span><br><span class="line"></span><br><span class="line">                //获取类的信息中的方法</span><br><span class="line">                foreach (MethodInfo methond in type.GetTypeInfo().DeclaredMembers.OfType&lt;MethodInfo&gt;())</span><br><span class="line">                &#123;</span><br><span class="line">                    //获取这些方法的自定义特性信息筛选时间</span><br><span class="line">                    IEnumerable&lt;LastModifiedAttribute&gt; attributesToMethods = methond.GetCustomAttributes().OfType&lt;LastModifiedAttribute&gt;()</span><br><span class="line">                        .Where(a =&gt; a.DateModified &gt;= backDateTo).ToArray();</span><br><span class="line">                    if (attributesToMethods.Count()&gt;0)</span><br><span class="line">                    &#123;</span><br><span class="line">                        AddToOutput($&quot;&#123;methond.ReturnType&#125;&#123;methond.Name&#125;()&quot;);</span><br><span class="line">                        foreach (Attribute attribute in attributesToMethods)</span><br><span class="line">                        &#123;</span><br><span class="line">                            WriteAttributeInfo(attribute);</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        static void AddToOutput(string Text) =&gt; outputText.Append(&quot;\n&quot; + Text);</span><br><span class="line"></span><br><span class="line">        private static void WriteAttributeInfo(Attribute attribute)</span><br><span class="line">        &#123;</span><br><span class="line">            if (attribute is LastModifiedAttribute lastModifiedAttribute)</span><br><span class="line">            &#123;</span><br><span class="line">                AddToOutput($&quot;\tmodified:&#123;lastModifiedAttribute.DateModified:D&#125;:&#123;lastModifiedAttribute.Changes&#125;&quot;);</span><br><span class="line">                if (lastModifiedAttribute.Issues!=null)</span><br><span class="line">                &#123;</span><br><span class="line">                    AddToOutput($&quot;\tOutstanding issues:&#123;lastModifiedAttribute.Issues&#125;&quot;);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; </span><br><span class="line"></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p>上面都打上了详细备注，完整的项目示例已存放在<a href="https://github.com/hulizong/LoadNew.git" target="_blank" rel="noopener">Github</a>上。有兴趣的可以Download下来看看。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a><strong>总结</strong></h2><p>　　本篇文章主要介绍了Type和Assembly类，它们是访问反射所提供的扩展功能的主要入口点。反射是.NET中的重要机制，通过反射，可以在运行时获得程序或程序集中每一个类型（包括类、结构、委托、接口和枚举等）的成员和成员的信息。</p>
+<p>　　　<strong>不是井里没有水，而是你挖的不够深。不是成功来得慢，而是你努力的不够多。</strong></p>
+<hr>
+
+      
+    </div>
+    
+    
+    
+
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/uploads/WX.jpg" alt="Boy wechat" style="width: 200px; max-width: 100%;">
+    <div>欢迎您扫一扫上面的微信公众号，订阅我的博客！</div>
+</div>
+
+      </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Net/" rel="tag"># .Net</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/08/15/Vue创建项目配置/" rel="next" title="Vue创建项目配置">
+                <i class="fa fa-chevron-left"></i> Vue创建项目配置
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/uploads/Hand.jpg" alt="Boy">
+            
+              <p class="site-author-name" itemprop="name">Boy</p>
+              <p class="site-description motion-element" itemprop="description">技术分享、生活分享</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/hulizong" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="a127988466@qq.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.cnblogs.com/hulizhong/" target="_blank" title="博客园">
+                      
+                        <i class="fa fa-fw fa-google"></i>博客园</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+            <div class="cc-license motion-element" itemprop="license">
+              <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" target="_blank">
+                <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons">
+              </a>
+            </div>
+          
+
+          
+          
+		  
+<br>
+
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=1296893537&auto=1&height=66"></iframe>
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#自定义特性"><span class="nav-number">2.</span> <span class="nav-text">自定义特性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、编写自定义特性"><span class="nav-number">2.1.</span> <span class="nav-text">一、编写自定义特性</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-理解自定义特性"><span class="nav-number">2.1.1.</span> <span class="nav-text">　　1. 理解自定义特性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-指定AttributeUsage特性"><span class="nav-number">2.1.2.</span> <span class="nav-text">　　2. 指定AttributeUsage特性</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、自定义特性示例"><span class="nav-number">2.2.</span> <span class="nav-text">二、自定义特性示例</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#反射"><span class="nav-number">3.</span> <span class="nav-text">反射</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、System-Type类"><span class="nav-number">3.1.</span> <span class="nav-text">一、System.Type类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、方法"><span class="nav-number">3.2.</span> <span class="nav-text">二、方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三、Assembly类"><span class="nav-number">3.3.</span> <span class="nav-text">三、Assembly类</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1、获取在程序集好难过定义的类型的详细信息"><span class="nav-number">3.3.1.</span> <span class="nav-text">　　1、获取在程序集好难过定义的类型的详细信息</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2、获取自定义特性的详细信息"><span class="nav-number">3.3.2.</span> <span class="nav-text">　　2、获取自定义特性的详细信息</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#完成示例"><span class="nav-number">4.</span> <span class="nav-text">完成示例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">5.</span> <span class="nav-text">总结</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+         
+<div class="copyright">&copy; Wed Jul 31 2019 08:00:00 GMT+0800 (GMT+08:00) &mdash; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Boy</span>
+
+  
+</div>
+
+
+ <!-- <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+--> 
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user">本站访客数</i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人次
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye">本站总访问量</i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://yoursite.com/2019/08/16/C#之反射、元数据详解/';
+          this.page.identifier = '2019/08/16/C#之反射、元数据详解/';
+          this.page.title = 'C#之反射、元数据详解';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
