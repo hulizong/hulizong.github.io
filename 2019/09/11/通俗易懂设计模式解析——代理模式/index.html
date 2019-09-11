@@ -106,7 +106,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content=".Net设计模式,">
 
 
 
@@ -117,16 +117,20 @@
 
 
 
-<meta name="description" content="技术分享、生活分享">
-<meta property="og:type" content="website">
-<meta property="og:title" content="小世界的野孩子">
-<meta property="og:url" content="http://yoursite.com/archives/2019/index.html">
+<meta name="description" content="前言　　今天讲的是结构型设计模式中的最后一个，这个模式也就是代理模式，在前段时间我写的一篇关于正向代理和反向代理的文章。虽说此代理非彼代理。但是代理一词还是具有相似的含义的。这里我们继续使用文章中的代购一个例子来讲述一下代理模式吧，人不方便去购买哪些物品，这时就有一个中间人，他来购买。他代替我去购买。他也就充当了那个代理的职责。我们继续往下看吧。 代理模式介绍### 一、**来由**　　    在">
+<meta name="keywords" content=".Net设计模式">
+<meta property="og:type" content="article">
+<meta property="og:title" content="通俗易懂设计模式解析——代理模式">
+<meta property="og:url" content="http://yoursite.com/2019/09/11/通俗易懂设计模式解析——代理模式/index.html">
 <meta property="og:site_name" content="小世界的野孩子">
-<meta property="og:description" content="技术分享、生活分享">
+<meta property="og:description" content="前言　　今天讲的是结构型设计模式中的最后一个，这个模式也就是代理模式，在前段时间我写的一篇关于正向代理和反向代理的文章。虽说此代理非彼代理。但是代理一词还是具有相似的含义的。这里我们继续使用文章中的代购一个例子来讲述一下代理模式吧，人不方便去购买哪些物品，这时就有一个中间人，他来购买。他代替我去购买。他也就充当了那个代理的职责。我们继续往下看吧。 代理模式介绍### 一、**来由**　　    在">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/15931901-3abb40a2d2553b68.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2019-09-11T08:23:31.274Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="小世界的野孩子">
-<meta name="twitter:description" content="技术分享、生活分享">
+<meta name="twitter:title" content="通俗易懂设计模式解析——代理模式">
+<meta name="twitter:description" content="前言　　今天讲的是结构型设计模式中的最后一个，这个模式也就是代理模式，在前段时间我写的一篇关于正向代理和反向代理的文章。虽说此代理非彼代理。但是代理一词还是具有相似的含义的。这里我们继续使用文章中的代购一个例子来讲述一下代理模式吧，人不方便去购买哪些物品，这时就有一个中间人，他来购买。他代替我去购买。他也就充当了那个代理的职责。我们继续往下看吧。 代理模式介绍### 一、**来由**　　    在">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/15931901-3abb40a2d2553b68.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
 
 
@@ -156,13 +160,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/archives/2019/">
+  <link rel="canonical" href="http://yoursite.com/2019/09/11/通俗易懂设计模式解析——代理模式/">
 
 
 
 
 
-  <title>归档 | 小世界的野孩子</title>
+  <title>通俗易懂设计模式解析——代理模式 | 小世界的野孩子</title>
   
 
 
@@ -182,7 +186,7 @@
     
   
 
-  <div class="container sidebar-position-left page-archive">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -314,390 +318,292 @@
           <div id="content" class="content">
             
 
+  <div id="posts" class="posts-expand">
+    
+
+  
+
   
   
   
-  <div class="post-block archive">
-    <div id="posts" class="posts-collapse">
-      <span class="archive-move-on"></span>
 
-      <span class="archive-page-counter">
-        
-        
-         
-        
-        OK! 目前共计 32 篇日志。 继续努力。
-      </span>
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/11/通俗易懂设计模式解析——代理模式/">
 
-      
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Boy">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/Hand.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小世界的野孩子">
+    </span>
+
+    
+      <header class="post-header">
 
         
         
+          <h1 class="post-title" itemprop="name headline">通俗易懂设计模式解析——代理模式</h1>
         
 
-        
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-11T16:23:16+08:00">
+                2019-09-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
           
-          <div class="collection-title">
-            <h1 class="archive-year" id="archive-year-2019">2019</h1>
-          </div>
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/09/11/通俗易懂设计模式解析——代理模式/" itemprop="url">
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
               
-                <span itemprop="name">通俗易懂设计模式解析——代理模式</span>
+                <span class="post-meta-item-text">分类于</span>
               
-            </a>
-        
-      </h2>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/设计模式/" itemprop="url" rel="index">
+                    <span itemprop="name">设计模式</span>
+                  </a>
+                </span>
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-09-11T16:23:16+08:00" content="2019-09-11">
-          09-11
-        </time>
-      </div>
+                
+                
+              
+            </span>
+          
 
-    </header>
-  </article>
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/09/11/通俗易懂设计模式解析——代理模式/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/09/11/通俗易懂设计模式解析——代理模式/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
 
+          
+          
 
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o">本文总阅读量</i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>次
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1.6k 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  6 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/09/10/通俗易懂设计模式解析——享元模式/" itemprop="url">
-              
-                <span itemprop="name">通俗易懂设计模式解析——享元模式</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-09-10T16:31:16+08:00" content="2019-09-10">
-          09-10
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
       
 
-        
-        
-        
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a><strong>前言</strong></h2><p>　　今天讲的是结构型设计模式中的最后一个，这个模式也就是代理模式，在前段时间我写的一篇关于<a href="https://www.cnblogs.com/hulizhong/p/11268468.html" target="_blank" rel="noopener">正向代理和反向代理</a>的文章。虽说此代理非彼代理。但是代理一词还是具有相似的含义的。这里我们继续使用文章中的代购一个例子来讲述一下代理模式吧，人不方便去购买哪些物品，这时就有一个中间人，他来购买。他代替我去购买。他也就充当了那个代理的职责。我们继续往下看吧。</p>
+<h2 id="代理模式介绍"><a href="#代理模式介绍" class="headerlink" title="代理模式介绍"></a><strong>代理模式介绍</strong></h2><pre><code>### 一、**来由**</code></pre><p>　　    在软件系统的开放中，有一些对象存在，但是直接访问会给使用者带来一些麻烦，或者使用起来不那么方便，这是就是需要一个代理对象来中间起到关键作用。通过这个代理对象进行访问，以来解决这些问题。这也就是代理模式。</p>
+<pre><code>### 二、**意图**</code></pre><p>　　    <strong>为其他对象提供一种代理以控制对这个对象的访问。</strong></p>
+<pre><code>### 三、**案例图**</code></pre><p> <img src="https://upload-images.jianshu.io/upload_images/15931901-3abb40a2d2553b68.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
+<pre><code>### 四、**代理模式代码示例**
 
-        
-        
+看上面的案例图，我们发现代理模式包含以下部分：
 
-        
+    **抽象角色： 定义代理角色和真实角色的公共接口，这样来说使用真实角色的地方就可以使用代理角色。**
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+    **代理角色： 包含对真实角色的引用，这样可以操作真实角色，代理角色不仅仅只是调用真实角色，也会执行其他的操作。**
 
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/08/24/通俗易懂设计模式解析——外观模式/" itemprop="url">
-              
-                <span itemprop="name">通俗易懂设计模式解析——外观模式</span>
-              
-            </a>
-        
-      </h2>
+    **真实角色： 定义了代理角色所代表的真实角色。**
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-08-24T17:26:16+08:00" content="2019-08-24">
-          08-24
-        </time>
-      </div>
+这里我们使用的是一个代理进行代购的案例来进行讲述，让我们一起看看如何实现的吧：</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line">namespace Proxy_Pattern</span><br><span class="line">&#123;</span><br><span class="line">    class ProxyPattern</span><br><span class="line">    &#123;</span><br><span class="line">    &#125;</span><br><span class="line">    #region 抽象角色——抽象需要做的事情的方法</span><br><span class="line">    public abstract class Buy</span><br><span class="line">    &#123;</span><br><span class="line">        public abstract void BuyFun(string Name);</span><br><span class="line">    &#125;</span><br><span class="line">    #endregion</span><br><span class="line"></span><br><span class="line">    #region 真实角色——实现抽象的方法</span><br><span class="line">    public class RealBuy : Buy</span><br><span class="line">    &#123;</span><br><span class="line">        public override void BuyFun(string Name)</span><br><span class="line">        &#123;</span><br><span class="line">            Console.WriteLine($&quot;帮我购买&#123;Name&#125;&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    #endregion</span><br><span class="line"></span><br><span class="line">    #region 代理角色——代购</span><br><span class="line">    public class ProxyBuy : Buy</span><br><span class="line">    &#123;</span><br><span class="line">        public RealBuy realBuy;</span><br><span class="line">        public ProxyBuy()</span><br><span class="line">        &#123;</span><br><span class="line">            realBuy = new RealBuy();</span><br><span class="line">        &#125;</span><br><span class="line">        public override void BuyFun(string Name)</span><br><span class="line">        &#123;</span><br><span class="line">           var flag= this.AllowBuy(Name);</span><br><span class="line">            if (!flag)</span><br><span class="line">            &#123;</span><br><span class="line">                Console.WriteLine(&quot;违禁品不允许购买&quot;); </span><br><span class="line">            &#125;</span><br><span class="line">            else</span><br><span class="line">            &#123;</span><br><span class="line">                realBuy.BuyFun(Name);</span><br><span class="line">                Recording(Name);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        /// &lt;summary&gt;</span><br><span class="line">        /// 代理模式中的额外操作。例如购买的东西，不可能啥东西都买。需要对购买的东西进行检查</span><br><span class="line">        /// &lt;/summary&gt;</span><br><span class="line">        /// &lt;param name=&quot;Name&quot;&gt;购买的东西&lt;/param&gt;</span><br><span class="line">        /// &lt;returns&gt;&lt;/returns&gt;</span><br><span class="line">        public bool AllowBuy(string Name)</span><br><span class="line">        &#123;</span><br><span class="line">            if (Name!=&quot;违禁品&quot;)</span><br><span class="line">            &#123;</span><br><span class="line">                return true;</span><br><span class="line">            &#125;</span><br><span class="line">            return false;</span><br><span class="line">        &#125;</span><br><span class="line">        /// &lt;summary&gt;</span><br><span class="line">        /// 对购买的东西进行记录</span><br><span class="line">        /// &lt;/summary&gt;</span><br><span class="line">        /// &lt;param name=&quot;Name&quot;&gt;&lt;/param&gt;</span><br><span class="line">        public void Recording(string Name)</span><br><span class="line">        &#123;</span><br><span class="line">            Console.WriteLine($&quot;这次代购购买了&#123;Name&#125;&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    #endregion</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-    </header>
-  </article>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">namespace Proxy_Pattern</span><br><span class="line">&#123;</span><br><span class="line">    class Program</span><br><span class="line">    &#123;</span><br><span class="line">        static void Main(string[] args)</span><br><span class="line">        &#123;</span><br><span class="line">            //初始化代理对象</span><br><span class="line">            Buy buy = new ProxyBuy();</span><br><span class="line">            //代理对象进行处理事务</span><br><span class="line">            buy.BuyFun(&quot;化妆品&quot;);</span><br><span class="line"></span><br><span class="line">            buy.BuyFun(&quot;违禁品&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+<h2 id="使用场景及优缺点"><a href="#使用场景及优缺点" class="headerlink" title="使用场景及优缺点"></a><strong>使用场景及优缺点</strong></h2><p>　　不管是使用怎样的代理，都是在软件系统中增加一个中间层次，这种方式对于解决一些复杂问题或者对象之间的问题提供了较大方便。代理模式又划分了许多的类型，待会下面我们会一一介绍的。代理模式并不要求保持各个类之间的接口的一致性，代理模式的重点是间接控制，中间层次管理。</p>
+<pre><code>### 一、**使用场景**
 
+根据代理模式的职责我们可以分为以下的使用场景：
+    **远程代理： 为两个不同地址的对象信息代理，典型例子就是客户端与服务之间。客户端调用服务。**
+
+    **虚拟代理： 根据需要创建一个资源消耗较大的对象，使得对象在需要的时候才会被调用。**
+
+    **Copy-on-Write 代理： 属于虚拟代理的一种，把复制或者克隆拖延到客户端需要的时候才执行。**
+
+    **保护（Protect or Access）代理： 控制对象的访问，提供不同级别使用的不同的访问权限。**
+
+    **Cache代理： 为一个目标的结果提供一个临时的保存空间，以便于多个客户端可以使用这些结果**
+
+    **防火墙（Firewall）代理： 保护目标不受恶意侵犯**
+
+    **智能引用（Smart Reference）代理： 当一个对象被调用引用的时候，提供一些额外的操作，可以把调用的次数或调用的位置记录下来。**
+
+### 二、**优点**
+
+    1、增加了中间代理层，降低了客户端与对象之间的耦合度
+
+    2、中间的代理对对象增加了保护层次，同时也可以增加一些额外的操作例如权限控制、智能化
+
+    3、职责清晰明了。抽象—真实—代理
+
+### 三、**缺点**
+
+    1、由于增加了代理对象，有些情况可能会造成代理之间的请求变慢
+
+    2、由于增加了代理对象，增加了一些额外的工作，造成了系统的复杂度</code></pre><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a><strong>总结</strong></h2><p>　　到这里设计模式中的结构型的各个设计模式我就介绍完了。最后一个代理模式，理解起来也是相对简单的。重点理解代理一词。再回首、看看我们也将看完了设计模式三个部分中的两个部分。创建型——解决对象创建的问题，对象之间解耦的问题。结构型——主要解决的是类和对象之间的结构问题。这里又包括类结构和对象结构问题。这里我们再来回顾一下结构型设计模式及其重点吧</p>
+<pre><code>**适配器模式——注重转换接口，使接口匹配、达到复用的目的**
+
+**桥接模式——注重接口和实现的分离，注重多维度的变化。**
+
+**装饰模式——注重稳定接口的前提下对对象进行扩展**
+
+**组合模式——注重将一对多转换为一对一，树型结构层次的关系**
+
+**外观模式——简化接口和客户端之间的调用依赖关系**
+
+**享元模式——注重最小单元对象的共享**
+
+**代理模式——增加中间层次实现控制**</code></pre><hr>
+<p>　　　　<strong>不要为它的结束而哭，应当为它的开始而笑。</strong></p>
+<hr>
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/08/24/通俗易懂设计模式解析——组合模式/" itemprop="url">
-              
-                <span itemprop="name">通俗易懂设计模式解析——组合模式</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-08-24T17:22:16+08:00" content="2019-08-24">
-          08-24
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/08/24/通俗易懂设计模式解析——装饰模式/" itemprop="url">
-              
-                <span itemprop="name">通俗易懂设计模式解析——装饰模式</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-08-24T17:22:16+08:00" content="2019-08-24">
-          08-24
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/08/23/通俗易懂设计模式解析——桥接模式/" itemprop="url">
-              
-                <span itemprop="name">通俗易懂设计模式解析——桥接模式</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-08-23T17:22:16+08:00" content="2019-08-23">
-          08-23
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/08/22/通俗易懂设计模式解析——适配器模式/" itemprop="url">
-              
-                <span itemprop="name">通俗易懂设计模式解析——适配器模式</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-08-22T17:22:16+08:00" content="2019-08-22">
-          08-22
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/08/21/通俗易懂设计模式解析——原型模式/" itemprop="url">
-              
-                <span itemprop="name">通俗易懂设计模式解析——原型模式</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-08-21T17:22:16+08:00" content="2019-08-21">
-          08-21
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/08/20/通俗易懂设计模式解析——建造者模式/" itemprop="url">
-              
-                <span itemprop="name">通俗易懂设计模式解析——建造者模式</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-08-20T17:22:16+08:00" content="2019-08-20">
-          08-20
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/08/18/通俗易懂设计模式解析——抽象工厂模式/" itemprop="url">
-              
-                <span itemprop="name">通俗易懂设计模式解析——抽象工厂模式</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-08-18T17:22:16+08:00" content="2019-08-18">
-          08-18
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
     </div>
+    
+    
+    
+
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/uploads/WX.jpg" alt="Boy wechat" style="width: 200px; max-width: 100%;">
+    <div>欢迎您扫一扫上面的微信公众号，订阅我的博客！</div>
+</div>
+
+      </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Net设计模式/" rel="tag"># .Net设计模式</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/09/10/通俗易懂设计模式解析——享元模式/" rel="next" title="通俗易懂设计模式解析——享元模式">
+                <i class="fa fa-chevron-left"></i> 通俗易懂设计模式解析——享元模式
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
-
-  
-  <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/archives/2019/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/archives/2019/page/4/">4</a><a class="extend next" rel="next" href="/archives/2019/page/2/"><i class="fa fa-angle-right"></i></a>
-  </nav>
+  </article>
 
 
+
+    <div class="post-spread">
+      
+        
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
 
 
           </div>
@@ -705,6 +611,20 @@
 
 
           
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
 
         </div>
         
@@ -725,8 +645,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -826,6 +755,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代理模式介绍"><span class="nav-number">2.</span> <span class="nav-text">代理模式介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用场景及优缺点"><span class="nav-number">3.</span> <span class="nav-text">使用场景及优缺点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">4.</span> <span class="nav-text">总结</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -1030,6 +975,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
@@ -1047,6 +996,18 @@
       <script id="dsq-count-scr" src="https://.disqus.com/count.js" async></script>
     
 
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://yoursite.com/2019/09/11/通俗易懂设计模式解析——代理模式/';
+          this.page.identifier = '2019/09/11/通俗易懂设计模式解析——代理模式/';
+          this.page.title = '通俗易懂设计模式解析——代理模式';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
     
 
   
