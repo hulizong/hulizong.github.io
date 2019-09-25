@@ -125,12 +125,12 @@
 <meta property="og:site_name" content="小世界的野孩子">
 <meta property="og:description" content="前言　　前面几章我们介绍了创建型设计模式的部分内容，今天我要说的是创建型设计模式中最后一个——原型模式，原型模式是创建型模式中的一种较为特殊的模式，有个最大的特点是克隆一个现有的对象，在我们日常软件系统开发中，某些对象的创建new即为复杂，而且我们需要使用多个相同的实例，这样如果我们依旧使用new去进行创建。就会增加系统的复杂度和增加代码之间的耦合度。但是我们使用前面介绍的工厂模式的话，随着产品类">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/15931901-1f99ce731811044e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2019-09-09T09:27:32.568Z">
+<meta property="og:image" content="http://123.207.8.91:8081/src/Pictures/111/5.png">
+<meta property="og:updated_time" content="2019-09-25T10:05:17.033Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="通俗易懂设计模式解析——原型模式">
 <meta name="twitter:description" content="前言　　前面几章我们介绍了创建型设计模式的部分内容，今天我要说的是创建型设计模式中最后一个——原型模式，原型模式是创建型模式中的一种较为特殊的模式，有个最大的特点是克隆一个现有的对象，在我们日常软件系统开发中，某些对象的创建new即为复杂，而且我们需要使用多个相同的实例，这样如果我们依旧使用new去进行创建。就会增加系统的复杂度和增加代码之间的耦合度。但是我们使用前面介绍的工厂模式的话，随着产品类">
-<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/15931901-1f99ce731811044e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta name="twitter:image" content="http://123.207.8.91:8081/src/Pictures/111/5.png">
 
 
 
@@ -471,7 +471,7 @@
 <h2 id="原型模式介绍"><a href="#原型模式介绍" class="headerlink" title="原型模式介绍"></a><strong>原型模式介绍</strong></h2><h3 id="一、来由"><a href="#一、来由" class="headerlink" title="一、来由"></a>一、<strong>来由</strong></h3><p>　　在面对软件系统设计的过程中，会面临着”复杂对象”的创建，然而对象可能会由于需求的变动而进行变动。那么我们又需要保持接口的稳定性。这时如何保证应对这种变化呢？</p>
 <p>　　创建型模式一般是用来创建一个新的对象，然后我们使用这个对象完成一些对象的操作，我们通过原型模式可以快速的创建一个对象而不需要提供专门的new()操作就可以快速完成对象的创建，这无疑是一种非常有效的方式，快速的创建一个新的对象。</p>
 <h3 id="二、意图"><a href="#二、意图" class="headerlink" title="二、意图"></a>二、<strong>意图</strong></h3><p> 　　 <strong>使用原型实例指定创建对象的种类，然后通过拷贝这些原型来创建新的对象。</strong></p>
-<h3 id="三、案例图"><a href="#三、案例图" class="headerlink" title="三、案例图"></a>三、<strong>案例图</strong></h3><p><img src="https://upload-images.jianshu.io/upload_images/15931901-1f99ce731811044e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"> </p>
+<h3 id="三、案例图"><a href="#三、案例图" class="headerlink" title="三、案例图"></a>三、<strong>案例图</strong></h3><p><img src="http://123.207.8.91:8081/src/Pictures/111/5.png" alt="image"> </p>
 <h3 id="四、原型模式代码示例"><a href="#四、原型模式代码示例" class="headerlink" title="四、原型模式代码示例"></a>四、<strong>原型模式代码示例</strong></h3><p>　　在原型模式中包含的组成部分较少：</p>
 <p>　　　　<strong>抽象原型类： 原型类，声明一需要实现的接口及clone自身的方法</strong></p>
 <p>　　　　<strong>具体原型类： 实现其余接口及clone自身的方法</strong></p>

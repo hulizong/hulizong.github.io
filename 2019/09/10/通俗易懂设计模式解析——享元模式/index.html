@@ -125,12 +125,12 @@
 <meta property="og:site_name" content="小世界的野孩子">
 <meta property="og:description" content="前言 　　今天我们继续讲述设计模式，今天提及的是享元模式，享——共享。之前不是出现了一系列共享的东西吗？为啥呀，还不就是有些东西每个人都需要，但是每个人都去买一个又有点浪费。所以出现共享。话费一定的经济可以使用，使用完成之后又归还。这就是享。分享共享。今天讲的享元模式跟这相类似。享元模式——通俗来说也就是共享最小单元的一种模式。我们就一起看看到底啥是这享元模式吧。 享元模式介绍一、来由　　在软件系">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/15931901-06df07f518d89718.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2019-09-10T08:52:12.692Z">
+<meta property="og:image" content="http://123.207.8.91:8081/src/Pictures/111/11.png">
+<meta property="og:updated_time" content="2019-09-25T10:06:47.869Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="通俗易懂设计模式解析——享元模式">
 <meta name="twitter:description" content="前言 　　今天我们继续讲述设计模式，今天提及的是享元模式，享——共享。之前不是出现了一系列共享的东西吗？为啥呀，还不就是有些东西每个人都需要，但是每个人都去买一个又有点浪费。所以出现共享。话费一定的经济可以使用，使用完成之后又归还。这就是享。分享共享。今天讲的享元模式跟这相类似。享元模式——通俗来说也就是共享最小单元的一种模式。我们就一起看看到底啥是这享元模式吧。 享元模式介绍一、来由　　在软件系">
-<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/15931901-06df07f518d89718.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta name="twitter:image" content="http://123.207.8.91:8081/src/Pictures/111/11.png">
 
 
 
@@ -470,7 +470,7 @@
         <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a><strong>前言</strong></h2><p> 　　今天我们继续讲述设计模式，今天提及的是享元模式，享——共享。之前不是出现了一系列共享的东西吗？为啥呀，还不就是有些东西每个人都需要，但是每个人都去买一个又有点浪费。所以出现共享。话费一定的经济可以使用，使用完成之后又归还。这就是享。分享共享。今天讲的享元模式跟这相类似。享元模式——通俗来说也就是共享最小单元的一种模式。我们就一起看看到底啥是这享元模式吧。</p>
 <h2 id="享元模式介绍"><a href="#享元模式介绍" class="headerlink" title="享元模式介绍"></a><strong>享元模式介绍</strong></h2><h3 id="一、来由"><a href="#一、来由" class="headerlink" title="一、来由"></a>一、<strong>来由</strong></h3><p>　　在软件系统开发中，我们肯定会出现重复使用同一个对象的情况，每次使用都new一个对象出来。这样的话对于内存来说就需要多次反复的申请内存了。这样使用内存也就越来越多，这会出现大问题的。那么能不能创建new一个对象。然后使用的时候就共同使用一个就好了。这也就是享元模式的含义所在了——共享一个对象。</p>
 <h3 id="二、意图"><a href="#二、意图" class="headerlink" title="二、意图"></a>二、<strong>意图</strong></h3><p>　　<strong>运用共享技术有效地支持大量细粒度的对象。</strong></p>
-<h3 id="三、案例图"><a href="#三、案例图" class="headerlink" title="三、案例图"></a>三、<strong>案例图</strong></h3><p><img src="https://upload-images.jianshu.io/upload_images/15931901-06df07f518d89718.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"> </p>
+<h3 id="三、案例图"><a href="#三、案例图" class="headerlink" title="三、案例图"></a>三、<strong>案例图</strong></h3><p><img src="http://123.207.8.91:8081/src/Pictures/111/11.png" alt="image"> </p>
 <h3 id="四、享元模式代码示例"><a href="#四、享元模式代码示例" class="headerlink" title="四、享元模式代码示例"></a>四、<strong>享元模式代码示例</strong></h3><p>　　 看上面的案例图我们可以发现享元模式主要包含以下部分：</p>
 <p><strong>享元工厂角色：这个角色主要负责创建和管理享元角色。判断是否存在符合要求的享元对象，如果存在则直接拿取，如果不存在的话就会创建一个享元对象并保存。</strong></p>
 <p><strong>抽象享元角色：这个角色是所有享元角色的基类。提供需要实现的公共接口</strong></p>
