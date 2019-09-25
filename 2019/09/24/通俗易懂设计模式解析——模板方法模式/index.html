@@ -106,7 +106,7 @@
 
 
 
-  <meta name="keywords" content=".Net,">
+  <meta name="keywords" content=".Net设计模式,">
 
 
 
@@ -117,18 +117,20 @@
 
 
 
-<meta name="description" content="前言在上一节中，我们讲到在c#中所有的类都继承一个基类–System.Object。然后其下又分为俩大类–值类型及引用类型。这一节我们详细讲解值类型和引用类型包含了那些东西及内存的分配 堆和栈在我们讲解类型前，我们得先去了解堆和栈是什么，及其区别。我们可以先知道值类型和引用类型的引用都是分配在栈中的，而引用类型的对象分配在堆中的。我们详细看看堆和栈有啥区别及其原理吧 堆（heap）–堆的分配空间是">
-<meta name="keywords" content=".Net">
+<meta name="description" content="前言　　我们学习了解完了创建型设计模式和结构型设计模式，今天我们开始学习并了解行为型设计模式。今天我们首先来看这么一个设计模式——模板方法模式。这个模式我们在平常开发中总会不自觉的使用到。就像我们平时一样的各种网站模板、建立模板、PPT模板等等。啥意思呢？简单，也就是把共同的东西拿出来，你需要具体去实现你自己的那么就另外加上自己的特有行为就是了。我们一起来看看详细的解释介绍吧。 模板方法模式介绍一">
+<meta name="keywords" content=".Net设计模式">
 <meta property="og:type" content="article">
-<meta property="og:title" content="基础类型详解下">
-<meta property="og:url" content="http://yoursite.com/2019/07/31/基础类型详解下/index.html">
+<meta property="og:title" content="通俗易懂设计模式解析——模板方法模式">
+<meta property="og:url" content="http://yoursite.com/2019/09/24/通俗易懂设计模式解析——模板方法模式/index.html">
 <meta property="og:site_name" content="小世界的野孩子">
-<meta property="og:description" content="前言在上一节中，我们讲到在c#中所有的类都继承一个基类–System.Object。然后其下又分为俩大类–值类型及引用类型。这一节我们详细讲解值类型和引用类型包含了那些东西及内存的分配 堆和栈在我们讲解类型前，我们得先去了解堆和栈是什么，及其区别。我们可以先知道值类型和引用类型的引用都是分配在栈中的，而引用类型的对象分配在堆中的。我们详细看看堆和栈有啥区别及其原理吧 堆（heap）–堆的分配空间是">
+<meta property="og:description" content="前言　　我们学习了解完了创建型设计模式和结构型设计模式，今天我们开始学习并了解行为型设计模式。今天我们首先来看这么一个设计模式——模板方法模式。这个模式我们在平常开发中总会不自觉的使用到。就像我们平时一样的各种网站模板、建立模板、PPT模板等等。啥意思呢？简单，也就是把共同的东西拿出来，你需要具体去实现你自己的那么就另外加上自己的特有行为就是了。我们一起来看看详细的解释介绍吧。 模板方法模式介绍一">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-08-01T08:59:01.980Z">
+<meta property="og:image" content="http://123.207.8.91:8081/src/Pictures/111/13.png">
+<meta property="og:updated_time" content="2019-09-25T09:51:57.584Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="基础类型详解下">
-<meta name="twitter:description" content="前言在上一节中，我们讲到在c#中所有的类都继承一个基类–System.Object。然后其下又分为俩大类–值类型及引用类型。这一节我们详细讲解值类型和引用类型包含了那些东西及内存的分配 堆和栈在我们讲解类型前，我们得先去了解堆和栈是什么，及其区别。我们可以先知道值类型和引用类型的引用都是分配在栈中的，而引用类型的对象分配在堆中的。我们详细看看堆和栈有啥区别及其原理吧 堆（heap）–堆的分配空间是">
+<meta name="twitter:title" content="通俗易懂设计模式解析——模板方法模式">
+<meta name="twitter:description" content="前言　　我们学习了解完了创建型设计模式和结构型设计模式，今天我们开始学习并了解行为型设计模式。今天我们首先来看这么一个设计模式——模板方法模式。这个模式我们在平常开发中总会不自觉的使用到。就像我们平时一样的各种网站模板、建立模板、PPT模板等等。啥意思呢？简单，也就是把共同的东西拿出来，你需要具体去实现你自己的那么就另外加上自己的特有行为就是了。我们一起来看看详细的解释介绍吧。 模板方法模式介绍一">
+<meta name="twitter:image" content="http://123.207.8.91:8081/src/Pictures/111/13.png">
 
 
 
@@ -158,13 +160,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/07/31/基础类型详解下/">
+  <link rel="canonical" href="http://yoursite.com/2019/09/24/通俗易懂设计模式解析——模板方法模式/">
 
 
 
 
 
-  <title>基础类型详解下 | 小世界的野孩子</title>
+  <title>通俗易懂设计模式解析——模板方法模式 | 小世界的野孩子</title>
   
 
 
@@ -330,7 +332,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/31/基础类型详解下/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/24/通俗易懂设计模式解析——模板方法模式/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Boy">
@@ -347,7 +349,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">基础类型详解下</h1>
+          <h1 class="post-title" itemprop="name headline">通俗易懂设计模式解析——模板方法模式</h1>
         
 
         <div class="post-meta">
@@ -359,8 +361,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-31T13:53:41+08:00">
-                2019-07-31
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-24T17:22:16+08:00">
+                2019-09-24
               </time>
             
 
@@ -382,8 +384,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/基础系列/" itemprop="url" rel="index">
-                    <span itemprop="name">基础系列</span>
+                  <a href="/categories/设计模式/" itemprop="url" rel="index">
+                    <span itemprop="name">设计模式</span>
                   </a>
                 </span>
 
@@ -400,8 +402,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/07/31/基础类型详解下/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/07/31/基础类型详解下/" itemprop="commentCount"></span>
+                <a href="/2019/09/24/通俗易懂设计模式解析——模板方法模式/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/09/24/通俗易懂设计模式解析——模板方法模式/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -428,7 +430,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  888 字
+                  1.2k 字
                 </span>
               
 
@@ -444,7 +446,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  3 分钟
+                  4 分钟
                 </span>
               
             </div>
@@ -465,29 +467,28 @@
       
 
       
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a><strong>前言</strong></h2><p>在上一节中，我们讲到在c#中所有的类都继承一个基类–System.Object。然后其下又分为俩大类–值类型及引用类型。这一节我们详细讲解值类型和引用类型包含了那些东西及内存的分配</p>
-<h2 id="堆和栈"><a href="#堆和栈" class="headerlink" title="堆和栈"></a><strong>堆和栈</strong></h2><p>在我们讲解类型前，我们得先去了解堆和栈是什么，及其区别。我们可以先知道值类型和引用类型的引用都是分配在栈中的，而引用类型的对象分配在堆中的。我们详细看看堆和栈有啥区别及其原理吧</p>
-<p><strong>堆（heap）</strong>–堆的分配空间是自下到上的，已占用的空间在自由空间下面，C#中引用类型的对象及分配在堆中的，内存的分配是连续的。内存对象释放是受垃圾回收机制管理的，所有在引用对象释放时会消耗更多的性能。效率相对于栈来说是较低的。</p>
-<p><strong>栈（stack</strong>）–栈的分配空间是自上到下的，遵循先进先出的原则，依次释放分配的内存空间。分配的内存空间是连续的，C#中的值类型及引用类型的引用都是存放在栈中的。</p>
-<p>当一个类的实例创建对象的的时候，这个对象的不同的成员将被分配到不用的内存空间，值类型及引用类型的引用分配到栈中，引用类型对象分配到堆中，静态成员被分配到全局数据区。这个时候栈上的指针会指向堆中实际的对象，在对象使用完成后，指针和对象会切开联系，从而使对象进入冬眠期，因为栈具有自我维护性，内存管理通过操作系统完成，而堆中的冬眠对象将有垃圾回收机制进行回收，释放对象所占的内存。</p>
-<h2 id="值类型及引用类型"><a href="#值类型及引用类型" class="headerlink" title="值类型及引用类型"></a><strong>值类型及引用类型</strong></h2><p>值类型：</p>
-<p>结构体：struct（直接派生于System.ValueType）</p>
-<p>数值类型：整型、浮点型、decimal型、bool型</p>
-<p>枚举：enum（派生于System.Enum）</p>
-<p>引用类型：</p>
-<p>数组：Array（派生于System.Array）</p>
-<p>类：class（派生于System.Object）</p>
-<p>接口：interface</p>
-<p>委托：delegate（派生于System.Delegate）</p>
-<p>字符串：string(System.String)</p>
-<p><strong>在此特别强调：.Net中所有的元素在使用前都必须初始化，在调用new创建实例的时候，编译器会隐式的调用无参构造函数进行初始化。所有的值类型的值都为0（char为’0’），所有引用类型为null。</strong></p>
-<p>在此可调用IsValueType来判断类型是否为值类型</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">StringBuilder strSql = new StringBuilder();</span><br><span class="line"></span><br><span class="line"> if (strSql.GetType().IsValueType)</span><br><span class="line"></span><br><span class="line">    &#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a><strong>前言</strong></h2><p>　　我们学习了解完了创建型设计模式和结构型设计模式，今天我们开始学习并了解行为型设计模式。今天我们首先来看这么一个设计模式——模板方法模式。这个模式我们在平常开发中总会不自觉的使用到。就像我们平时一样的各种网站模板、建立模板、PPT模板等等。啥意思呢？简单，也就是把共同的东西拿出来，你需要具体去实现你自己的那么就另外加上自己的特有行为就是了。我们一起来看看详细的解释介绍吧。</p>
+<h2 id="模板方法模式介绍"><a href="#模板方法模式介绍" class="headerlink" title="模板方法模式介绍"></a><strong>模板方法模式介绍</strong></h2><h3 id="一、来由"><a href="#一、来由" class="headerlink" title="一、来由"></a>一、<strong>来由</strong></h3><p>在我们平时的系统开发中，经常会遇到一些方法，出现大部分一样的代码。也就是常常有一些稳定的框架结构，但是其中的一些细小的操作却是在变化。我们现在如何在稳定框架结构的前提下去实现不同的细节呢？</p>
+<h3 id="二、意图"><a href="#二、意图" class="headerlink" title="二、意图"></a>二、<strong>意图</strong></h3><p><strong>定义一个操作中的算法的骨架，而将一些步骤延迟到子类中。模板方法使得子类可以不改变一个算法的结构即可重定义该算法的某些特定步骤。</strong></p>
+<h3 id="三、案例图"><a href="#三、案例图" class="headerlink" title="三、案例图"></a>三、<strong>案例图</strong></h3><p><img src="http://123.207.8.91:8081/src/Pictures/111/13.png" alt="image"> </p>
+<h3 id="四、模板方法模式代码示例"><a href="#四、模板方法模式代码示例" class="headerlink" title="四、模板方法模式代码示例"></a>四、<strong>模板方法模式代码示例</strong></h3><p>看上面的案例图，看出模板方法模式由两个部分组成：</p>
+<p><strong>抽象类：定义了一个模板方法，其中包含执行的步骤。还有固定方法和抽象方法</strong></p>
+<p><strong>具体类：实现抽象方法具体行为</strong></p>
+<p>我们来看看下面这个代码示例，帮助我们更进一步了解其实现。 就拿我们写文章来说，步骤都是打开编辑器——写文章——保存发布。不同的就是我们写的文章的主题内容不一样罢了。我们一起看起代码实现：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line">namespace Template_Method_Pattern</span><br><span class="line">&#123;</span><br><span class="line">    class TemplateMethodPattern</span><br><span class="line">    &#123;</span><br><span class="line">    &#125;</span><br><span class="line">    #region</span><br><span class="line">    /// &lt;summary&gt;</span><br><span class="line">    /// 抽象类型</span><br><span class="line">    /// &lt;/summary&gt;</span><br><span class="line">    public abstract class WriteArticle</span><br><span class="line">    &#123;</span><br><span class="line">        /// &lt;summary&gt;</span><br><span class="line">        /// 这个就是模板方法，定义了写文章的顺序。这里不能使用抽象和Virtual，防止其子类修改执行顺序。</span><br><span class="line">        /// &lt;/summary&gt;</span><br><span class="line">        public void Article()</span><br><span class="line">        &#123;</span><br><span class="line">            OpenEditor();</span><br><span class="line">            Write();</span><br><span class="line">            Release();</span><br><span class="line">            Console.WriteLine(&quot;文章完成了并发布了!&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">        /// &lt;summary&gt;</span><br><span class="line">        /// 打开编辑器</span><br><span class="line">        /// &lt;/summary&gt;</span><br><span class="line">        public void OpenEditor()</span><br><span class="line">        &#123;</span><br><span class="line">            Console.WriteLine(&quot;打开编辑器&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">        /// &lt;summary&gt;</span><br><span class="line">        /// 开始写文章，其子类具体实现文章内容</span><br><span class="line">        /// &lt;/summary&gt;</span><br><span class="line">        public abstract void Write();</span><br><span class="line">        /// &lt;summary&gt;</span><br><span class="line">        /// 发布文章</span><br><span class="line">        /// &lt;/summary&gt;</span><br><span class="line">        public void Release()</span><br><span class="line">        &#123;</span><br><span class="line">            Console.WriteLine(&quot;发布文章&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    #endregion</span><br><span class="line">    /// &lt;summary&gt;</span><br><span class="line">    /// 技术文章</span><br><span class="line">    /// &lt;/summary&gt;</span><br><span class="line">    public class TchnologyArticle : WriteArticle</span><br><span class="line">    &#123;</span><br><span class="line">        public override void Write()</span><br><span class="line">        &#123;</span><br><span class="line">            Console.WriteLine(&quot;设计模式相关的文章&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    /// &lt;summary&gt;</span><br><span class="line">    /// 生活文章</span><br><span class="line">    /// &lt;/summary&gt;</span><br><span class="line">    public class LifeArticle : WriteArticle</span><br><span class="line">    &#123;</span><br><span class="line">        public override void Write()</span><br><span class="line">        &#123;</span><br><span class="line">            Console.WriteLine(&quot;生活文章&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p><strong>引用类型中尤为注意的事string类型，它具有一特效–恒定不变性，什么意思呢？也就是说string类型一旦赋值，一旦在Heap堆中分配了内存存储对象，则再也无法改变其对象的内容</strong>。我们看下面这个例子</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">String a=”aaa”;</span><br><span class="line"></span><br><span class="line">a=”bbb”;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">class Program</span><br><span class="line">&#123;</span><br><span class="line">    static void Main(string[] args)</span><br><span class="line">    &#123;</span><br><span class="line">        //技术文章</span><br><span class="line">        WriteArticle writeTchnology = new TchnologyArticle();</span><br><span class="line">        writeTchnology.Article();</span><br><span class="line"></span><br><span class="line">        //生活文章</span><br><span class="line">        WriteArticle writeLife = new LifeArticle();</span><br><span class="line">        writeLife.Article();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>在这个例子中先是对象a创建在堆中分配内存存储’aaa’，然后又给a对象重新赋值’bbb’,其中并不是修改堆内存中对象aaa为bbb，实则是重新创建了一个堆内存对象存储’bbb’，然后把它的引用地址指向a，原来的堆内存对象’aaa’还继续保存在堆内存中，不曾修改。只有当GC垃圾回收机制处理回收，才会消失。</p>
+<h2 id="使用场景及优缺点"><a href="#使用场景及优缺点" class="headerlink" title="使用场景及优缺点"></a><strong>使用场景及优缺点</strong></h2><h3 id="一、使用场景"><a href="#一、使用场景" class="headerlink" title="一、使用场景"></a>一、<strong>使用场景</strong></h3><p><strong>1、许多的子类都包含相同的方法，逻辑共通</strong></p>
+<p><strong>2、重要复杂的方法可以考虑作为模板方法</strong></p>
+<h3 id="二、优点"><a href="#二、优点" class="headerlink" title="二、优点"></a>二、<strong>优点</strong></h3><p><strong>1、共用部分方法实现代码复用、编译维护</strong></p>
+<p><strong>2、固定父类顺序，扩展子类实现。灵活变化、符合开闭原则</strong></p>
+<p><strong>3、行为由父类控制、实现子类控制</strong></p>
+<h3 id="三、缺点"><a href="#三、缺点" class="headerlink" title="三、缺点"></a>三、<strong>缺点</strong></h3><p><strong>1、没实现一个不同的需求就会增加一个子类，这样会导致类的个数增加，增加系统的大小</strong></p>
+<p><strong>2、需要开发人员花费更多的时间去整理和清理其中的关系</strong></p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a><strong>总结</strong></h2><p>　　到这里模板方法模式就介绍完了。总的来说就是模板方法模式定义了功能的实现步骤，然后抽象类对步骤进行控制，需要扩展的延迟到其子类进行扩展。从而子类可以复用父类的代码。当然这也还是基于继承来实现代码复用的一种方法。在我们开发的时候有一些系统定义的东西不符合我们的需求。他们在开发中也是固定好了一定的骨架，其中一些方法留了出来，方便我们开发人员自己重新定义。这么一个模板方法模式在我们日常开发中可能经常用到。有时候自己都不知觉的就使用到了。这也是一个较为简单且基础的模式。</p>
+<hr>
+<p><strong>平凡人生要用平凡的心去对待，你的人生将会更精彩。</strong></p>
 
       
     </div>
@@ -513,7 +514,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Net/" rel="tag"># .Net</a>
+            <a href="/tags/Net设计模式/" rel="tag"># .Net设计模式</a>
           
         </div>
       
@@ -526,8 +527,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/07/31/NET类型详解/" rel="next" title="NET类型详解">
-                <i class="fa fa-chevron-left"></i> NET类型详解
+              <a href="/2019/09/11/通俗易懂设计模式解析——代理模式/" rel="next" title="通俗易懂设计模式解析——代理模式">
+                <i class="fa fa-chevron-left"></i> 通俗易懂设计模式解析——代理模式
               </a>
             
           </div>
@@ -535,10 +536,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/07/31/基础知识详解系列目录/" rel="prev" title="基础知识详解系列目录">
-                基础知识详解系列目录 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -726,7 +723,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#堆和栈"><span class="nav-number">2.</span> <span class="nav-text">堆和栈</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#值类型及引用类型"><span class="nav-number">3.</span> <span class="nav-text">值类型及引用类型</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模板方法模式介绍"><span class="nav-number">2.</span> <span class="nav-text">模板方法模式介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、来由"><span class="nav-number">2.1.</span> <span class="nav-text">一、来由</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、意图"><span class="nav-number">2.2.</span> <span class="nav-text">二、意图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三、案例图"><span class="nav-number">2.3.</span> <span class="nav-text">三、案例图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#四、模板方法模式代码示例"><span class="nav-number">2.4.</span> <span class="nav-text">四、模板方法模式代码示例</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用场景及优缺点"><span class="nav-number">3.</span> <span class="nav-text">使用场景及优缺点</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、使用场景"><span class="nav-number">3.1.</span> <span class="nav-text">一、使用场景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、优点"><span class="nav-number">3.2.</span> <span class="nav-text">二、优点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三、缺点"><span class="nav-number">3.3.</span> <span class="nav-text">三、缺点</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">4.</span> <span class="nav-text">总结</span></a></li></ol></div>
             
 
           </div>
@@ -960,9 +957,9 @@
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'http://yoursite.com/2019/07/31/基础类型详解下/';
-          this.page.identifier = '2019/07/31/基础类型详解下/';
-          this.page.title = '基础类型详解下';
+          this.page.url = 'http://yoursite.com/2019/09/24/通俗易懂设计模式解析——模板方法模式/';
+          this.page.identifier = '2019/09/24/通俗易懂设计模式解析——模板方法模式/';
+          this.page.title = '通俗易懂设计模式解析——模板方法模式';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://.disqus.com/embed.js';
