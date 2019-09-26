@@ -125,7 +125,7 @@
 <meta property="og:site_name" content="小世界的野孩子">
 <meta property="og:description" content="前言　　.Net Core3.0终于如约而至的来了。在3.0中增加了许多东西、也有了许多的变化。今天我们看的就是在3.0中使用gRPC并遇到的问题。gRPC现在可以非常方便简洁的在.Net Core中使用了，今天我也是尝试了一下，但是不幸了是遇到了一些阻碍。我们一起看看是啥问题吧。 gRPC介绍　　gRPC 是google开源的一个高性能、跨语言的RPC框架，基于HTTP2协议，采用ProtoBu">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-09-26T09:06:37.446Z">
+<meta property="og:updated_time" content="2019-09-26T09:10:54.409Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content=".Net_Core 3.0 gRPC部署问题解决">
 <meta name="twitter:description" content="前言　　.Net Core3.0终于如约而至的来了。在3.0中增加了许多东西、也有了许多的变化。今天我们看的就是在3.0中使用gRPC并遇到的问题。gRPC现在可以非常方便简洁的在.Net Core中使用了，今天我也是尝试了一下，但是不幸了是遇到了一些阻碍。我们一起看看是啥问题吧。 gRPC介绍　　gRPC 是google开源的一个高性能、跨语言的RPC框架，基于HTTP2协议，采用ProtoBu">
@@ -468,14 +468,14 @@
         <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a><strong>前言</strong></h2><p>　　.Net Core3.0终于如约而至的来了。在3.0中增加了许多东西、也有了许多的变化。今天我们看的就是在3.0中使用gRPC并遇到的问题。gRPC现在可以非常方便简洁的在.Net Core中使用了，今天我也是尝试了一下，但是不幸了是遇到了一些阻碍。我们一起看看是啥问题吧。</p>
 <h2 id="gRPC介绍"><a href="#gRPC介绍" class="headerlink" title="gRPC介绍"></a><strong>gRPC介绍</strong></h2><p>　　gRPC 是google开源的一个高性能、跨语言的RPC框架，基于HTTP2协议，采用ProtoBuf 定义的IDL。</p>
 <p>　　<strong>优点：</strong></p>
-<pre><code>**1. 现代高性能轻量级的RPC框架**
-**2.  协定优先 API 开发，默认使用协议缓冲区，允许与语言无关的实现**
-**3.  可以实现多语言的工具**
-**4.  protobuf二进制序列化，性能好/效率高**
-**5.  基于Http2.0**</code></pre><p>　　在ASP.NET Core 3.0中使用gRPC也有许多文章进行了介绍，我也是看了这些文章进行的学习。大家也是可以自行去查找的。</p>
+<pre><code>**1.现代高性能轻量级的RPC框架**
+**2.协定优先 API 开发，默认使用协议缓冲区，允许与语言无关的实现**
+**3.可以实现多语言的工具**
+**4.protobuf二进制序列化，性能好/效率高**
+**5.基于Http2.0**</code></pre><p>　　在ASP.NET Core 3.0中使用gRPC也有许多文章进行了介绍，我也是看了这些文章进行的学习。大家也是可以自行去查找的。</p>
 <h2 id="部署问题"><a href="#部署问题" class="headerlink" title="部署问题"></a><strong>部署问题</strong></h2><p>　　按照在ASP.NET Core 3.0中使用gRPC的文章中的教程一步一步的创建项目，编写代码。一套流程走下来那是行云流水。编写完之后在本地就开始进行测试。先跑起来服务端。在跑客户端。看到客户端上的消息返回。成功了。第一次就成功，果然是更加简单了。其中有两点需要注意的是因为在3.0中使用的gRPC是基于Http2.0的。而它又需要HTTPS，尽管说没有明确规定必须使用HTTPS，但是为了安全在浏览器实现上都要求了HTTPS，所以现在的HTTP/2和HTTPS基本都是一对。</p>
 <p>　　所以我们在本地运行的时候会出现一个弹框，询问我们是否信任证书。下面我的问题也就和这个有关了。本地运行一切正常。我就想搬到服务器上去试试看行不行。结果接过上去服务端是跑起来了，结果客户端运行起来就报错了。</p>
-<figure class="highlight delphi"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Unhandled exception. System.Net.Http.HttpRequestException: The SSL connection could <span class="keyword">not</span> be established, see inner exception. ---&gt; System.Security.Authentication.AuthenticationException: The remote certificate <span class="keyword">is</span> invalid according <span class="keyword">to</span> the validation <span class="function"><span class="keyword">procedure</span>.</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight delphi"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Unhandled exception. System.Net.Http.HttpRequestException: The SSL connection could <span class="keyword">not</span> be established, see inner exception.</span><br><span class="line"> ---&gt; System.Security.Authentication.AuthenticationException: The remote certificate <span class="keyword">is</span> invalid according <span class="keyword">to</span> the validation <span class="function"><span class="keyword">procedure</span>.</span></span><br></pre></td></tr></table></figure>
 
 <h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a><strong>解决方案</strong></h2><h3 id="1、修改https为http（不行、大错特错）"><a href="#1、修改https为http（不行、大错特错）" class="headerlink" title="1、修改https为http（不行、大错特错）"></a><strong>1、修改https为http（不行、大错特错）</strong></h3><p>　　这个报错我就有点纳闷了，我首先检查环境，发现都是对的。就有点纳闷了。然后看是连接失败。我就尝试修改https为http。结果还是错误的。这个方法就被抛弃了。（修改之后会导致客户端和服务端的SSL/TLS 配置不匹配。.Net Core客户端必须在https服务器地址中使用才能正确的使用安全连接）</p>
 <h3 id="2、信任证书（可行）"><a href="#2、信任证书（可行）" class="headerlink" title="2、信任证书（可行）"></a>2、<strong>信任证书（可行）</strong></h3><p>　　仔细查看错误，发现最后标明是证书无效。这是想起我们在本地第一次运行的时候弹窗提示我们是否信任证书。好像就是这个关系了。照这个路子想下去。找到在如何安装 ASP.NET Core HTTPS 开发证书。然后我们再试试、果然就可以了。</p>
