@@ -185,7 +185,7 @@
 
 </head>
 <script type="text/javascript" src="/js/src/particle.js"></script>
-<script type="text/javascript" src="/js/src/love.js"></script> 
+<!-- <script type="text/javascript" src="/js/src/love.js"></script>  -->
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
   
@@ -487,7 +487,7 @@
 <p>Hyper-V 没开不能启动：</p>
 <p>以管理员身份打开 PowerShell 控制台。</p>
 <p>运行以下命令：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V -All</span><br></pre></td></tr></table></figure>
+<figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V -<span class="keyword">All</span></span><br></pre></td></tr></table></figure>
 
 <p>现在我们再来启动即可，在右下角也会有一个图标，悬浮上去显示 docker desk is running，表示已经安装成功（这个会提示我们登录，不过登录不登录问题都不是太大，登录之后可以连接到(Docker Hub）</p>
 <p><strong>接下来正式进入我们今天的主题，如何而使用 docker for windows 来运行 .netcore（Start）</strong></p>
@@ -499,7 +499,7 @@
 <p>我们打开PowerShell ，输入 docker info 出现下面的界面的样子证明docker 一切正常。</p>
 <p><img src="https://upload-images.jianshu.io/upload_images/15931901-ba332c9f5cd5d18c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
 <p>我们进入到我们刚刚创建的.net core 项目的根目录，然后开始构建docker镜像，要注意命令后面的那个 . ，意思是当前目录</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker build -t demotest .</span><br></pre></td></tr></table></figure>
+<figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">docker</span> <span class="keyword">build </span>-t demotest .</span><br></pre></td></tr></table></figure>
 
 <p>然后我们发现在执行到第六步的时候报错了，说什么在该路径找不到该文件</p>
 <p><img src="https://upload-images.jianshu.io/upload_images/15931901-a519c9f24824cc24.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
@@ -508,24 +508,24 @@
 <p>然后我们再来执行docker build -t demotest .然后发现我们在第10步的时候又出错了，说这个程序不包含适合入口点的静态’Main’方法，我们继续检查下Dockerfile文件，发现第9步那个工作路径</p>
 <p>是/src/dockertest，我们拼接一下发现，又多了一个/dockertest，我们接着继续去掉这个，然后继续运行docker build -t demotest .</p>
 <p>这一次终于不负众望。它完整的运行完成了所有的步骤并且提示了</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Successfully built eaa8cea8fcf4</span><br><span class="line"></span><br><span class="line">Successfully tagged demotest:latest</span><br></pre></td></tr></table></figure>
+<figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Successfully built eaa8cea8fcf4</span><br><span class="line"></span><br><span class="line">Successfully <span class="keyword">tagged</span> demotest:latest</span><br></pre></td></tr></table></figure>
 
 <p>我们来看看构建镜像是否真的成功了吧</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker images</span><br></pre></td></tr></table></figure>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">docker images</span></span><br></pre></td></tr></table></figure>
 
 <p><img src="https://upload-images.jianshu.io/upload_images/15931901-974150d07e128790.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
 <p>我们发现了这一个，是我们刚刚创建的demotest,既然镜像我们已经创建成功了，那我们正式运行起来看看是否可用。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docekr run --name=demotest -p7778:80-d demotest--name：指定容器名称-p：指定容器端口-d：指定容器 后台运行</span><br></pre></td></tr></table></figure>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docekr <span class="builtin-name">run</span> <span class="attribute">--name</span>=demotest -p7778:80-d demotest--name：指定容器名称-p：指定容器端口-d：指定容器 后台运行</span><br></pre></td></tr></table></figure>
 
 <p>然后出现了一串字符串，说明我们启动成功了，然后我们查看一下我们正在运行的容器</p>
 <p><img src="https://upload-images.jianshu.io/upload_images/15931901-903d8cf2580116a2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker ps</span><br></pre></td></tr></table></figure>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">docker ps</span></span><br></pre></td></tr></table></figure>
 
 <p><img src="https://upload-images.jianshu.io/upload_images/15931901-a8883f75dbc30123.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
 <p>然后我们去浏览器输入ip+7778，看到如下页面证明这次docker for windows  +.net core 成功运行了。</p>
 <p><img src="https://upload-images.jianshu.io/upload_images/15931901-2492b0578982b6dc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
 <p><strong>那么到这里我们的第一的windows+docker运行.netcore算是正式完工了，然后在给大家介绍一些较为常用的docker命令（命令）</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">docker build -t demotest .    构建 demotest镜像</span><br><span class="line"></span><br><span class="line">docker images                      查看当前所有的镜像</span><br><span class="line"></span><br><span class="line">docker inspect demotest    查看 运行容器的详情</span><br><span class="line"></span><br><span class="line">docker ps                        查看当前运行的容器</span><br><span class="line"></span><br><span class="line">docker ps -a                      查看当前所有的容器</span><br><span class="line"></span><br><span class="line">docker stop demotest      停止运行demotest容器</span><br><span class="line"></span><br><span class="line">docker start demotest    开启运行demotest容器</span><br><span class="line"></span><br><span class="line">docker rm demotest    删除demotest容器</span><br><span class="line"></span><br><span class="line">docker rmi demotest    删除demotest镜像</span><br><span class="line"></span><br><span class="line">docker rm $(docker ps -aq)    删除所有容器</span><br><span class="line"></span><br><span class="line">docker rmi $(docker images -q)  删除所有镜像</span><br></pre></td></tr></table></figure>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">docker build -t demotest .    构建 demotest镜像</span><br><span class="line"></span><br><span class="line">docker images                      查看当前所有的镜像</span><br><span class="line"></span><br><span class="line">docker inspect demotest    查看 运行容器的详情</span><br><span class="line"></span><br><span class="line">docker <span class="keyword">ps</span>                        查看当前运行的容器</span><br><span class="line"></span><br><span class="line">docker <span class="keyword">ps</span> -<span class="keyword">a</span>                      查看当前所有的容器</span><br><span class="line"></span><br><span class="line">docker <span class="keyword">stop</span> demotest      停止运行demotest容器</span><br><span class="line"></span><br><span class="line">docker start demotest    开启运行demotest容器</span><br><span class="line"></span><br><span class="line">docker rm demotest    删除demotest容器</span><br><span class="line"></span><br><span class="line">docker rmi demotest    删除demotest镜像</span><br><span class="line"></span><br><span class="line">docker rm $(docker <span class="keyword">ps</span> -aq)    删除所有容器</span><br><span class="line"></span><br><span class="line">docker rmi $(docker images -q)  删除所有镜像</span><br></pre></td></tr></table></figure>
       
     </div>
     

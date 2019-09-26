@@ -176,7 +176,7 @@
 
 </head>
 <script type="text/javascript" src="/js/src/particle.js"></script>
-<script type="text/javascript" src="/js/src/love.js"></script> 
+<!-- <script type="text/javascript" src="/js/src/love.js"></script>  -->
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
   
@@ -482,10 +482,10 @@
 <p>字符串：string(System.String)</p>
 <p><strong>在此特别强调：.Net中所有的元素在使用前都必须初始化，在调用new创建实例的时候，编译器会隐式的调用无参构造函数进行初始化。所有的值类型的值都为0（char为’0’），所有引用类型为null。</strong></p>
 <p>在此可调用IsValueType来判断类型是否为值类型</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">StringBuilder strSql = new StringBuilder();</span><br><span class="line"></span><br><span class="line"> if (strSql.GetType().IsValueType)</span><br><span class="line"></span><br><span class="line">    &#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">StringBuilder </span><span class="keyword">strSql </span>= new <span class="keyword">StringBuilder();</span></span><br><span class="line"><span class="keyword"></span></span><br><span class="line"><span class="keyword"> </span><span class="meta">if</span> (<span class="keyword">strSql.GetType().IsValueType)</span></span><br><span class="line"><span class="keyword"></span></span><br><span class="line"><span class="keyword"> </span>   &#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p><strong>引用类型中尤为注意的事string类型，它具有一特效–恒定不变性，什么意思呢？也就是说string类型一旦赋值，一旦在Heap堆中分配了内存存储对象，则再也无法改变其对象的内容</strong>。我们看下面这个例子</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">String a=”aaa”;</span><br><span class="line"></span><br><span class="line">a=”bbb”;</span><br></pre></td></tr></table></figure>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">String a</span>=”aaa”;</span><br><span class="line"></span><br><span class="line"><span class="attribute">a</span>=”bbb”;</span><br></pre></td></tr></table></figure>
 
 <p>在这个例子中先是对象a创建在堆中分配内存存储’aaa’，然后又给a对象重新赋值’bbb’,其中并不是修改堆内存中对象aaa为bbb，实则是重新创建了一个堆内存对象存储’bbb’，然后把它的引用地址指向a，原来的堆内存对象’aaa’还继续保存在堆内存中，不曾修改。只有当GC垃圾回收机制处理回收，才会消失。</p>
 
@@ -526,14 +526,18 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2019/07/31/NET类型详解/" rel="next" title="NET类型详解">
+                <i class="fa fa-chevron-left"></i> NET类型详解
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/07/31/NET类型详解/" rel="prev" title="NET类型详解">
-                NET类型详解 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/07/31/基础知识详解系列目录/" rel="prev" title="基础知识详解系列目录">
+                基础知识详解系列目录 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
