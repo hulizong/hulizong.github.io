@@ -128,7 +128,7 @@
 <meta property="og:image" content="http://123.207.8.91:8081/src/Pictures/111/21.png">
 <meta property="og:image" content="http://123.207.8.91:8081/src/Pictures/111/21_1.png">
 <meta property="og:image" content="http://123.207.8.91:8081/src/Pictures/111/21_2.png">
-<meta property="og:updated_time" content="2019-10-19T09:01:06.964Z">
+<meta property="og:updated_time" content="2019-10-19T09:08:59.704Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="通俗易懂设计模式解析——访问者模式">
 <meta name="twitter:description" content="前言　　今天我们看的是访问者模式【Visitor Pattern】，我们理解访问者模式这个名称可能会有利于我们理解其核心代码块。我们看这么个例子：我去朋友家做客，那么朋友属于主人，我则属于访问者。这时刚好朋友在炒菜，却没得酱油了。如果朋友下去买酱油将会很麻烦而且会影响炒菜。这时就到我这个访问者出马了。一溜烟的出去打着酱油就回来了。简单理解的来说就是，访问者在主人原来的基础上帮助主人去完成主人不方便">
@@ -471,7 +471,7 @@
       
         <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a><strong>前言</strong></h2><p>　　今天我们看的是访问者模式【Visitor Pattern】，我们理解访问者模式这个名称可能会有利于我们理解其核心代码块。我们看这么个例子：我去朋友家做客，那么朋友属于主人，我则属于访问者。这时刚好朋友在炒菜，却没得酱油了。如果朋友下去买酱油将会很麻烦而且会影响炒菜。这时就到我这个访问者出马了。一溜烟的出去打着酱油就回来了。简单理解的来说就是，访问者在主人原来的基础上帮助主人去完成主人不方便或者完不成的东西。</p>
 <h2 id="访问者模式介绍"><a href="#访问者模式介绍" class="headerlink" title="访问者模式介绍"></a><strong>访问者模式介绍</strong></h2><h3 id="一、来由"><a href="#一、来由" class="headerlink" title="一、来由"></a>一、<strong>来由</strong></h3><p>　　在软件系统开发中，我们经常会遇见一些层次结构完好的代码因为需求的更改而更改。你说这个时候我更改其基类吧，所有子类都要更改、这是一件很麻烦的事情。那么我能不能在不修改器层次结构完整的前提下完成新的需求的更改呢？</p>
-<h3 id="二、意图"><a href="#二、意图" class="headerlink" title="二、意图"></a>二、<strong>意图</strong></h3><p>**　　表示一个作用于某对象结构中的各个元素的操作。它可以在不改变各元素的类的前提下定义作用于这些元素的新的操作。**</p>
+<h3 id="二、意图"><a href="#二、意图" class="headerlink" title="二、意图"></a>二、<strong>意图</strong></h3><p>　　<strong>表示一个作用于某对象结构中的各个元素的操作。它可以在不改变各元素的类的前提下定义作用于这些元素的新的操作。</strong></p>
 <h3 id="三、案例图"><a href="#三、案例图" class="headerlink" title="三、案例图"></a>三、<strong>案例图</strong></h3><p> <img src="http://123.207.8.91:8081/src/Pictures/111/21.png" alt="image"> </p>
 <h3 id="四、访问者模式代码示例"><a href="#四、访问者模式代码示例" class="headerlink" title="四、访问者模式代码示例"></a>四、<strong>访问者模式代码示例</strong></h3><p>看上面案例图可以发现访问者模式包含以下部分：</p>
 <p><strong>结构对象：节点的容器，包含多个类或者接口</strong><br><strong>抽象节点：声明一个接收操作，接收访问者对象作为参数，声明处理接口，处理节点数据</strong></p>
