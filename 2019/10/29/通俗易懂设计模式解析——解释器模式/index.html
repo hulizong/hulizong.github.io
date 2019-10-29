@@ -106,7 +106,7 @@
 
 
 
-  <meta name="keywords" content=".Net Core,">
+  <meta name="keywords" content=".Net设计模式,">
 
 
 
@@ -117,18 +117,21 @@
 
 
 
-<meta name="description" content="前言　　.Net Core3.0终于如约而至的来了。在3.0中增加了许多东西、也有了许多的变化。今天我们看的就是在3.0中使用gRPC并遇到的问题。gRPC现在可以非常方便简洁的在.Net Core中使用了，今天我也是尝试了一下，但是不幸了是遇到了一些阻碍。我们一起看看是啥问题吧。 gRPC介绍　　gRPC 是google开源的一个高性能、跨语言的RPC框架，基于HTTP2协议，采用ProtoBu">
-<meta name="keywords" content=".Net Core">
+<meta name="description" content="前言　　今天我们来讲解释器模式【Interpreter Pattern】，如何理解这一个模式呢？一个简单的例子、中英文翻译器这个东西的作用是啥呢？将不知道的英文翻译成中文以便于理解、或者把中文翻译成英文来使用。其中目的也就是将语言进行翻译解释方便去理解使用。那么解释器模式呢？也有相似的逻辑、该模式实现了一个表达式接口、该接口解释一个特定的上下文。主要对于一些固定文法构建一个解释句子的解释器。 解释">
+<meta name="keywords" content=".Net设计模式">
 <meta property="og:type" content="article">
-<meta property="og:title" content=".Net_Core 3.0 gRPC部署问题解决">
-<meta property="og:url" content="http://yoursite.com/2019/09/25/Net_Core 3.0 gRPC部署问题解决/index.html">
+<meta property="og:title" content="通俗易懂设计模式解析——解释器模式">
+<meta property="og:url" content="http://yoursite.com/2019/10/29/通俗易懂设计模式解析——解释器模式/index.html">
 <meta property="og:site_name" content="小世界的野孩子">
-<meta property="og:description" content="前言　　.Net Core3.0终于如约而至的来了。在3.0中增加了许多东西、也有了许多的变化。今天我们看的就是在3.0中使用gRPC并遇到的问题。gRPC现在可以非常方便简洁的在.Net Core中使用了，今天我也是尝试了一下，但是不幸了是遇到了一些阻碍。我们一起看看是啥问题吧。 gRPC介绍　　gRPC 是google开源的一个高性能、跨语言的RPC框架，基于HTTP2协议，采用ProtoBu">
+<meta property="og:description" content="前言　　今天我们来讲解释器模式【Interpreter Pattern】，如何理解这一个模式呢？一个简单的例子、中英文翻译器这个东西的作用是啥呢？将不知道的英文翻译成中文以便于理解、或者把中文翻译成英文来使用。其中目的也就是将语言进行翻译解释方便去理解使用。那么解释器模式呢？也有相似的逻辑、该模式实现了一个表达式接口、该接口解释一个特定的上下文。主要对于一些固定文法构建一个解释句子的解释器。 解释">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-09-26T09:14:14.005Z">
+<meta property="og:image" content="http://123.207.8.91:8081/src/Pictures/111/23.png">
+<meta property="og:image" content="http://123.207.8.91:8081/src/Pictures/111/23_1.png">
+<meta property="og:updated_time" content="2019-10-29T03:55:27.583Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content=".Net_Core 3.0 gRPC部署问题解决">
-<meta name="twitter:description" content="前言　　.Net Core3.0终于如约而至的来了。在3.0中增加了许多东西、也有了许多的变化。今天我们看的就是在3.0中使用gRPC并遇到的问题。gRPC现在可以非常方便简洁的在.Net Core中使用了，今天我也是尝试了一下，但是不幸了是遇到了一些阻碍。我们一起看看是啥问题吧。 gRPC介绍　　gRPC 是google开源的一个高性能、跨语言的RPC框架，基于HTTP2协议，采用ProtoBu">
+<meta name="twitter:title" content="通俗易懂设计模式解析——解释器模式">
+<meta name="twitter:description" content="前言　　今天我们来讲解释器模式【Interpreter Pattern】，如何理解这一个模式呢？一个简单的例子、中英文翻译器这个东西的作用是啥呢？将不知道的英文翻译成中文以便于理解、或者把中文翻译成英文来使用。其中目的也就是将语言进行翻译解释方便去理解使用。那么解释器模式呢？也有相似的逻辑、该模式实现了一个表达式接口、该接口解释一个特定的上下文。主要对于一些固定文法构建一个解释句子的解释器。 解释">
+<meta name="twitter:image" content="http://123.207.8.91:8081/src/Pictures/111/23.png">
 
 
 
@@ -158,13 +161,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/09/25/Net_Core 3.0 gRPC部署问题解决/">
+  <link rel="canonical" href="http://yoursite.com/2019/10/29/通俗易懂设计模式解析——解释器模式/">
 
 
 
 
 
-  <title>.Net_Core 3.0 gRPC部署问题解决 | 小世界的野孩子</title>
+  <title>通俗易懂设计模式解析——解释器模式 | 小世界的野孩子</title>
   
 
 
@@ -330,7 +333,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/25/Net_Core 3.0 gRPC部署问题解决/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/29/通俗易懂设计模式解析——解释器模式/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Boy">
@@ -347,7 +350,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">.Net_Core 3.0 gRPC部署问题解决</h1>
+          <h1 class="post-title" itemprop="name headline">通俗易懂设计模式解析——解释器模式</h1>
         
 
         <div class="post-meta">
@@ -359,8 +362,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-25T17:22:16+08:00">
-                2019-09-25
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-29T11:50:16+08:00">
+                2019-10-29
               </time>
             
 
@@ -382,8 +385,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Net-Core/" itemprop="url" rel="index">
-                    <span itemprop="name">.Net Core</span>
+                  <a href="/categories/设计模式/" itemprop="url" rel="index">
+                    <span itemprop="name">设计模式</span>
                   </a>
                 </span>
 
@@ -400,8 +403,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/09/25/Net_Core 3.0 gRPC部署问题解决/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/09/25/Net_Core 3.0 gRPC部署问题解决/" itemprop="commentCount"></span>
+                <a href="/2019/10/29/通俗易懂设计模式解析——解释器模式/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/10/29/通俗易懂设计模式解析——解释器模式/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -428,7 +431,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1.1k 字
+                  1.2k 字
                 </span>
               
 
@@ -465,25 +468,34 @@
       
 
       
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a><strong>前言</strong></h2><p>　　.Net Core3.0终于如约而至的来了。在3.0中增加了许多东西、也有了许多的变化。今天我们看的就是在3.0中使用gRPC并遇到的问题。gRPC现在可以非常方便简洁的在.Net Core中使用了，今天我也是尝试了一下，但是不幸了是遇到了一些阻碍。我们一起看看是啥问题吧。</p>
-<h2 id="gRPC介绍"><a href="#gRPC介绍" class="headerlink" title="gRPC介绍"></a><strong>gRPC介绍</strong></h2><p>　　gRPC 是google开源的一个高性能、跨语言的RPC框架，基于HTTP2协议，采用ProtoBuf 定义的IDL。</p>
-<p>　　<strong>优点：</strong></p>
-<p>  <strong>1. 现代高性能轻量级的RPC框架</strong><br>    <strong>2.协定优先 API 开发，默认使用协议缓冲区，允许与语言无关的实现</strong><br>    <strong>3.可以实现多语言的工具</strong><br>    <strong>4.protobuf二进制序列化，性能好/效率高</strong><br>    <strong>5.基于Http2.0</strong></p>
-<p>　　在ASP.NET Core 3.0中使用gRPC也有许多文章进行了介绍，我也是看了这些文章进行的学习。大家也是可以自行去查找的。</p>
-<h2 id="部署问题"><a href="#部署问题" class="headerlink" title="部署问题"></a><strong>部署问题</strong></h2><p>　　按照在ASP.NET Core 3.0中使用gRPC的文章中的教程一步一步的创建项目，编写代码。一套流程走下来那是行云流水。编写完之后在本地就开始进行测试。先跑起来服务端。在跑客户端。看到客户端上的消息返回。成功了。第一次就成功，果然是更加简单了。其中有两点需要注意的是因为在3.0中使用的gRPC是基于Http2.0的。而它又需要HTTPS，尽管说没有明确规定必须使用HTTPS，但是为了安全在浏览器实现上都要求了HTTPS，所以现在的HTTP/2和HTTPS基本都是一对。</p>
-<p>　　所以我们在本地运行的时候会出现一个弹框，询问我们是否信任证书。下面我的问题也就和这个有关了。本地运行一切正常。我就想搬到服务器上去试试看行不行。结果接过上去服务端是跑起来了，结果客户端运行起来就报错了。</p>
-<figure class="highlight delphi"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Unhandled exception. System.Net.Http.HttpRequestException: The SSL connection could <span class="keyword">not</span> be established, see inner exception.</span><br><span class="line"> ---&gt; System.Security.Authentication.AuthenticationException: The remote certificate <span class="keyword">is</span> invalid according <span class="keyword">to</span> the validation <span class="function"><span class="keyword">procedure</span>.</span></span><br></pre></td></tr></table></figure>
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a><strong>前言</strong></h2><p>　　今天我们来讲解释器模式【Interpreter Pattern】，如何理解这一个模式呢？一个简单的例子、中英文翻译器这个东西的作用是啥呢？将不知道的英文翻译成中文以便于理解、或者把中文翻译成英文来使用。其中目的也就是将语言进行翻译解释方便去理解使用。那么解释器模式呢？也有相似的逻辑、该模式实现了一个表达式接口、该接口解释一个特定的上下文。主要对于一些固定文法构建一个解释句子的解释器。</p>
+<h2 id="解释器模式介绍"><a href="#解释器模式介绍" class="headerlink" title="解释器模式介绍"></a><strong>解释器模式介绍</strong></h2><h3 id="一、来由"><a href="#一、来由" class="headerlink" title="一、来由"></a>一、<strong>来由</strong></h3><p>　　在软件系统中，如果有一些特殊的领域问题较为复杂，疑似的模式不断重复出现。这样使用一般的编程方式会使程序编码极为频繁。在这样的情况下，将这种特定的领域的问题转换表达为某种语法规则的句子。构建一个解释器来解释这样的句子、从而可以达到解决问题的目的。</p>
+<h3 id="二、意图"><a href="#二、意图" class="headerlink" title="二、意图"></a>二、<strong>意图</strong></h3><p>　　<strong>给定一个语言，定义它的文法表示，并定义一个解释器，这个解释器使用该标识来解释语言中的句子。</strong></p>
+<h3 id="三、案例图"><a href="#三、案例图" class="headerlink" title="三、案例图"></a>三、<strong>案例图</strong></h3><p><img src="http://123.207.8.91:8081/src/Pictures/111/23.png" alt="解释器模式案例图"> </p>
+<h3 id="四、解释器模式代码示例"><a href="#四、解释器模式代码示例" class="headerlink" title="四、解释器模式代码示例"></a>四、<strong>解释器模式代码示例</strong></h3><p>看上面的案例图，我们一起看下其中包含的五个部分内容：</p>
+<p><strong>抽象表达式：定义解释器接口、约定的操作。其中Interpret接口专门用来实现解释器的功能</strong></p>
+<p><strong>终结符表达式：实现抽象表达式要求的接口、文法中每一个终结符都有其对应的具体终结表达式。</strong></p>
+<p><strong>非终结表达式：文法中每一个规则都需要一个具体的非终结符表达式、一般表示文法中的运算符或者一些关键字。</strong></p>
+<p><strong>上下文类：这个角色用来存放终结符对应的具体的位置。</strong></p>
+<p><strong>客户端：指使用解释器的客户端。</strong></p>
+<p>我们看看这么一个案例，在日常的程序开发中偶尔会遇到中文转阿拉伯数字。对于一些运算需要中文转数字计算。我们看看这一问题如何解决吧：</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">namespace</span> <span class="title">Interpreter_Pattern</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">class</span> <span class="title">InterpreterPattern</span></span><br><span class="line">    &#123;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> Context: 环境类</span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Context</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">string</span> _statement;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">Context</span>(<span class="params"><span class="keyword">string</span> statement</span>)</span></span><br><span class="line"><span class="function"></span>        &#123;</span><br><span class="line">            <span class="keyword">this</span>._statement = statement;</span><br><span class="line">            contextMap.Add(<span class="string">"一"</span>, <span class="number">1</span>);</span><br><span class="line">            contextMap.Add(<span class="string">"二"</span>, <span class="number">2</span>);</span><br><span class="line">            contextMap.Add(<span class="string">"三"</span>, <span class="number">3</span>);</span><br><span class="line">            contextMap.Add(<span class="string">"四"</span>, <span class="number">4</span>);</span><br><span class="line">            contextMap.Add(<span class="string">"五"</span>, <span class="number">5</span>);</span><br><span class="line">            contextMap.Add(<span class="string">"六"</span>, <span class="number">6</span>);</span><br><span class="line">            contextMap.Add(<span class="string">"七"</span>, <span class="number">7</span>);</span><br><span class="line">            contextMap.Add(<span class="string">"八"</span>, <span class="number">8</span>);</span><br><span class="line">            contextMap.Add(<span class="string">"九"</span>, <span class="number">9</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">public</span> <span class="keyword">string</span> Statement</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">get</span> &#123; <span class="keyword">return</span> <span class="keyword">this</span>._statement; &#125;</span><br><span class="line">            <span class="keyword">set</span> &#123; <span class="keyword">this</span>._statement = <span class="keyword">value</span>; &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">public</span> Dictionary&lt;<span class="keyword">string</span>, <span class="keyword">int</span>&gt; contextMap = <span class="keyword">new</span> Dictionary&lt;<span class="keyword">string</span>, <span class="keyword">int</span>&gt;();</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> AbstractExpression: 抽象表达式</span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">class</span> <span class="title">AbstractExpression</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">Interpret</span>(<span class="params">Context context</span>)</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">class</span> <span class="title">TerminalExpression</span> : <span class="title">AbstractExpression</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="keyword">void</span> <span class="title">Interpret</span>(<span class="params">Context context</span>)</span></span><br><span class="line"><span class="function"></span>        &#123;</span><br><span class="line">            <span class="keyword">if</span> (context.Statement!=<span class="literal">null</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">foreach</span> (<span class="keyword">var</span> Key <span class="keyword">in</span> context.contextMap.Keys)</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="keyword">if</span> (context.Statement.Contains(Key))</span><br><span class="line">                    &#123;</span><br><span class="line">                        context.Statement= context.Statement.Replace(Key, context.contextMap[Key].ToString());<span class="comment">// context.contextMap[Key]);</span></span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">//return context;</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">class</span> <span class="title">NonterminalExpression</span> : <span class="title">AbstractExpression</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="keyword">void</span> <span class="title">Interpret</span>(<span class="params">Context context</span>)</span></span><br><span class="line"><span class="function"></span>        &#123;</span><br><span class="line">            <span class="keyword">if</span> (context.Statement.Contains(<span class="string">"加"</span>))</span><br><span class="line">            &#123;</span><br><span class="line">                context.Statement= context.Statement.Replace(<span class="string">"加"</span>,<span class="string">"+"</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (context.Statement.Contains(<span class="string">"减"</span>))</span><br><span class="line">            &#123;</span><br><span class="line">                context.Statement= context.Statement.Replace(<span class="string">"减"</span>, <span class="string">"-"</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (context.Statement.Contains(<span class="string">"乘"</span>))</span><br><span class="line">            &#123;</span><br><span class="line">                context.Statement= context.Statement.Replace(<span class="string">"乘"</span>, <span class="string">"*"</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (context.Statement.Contains(<span class="string">"除"</span>))</span><br><span class="line">            &#123;</span><br><span class="line">                context.Statement= context.Statement.Replace(<span class="string">"除"</span>, <span class="string">"/"</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">//return context;</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a><strong>解决方案</strong></h2><h3 id="1、修改https为http（不行、大错特错）"><a href="#1、修改https为http（不行、大错特错）" class="headerlink" title="1、修改https为http（不行、大错特错）"></a><strong>1、修改https为http（不行、大错特错）</strong></h3><p>　　这个报错我就有点纳闷了，我首先检查环境，发现都是对的。就有点纳闷了。然后看是连接失败。我就尝试修改https为http。结果还是错误的。这个方法就被抛弃了。（修改之后会导致客户端和服务端的SSL/TLS 配置不匹配。.Net Core客户端必须在https服务器地址中使用才能正确的使用安全连接）</p>
-<h3 id="2、信任证书（可行）"><a href="#2、信任证书（可行）" class="headerlink" title="2、信任证书（可行）"></a>2、<strong>信任证书（可行）</strong></h3><p>　　仔细查看错误，发现最后标明是证书无效。这是想起我们在本地第一次运行的时候弹窗提示我们是否信任证书。好像就是这个关系了。照这个路子想下去。找到在如何安装 ASP.NET Core HTTPS 开发证书。然后我们再试试、果然就可以了。</p>
-<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dotnet dev-certs <span class="keyword">https</span> <span class="comment">--trust</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">namespace Interpreter_Pattern</span><br><span class="line">&#123;</span><br><span class="line">    class Program</span><br><span class="line">    &#123;</span><br><span class="line">        static void Main(string[] args)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="built_in">Context</span> <span class="built_in">context</span> = new <span class="built_in">Context</span>(<span class="string">"三加八加九减二乘五除三"</span>)<span class="comment">;</span></span><br><span class="line">            AbstractExpression abstractExpression = new TerminalExpression()<span class="comment">;</span></span><br><span class="line">             abstractExpression.Interpret(<span class="built_in">context</span>)<span class="comment">;</span></span><br><span class="line"></span><br><span class="line">            AbstractExpression noabstractExpression = new NonterminalExpression()<span class="comment">;</span></span><br><span class="line">             noabstractExpression.Interpret(<span class="built_in">context</span>)<span class="comment">;</span></span><br><span class="line"></span><br><span class="line">            Console.WriteLine(<span class="built_in">context</span>.Statement)<span class="comment">;</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h3 id="3、忽略无效证书（可行）"><a href="#3、忽略无效证书（可行）" class="headerlink" title="3、忽略无效证书（可行）"></a>3、<strong>忽略无效证书（可行）</strong></h3><p>　　后面又发现了一种解决方案，既然是证书无效导致的问题，那么忽略无效证书是不是可以呢？然后我们换一台服务器，继续尝试一下。在代码中加上忽略无效证书的代码。然后再次进行尝试发现也是可以的。<strong>不过这里需要注意的是这个忽略无效证书在开发过程中使用即可，换到生产环境还是替换成有效证书</strong></p>
-<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> httpClientHandler = <span class="keyword">new</span> <span class="type">HttpClientHandler</span>(); </span><br><span class="line"><span class="comment">// Return `true` to allow certificates that are untrusted/invalid</span></span><br><span class="line">httpClientHandler.ServerCertificateCustomValidationCallback = HttpClientHandler.DangerousAcceptAnyServerCertificateValidator; </span><br><span class="line"><span class="keyword">var</span> httpClient = <span class="keyword">new</span> <span class="type">HttpClient</span>(httpClientHandler); </span><br><span class="line"><span class="keyword">var</span> channel = GrpcChannel.ForAddress(<span class="string">"https://localhost:5001"</span>,<span class="keyword">new</span> <span class="type">GrpcChannelOptions</span> &#123; HttpClient = httpClient &#125;); </span><br><span class="line"><span class="keyword">var</span> client = <span class="keyword">new</span> <span class="type">Greeter</span>.GreeterClient(channel);</span><br></pre></td></tr></table></figure>
-
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a><strong>总结</strong></h2><p>　　在我们使用在.Net Core 3.0中使用gRPC的时候，需要注意的时候保持客户端和服务端的SSL/TLS配置的匹配，基于HTTP2.0，使用https进行连接。证书的问题也就是在开发环境时出现解决，在正式生产环境中我们还是需要使用有效证书的。</p>
+<p><img src="http://123.207.8.91:8081/src/Pictures/111/23_1.png" alt="解释器模式运算结果"></p>
+<h2 id="使用场景及优缺点"><a href="#使用场景及优缺点" class="headerlink" title="使用场景及优缺点"></a><strong>使用场景及优缺点</strong></h2><h3 id="一、使用场景"><a href="#一、使用场景" class="headerlink" title="一、使用场景"></a>一、<strong>使用场景</strong></h3><p><strong>1、可以将一个需要解释执行的语言中的句子表示为一个抽象语法树。</strong></p>
+<p><strong>2、一些重复的问题可以使用一种简单的语言进行表达。</strong></p>
+<p><strong>3、语言的文法较为简单的时候可以考虑</strong></p>
+<h3 id="二、优点"><a href="#二、优点" class="headerlink" title="二、优点"></a>二、<strong>优点</strong></h3><p><strong>1、可扩展性高、比较灵活。</strong></p>
+<p><strong>2、增加了新的解释表达式的方式较为方便。</strong></p>
+<p><strong>3、容易实现简单的文法。</strong></p>
+<h3 id="三、缺点"><a href="#三、缺点" class="headerlink" title="三、缺点"></a>三、<strong>缺点</strong></h3><p><strong>1、可利用场景少。</strong></p>
+<p><strong>2、对于复制的文法维护较为困难。</strong></p>
+<p><strong>3、解释器模式会引起类的膨胀。</strong></p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a><strong>总结</strong></h2><p>　　到这里我们就看完了解释器模式，其实我们仔细想想正则表达式是不是也有点相似呢？正则表达式也是一个典型的解释器。解释器模式也就是给定一个语言，定义表示和解释器。然后用这个解释器来解释语言中的句子。解释器模式在平常的运用中较少、一般多用于表达式计算或者编译器、SQL语句解析等。到这里我们已经介绍完了23种设计模式。我们可以通过这个<a href="https://www.cnblogs.com/hulizhong/p/11394686.html" target="_blank" rel="noopener">系列开头的文章</a>进行一个整体的回顾。</p>
 <hr>
-<p>　　　　*<em>平凡人生要用平凡的心去对待，你的人生将会更精彩。 *</em></p>
+<p>　　<strong>用爱生活，你会使自己幸福！用爱工作，你会使很多人幸福！</strong></p>
 
       
     </div>
@@ -509,7 +521,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Net-Core/" rel="tag"># .Net Core</a>
+            <a href="/tags/Net设计模式/" rel="tag"># .Net设计模式</a>
           
         </div>
       
@@ -522,8 +534,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/09/24/通俗易懂设计模式解析——模板方法模式/" rel="next" title="通俗易懂设计模式解析——模板方法模式">
-                <i class="fa fa-chevron-left"></i> 通俗易懂设计模式解析——模板方法模式
+              <a href="/2019/10/23/通俗易懂设计模式解析——备忘录模式/" rel="next" title="通俗易懂设计模式解析——备忘录模式">
+                <i class="fa fa-chevron-left"></i> 通俗易懂设计模式解析——备忘录模式
               </a>
             
           </div>
@@ -531,10 +543,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/09/26/通俗易懂设计模式解析——命令模式/" rel="prev" title="通俗易懂设计模式解析——命令模式">
-                通俗易懂设计模式解析——命令模式 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -722,7 +730,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#gRPC介绍"><span class="nav-number">2.</span> <span class="nav-text">gRPC介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#部署问题"><span class="nav-number">3.</span> <span class="nav-text">部署问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解决方案"><span class="nav-number">4.</span> <span class="nav-text">解决方案</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、修改https为http（不行、大错特错）"><span class="nav-number">4.1.</span> <span class="nav-text">1、修改https为http（不行、大错特错）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、信任证书（可行）"><span class="nav-number">4.2.</span> <span class="nav-text">2、信任证书（可行）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3、忽略无效证书（可行）"><span class="nav-number">4.3.</span> <span class="nav-text">3、忽略无效证书（可行）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">5.</span> <span class="nav-text">总结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解释器模式介绍"><span class="nav-number">2.</span> <span class="nav-text">解释器模式介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、来由"><span class="nav-number">2.1.</span> <span class="nav-text">一、来由</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、意图"><span class="nav-number">2.2.</span> <span class="nav-text">二、意图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三、案例图"><span class="nav-number">2.3.</span> <span class="nav-text">三、案例图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#四、解释器模式代码示例"><span class="nav-number">2.4.</span> <span class="nav-text">四、解释器模式代码示例</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用场景及优缺点"><span class="nav-number">3.</span> <span class="nav-text">使用场景及优缺点</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、使用场景"><span class="nav-number">3.1.</span> <span class="nav-text">一、使用场景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、优点"><span class="nav-number">3.2.</span> <span class="nav-text">二、优点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三、缺点"><span class="nav-number">3.3.</span> <span class="nav-text">三、缺点</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">4.</span> <span class="nav-text">总结</span></a></li></ol></div>
             
 
           </div>
@@ -956,9 +964,9 @@
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'http://yoursite.com/2019/09/25/Net_Core 3.0 gRPC部署问题解决/';
-          this.page.identifier = '2019/09/25/Net_Core 3.0 gRPC部署问题解决/';
-          this.page.title = '.Net_Core 3.0 gRPC部署问题解决';
+          this.page.url = 'http://yoursite.com/2019/10/29/通俗易懂设计模式解析——解释器模式/';
+          this.page.identifier = '2019/10/29/通俗易懂设计模式解析——解释器模式/';
+          this.page.title = '通俗易懂设计模式解析——解释器模式';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://.disqus.com/embed.js';
