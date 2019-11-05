@@ -1,0 +1,1437 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content=".Net,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="前言　　并发、并行。同步、异步、互斥、多线程。我太难了。被这些词搞懵了。前面我们在写.Net基础系列的时候写过了关于.Net的异步编程。那么其他的都是些什么东西呀。今天我们首先就来解决这个问题。把这些词搞懂搞透。理清逻辑。然后最后我们进入并行编程的介绍。 概念初识首先我们看并发和并行： 并发：并发指的是在操作系统中，一个是时间段内有多个程序在运行，但是呢。这几个程序都运行在同一个处理机上，并且任意">
+<meta name="keywords" content=".Net">
+<meta property="og:type" content="article">
+<meta property="og:title" content="并行编程和任务（一）">
+<meta property="og:url" content="http://yoursite.com/2019/11/05/并行编程和任务（一）/index.html">
+<meta property="og:site_name" content="小世界的野孩子">
+<meta property="og:description" content="前言　　并发、并行。同步、异步、互斥、多线程。我太难了。被这些词搞懵了。前面我们在写.Net基础系列的时候写过了关于.Net的异步编程。那么其他的都是些什么东西呀。今天我们首先就来解决这个问题。把这些词搞懂搞透。理清逻辑。然后最后我们进入并行编程的介绍。 概念初识首先我们看并发和并行： 并发：并发指的是在操作系统中，一个是时间段内有多个程序在运行，但是呢。这几个程序都运行在同一个处理机上，并且任意">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://123.207.8.91:8081/src/Pictures/111/For.png">
+<meta property="og:image" content="http://123.207.8.91:8081/src/Pictures/111/ForEach.png">
+<meta property="og:image" content="http://123.207.8.91:8081/src/Pictures/111/ForBreak.png">
+<meta property="og:image" content="http://123.207.8.91:8081/src/Pictures/111/ForStop.png">
+<meta property="og:image" content="http://123.207.8.91:8081/src/Pictures/111/ForEachBreak.png">
+<meta property="og:image" content="http://123.207.8.91:8081/src/Pictures/111/ForEachStop.png">
+<meta property="og:image" content="http://123.207.8.91:8081/src/Pictures/111/Invoke1.png">
+<meta property="og:image" content="http://123.207.8.91:8081/src/Pictures/111/Invoke2.png">
+<meta property="og:updated_time" content="2019-11-05T07:44:31.936Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="并行编程和任务（一）">
+<meta name="twitter:description" content="前言　　并发、并行。同步、异步、互斥、多线程。我太难了。被这些词搞懵了。前面我们在写.Net基础系列的时候写过了关于.Net的异步编程。那么其他的都是些什么东西呀。今天我们首先就来解决这个问题。把这些词搞懂搞透。理清逻辑。然后最后我们进入并行编程的介绍。 概念初识首先我们看并发和并行： 并发：并发指的是在操作系统中，一个是时间段内有多个程序在运行，但是呢。这几个程序都运行在同一个处理机上，并且任意">
+<meta name="twitter:image" content="http://123.207.8.91:8081/src/Pictures/111/For.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/11/05/并行编程和任务（一）/">
+
+
+
+
+
+  <title>并行编程和任务（一） | 小世界的野孩子</title>
+  
+
+
+
+
+
+
+
+
+</head>
+<script type="text/javascript" src="/js/src/particle.js"></script>
+<!-- <script type="text/javascript" src="/js/src/love.js"></script>  -->
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">小世界的野孩子</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">小世界的野孩子</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+	
+	 
+	
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+	  
+
+ 
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/05/并行编程和任务（一）/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Boy">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/Hand.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小世界的野孩子">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">并行编程和任务（一）</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-05T13:22:16+08:00">
+                2019-11-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/C-其他系列/" itemprop="url" rel="index">
+                    <span itemprop="name">C#其他系列</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/11/05/并行编程和任务（一）/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/11/05/并行编程和任务（一）/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o">本文总阅读量</i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>次
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  3.7k 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  16 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a><strong>前言</strong></h2><p>　　并发、并行。同步、异步、互斥、多线程。我太难了。被这些词搞懵了。前面我们在写.Net基础系列的时候写过了关于.Net的异步编程。那么其他的都是些什么东西呀。今天我们首先就来解决这个问题。把这些词搞懂搞透。理清逻辑。然后最后我们进入并行编程的介绍。</p>
+<h2 id="概念初识"><a href="#概念初识" class="headerlink" title="概念初识"></a><strong>概念初识</strong></h2><p><strong>首先我们看并发和并行：</strong></p>
+<p><strong>并发：并发指的是在操作系统中，一个是时间段内有多个程序在运行，但是呢。这几个程序都运行在同一个处理机上，并且任意时间点都是一个程序运行在处理机上。</strong></p>
+<p><strong>并行：并行指的是在操作系统中，一个时间段内有多个程序在运行，但是呢。这几个程序分别运行在不同的处理机上。也就是说这些程序是一起运行的。</strong></p>
+<p>简单理解也就是<strong>并发就像三个包子给一个人吃，一口吃一个包子。并行就是三个包子给三个人吃，三个人一口分别吃三个包子。</strong></p>
+<p><strong>然后我们看看异步与多线程概念：</strong></p>
+<p><strong>刚刚我们讲到并发的理解概念，其中并发包含两种关系-同步和互斥。同步和互斥我们都是相对于临界资源来谈的。</strong></p>
+<p><strong>互斥：进程间相互排斥使用临界资源的现象就叫互斥。就好比进程A在访问List集合的时候，进程B也想访问，但是A在访问。B就阻塞等待A访问完成之后才去访问。</strong></p>
+<p><strong>同步：进程间的关系不是临界资源的相互排斥，而是相互依赖。例如进程B需要读取一个集合结果，但是这个集合结果需要进程A返回，当进程A没有返回集合结果时，进程B就会因为没有获得信息而阻塞。当进程A返回信息。进程B就可以获得信息被唤起继续运行。</strong></p>
+<p><strong>多线程：多线程可以说是程序设计的一个逻辑概念，多线程实现了线程的切换。使其看起来似乎是在同时运行多个线程一样。是进程中并发运行的一段代码。</strong></p>
+<p><strong>异步：异步与同步相对应。同步是进程间相互依赖。异步是进程间相互独立。不需要等待上一个进程的结果。可以做自己的事情。</strong></p>
+<p><strong>上面我们就介绍完了并发、并行、互斥、同步、多线程、异步。我们总结下其中关联吧：</strong></p>
+<p><strong>异步与多线程并不相等。异步是需要达到的目的，多线程是一个是实现异步的一种手段。最后达到的目的是什么呢？就是并发中线程的切换。同步也可以实现线程切换，但是由于同步中IO等待会浪费时间，所以同步切换进程与异步切换进行就有明显的时间差距。</strong></p>
+<h2 id="Parallel"><a href="#Parallel" class="headerlink" title="Parallel"></a><strong>Parallel</strong></h2><p>今天我们介绍的是<strong>Parallel</strong>类。该类位于<strong>System.Threading.Tasks</strong>命名空间中。依次来实现数据和任务的并行性。</p>
+<p>其中定义了并行的<strong>for和foreach</strong>的静态方法、还包含着<strong>Parallel.Invoke()</strong>用于任务的并行性。我们下面就来看看吧。</p>
+<h2 id="Parallel-For"><a href="#Parallel-For" class="headerlink" title="Parallel.For()"></a><strong>Parallel.For()</strong></h2><p>Parallel.For()方法类似于#中的for循环语句，但是Parallel.For()是可以并行运行的。不过并行运行并不保证迭代运行的顺序。我们来看看。</p>
+<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">public static void ForEx()</span><br><span class="line">       &#123;</span><br><span class="line">           Stopwatch stopwatch = new Stopwatch()<span class="comment">;</span></span><br><span class="line">           stopwatch.Start()<span class="comment">;</span></span><br><span class="line">           List&lt;Test&gt; list = new List&lt;Test&gt;()<span class="comment">;</span></span><br><span class="line">           for (int i = <span class="number">0</span><span class="comment">; i &lt; 100; i++)</span></span><br><span class="line">           &#123;</span><br><span class="line">               Test test = new Test()<span class="comment">;</span></span><br><span class="line">               test.Name = <span class="string">"Name:"</span> + i<span class="comment">;</span></span><br><span class="line">               test.Index = <span class="string">"Index:"</span> + i<span class="comment">;</span></span><br><span class="line">               test.Time = DateTime.Now<span class="comment">;</span></span><br><span class="line">               list.<span class="keyword">Add(test);</span></span><br><span class="line"><span class="keyword"> </span>              Task.Delay(<span class="number">10</span>).<span class="keyword">Wait();</span></span><br><span class="line"><span class="keyword"> </span>              Console.WriteLine(<span class="string">"C#中的for循环："</span> + i)<span class="comment">;</span></span><br><span class="line">           &#125;</span><br><span class="line">           stopwatch.Stop()<span class="comment">;</span></span><br><span class="line">           Console.WriteLine(<span class="string">"for  0-100 执行完成 耗时：&#123;0&#125;"</span>, stopwatch.ElapsedMilliseconds)<span class="comment">;</span></span><br><span class="line"></span><br><span class="line">       &#125;</span><br><span class="line">       public static void ParallelFor()</span><br><span class="line">       &#123;</span><br><span class="line">           Stopwatch stopwatch = new Stopwatch()<span class="comment">;</span></span><br><span class="line">           stopwatch.Start()<span class="comment">;</span></span><br><span class="line">           List&lt;Test&gt; lists = new List&lt;Test&gt;()<span class="comment">;</span></span><br><span class="line">           Parallel.For(<span class="number">1</span>, <span class="number">100</span>, i =&gt;</span><br><span class="line">           &#123;</span><br><span class="line">               Test tests = new Test()<span class="comment">;</span></span><br><span class="line">               tests.Name = <span class="string">"Name:"</span> + i<span class="comment">;</span></span><br><span class="line">               tests.Index = <span class="string">"Index:"</span> + i<span class="comment">;</span></span><br><span class="line">               tests.Time = DateTime.Now<span class="comment">;</span></span><br><span class="line">               lists.<span class="keyword">Add(tests);</span></span><br><span class="line"><span class="keyword"> </span>              Task.Delay(<span class="number">10</span>).<span class="keyword">Wait();</span></span><br><span class="line"><span class="keyword"> </span>              Console.WriteLine(<span class="string">"Parallel中的ParallelFor循环："</span> + i)<span class="comment">;</span></span><br><span class="line">           &#125;)<span class="comment">;</span></span><br><span class="line">           stopwatch.Stop()<span class="comment">;</span></span><br><span class="line">           Console.WriteLine(<span class="string">"ParallelFor  0-100 执行完成 耗时：&#123;0&#125;"</span>, stopwatch.ElapsedMilliseconds)<span class="comment">;</span></span><br><span class="line">       &#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> <span class="keyword">void</span> Main(<span class="keyword">string</span>[] args)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">Console</span>.WriteLine(<span class="string">"Start"</span>);</span><br><span class="line">    ForEx();</span><br><span class="line">    <span class="built_in">Console</span>.WriteLine(<span class="string">"for循环完成"</span>);</span><br><span class="line">    ParallelFor();</span><br><span class="line">    <span class="built_in">Console</span>.WriteLine(<span class="string">"End"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="http://123.207.8.91:8081/src/Pictures/111/For.png" alt="ParallelFor"></p>
+<p>这里我们可以看到最后的运行结果图使用for循环的执行下来都是依次执行。按照相应的顺序。但是我们使用Parallel.For()的时候运行下来。也输出了所有的结果，但是其顺序就没有保证了。</p>
+<h2 id="Parallel-ForEach"><a href="#Parallel-ForEach" class="headerlink" title="Parallel.ForEach()"></a><strong>Parallel.ForEach()</strong></h2><p>我们再看Parallel.ForEach()提供了一个并行处理数据的机制。这里类似于foreach语句，但是是以一部方式遍历。这里没有确定遍历的顺序，其执行顺序也就是不保证的。</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">region</span> ForEach 语句比较 </span></span><br><span class="line">      <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">ParallelForEach</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>      &#123;</span><br><span class="line">          List&lt;Test&gt; result = <span class="keyword">new</span> List&lt;Test&gt;();</span><br><span class="line">          <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; <span class="number">100</span>; i++)</span><br><span class="line">          &#123;</span><br><span class="line">              Test model = <span class="keyword">new</span> Test();</span><br><span class="line">              model.Name = <span class="string">"Name"</span> + i;</span><br><span class="line">              model.Index = <span class="string">"Index"</span> + i;</span><br><span class="line">              model.Time = DateTime.Now;</span><br><span class="line">              result.Add(model);</span><br><span class="line">          &#125;</span><br><span class="line">          Parallel.ForEach&lt;Test&gt;(result, s =&gt; &#123;</span><br><span class="line">              Console.WriteLine(s.Name);</span><br><span class="line">          &#125;);</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="meta">#<span class="meta-keyword">endregion</span></span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span><span class="params">(<span class="built_in">string</span>[] args)</span></span></span><br><span class="line"><span class="function">        </span>&#123;</span><br><span class="line">            ParallelForEach();</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p><img src="http://123.207.8.91:8081/src/Pictures/111/ForEach.png" alt="ForEach"></p>
+<p>我们看这里的运行结果，对数据集合进行了遍历处理，但是其运行的顺序不定，是乱序的结果。这也就是异步遍历的一个表现。</p>
+<h2 id="ParallelLoopState"><a href="#ParallelLoopState" class="headerlink" title="ParallelLoopState"></a><strong>ParallelLoopState</strong></h2><p>下面我们来看ParallelLoopState。它提供了两个方法。一个是Break、一个是Stop。</p>
+<p><strong>Break：表示并行循环执行了当前迭代后应尽快停止执行。筛选出符合条件的执行，可能输出完全。</strong></p>
+<p><strong>Stop：表示并行循环应尽快停止执行。遇到符合条件后停止并行循环，可能不完全输出。</strong></p>
+<p>下面我们看看代码：</p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> List&lt;Test&gt; GetListTest()</span><br><span class="line">      &#123;</span><br><span class="line">          List&lt;Test&gt; result = <span class="keyword">new</span> List&lt;Test&gt;();</span><br><span class="line">          <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; <span class="number">100</span>; i++)</span><br><span class="line">          &#123;</span><br><span class="line">              Test model = <span class="keyword">new</span> Test();</span><br><span class="line">              model.Name = i.ToString();</span><br><span class="line">              model.Index = <span class="string">"Index"</span> + i;</span><br><span class="line">              model.Time = DateTime.Now;</span><br><span class="line">              result.Add(model);</span><br><span class="line">          &#125;</span><br><span class="line">          <span class="keyword">return</span> result;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> BraekFor()</span><br><span class="line">      &#123;</span><br><span class="line">          var result = GetListTest();</span><br><span class="line">          Parallel.<span class="keyword">For</span>(<span class="number">0</span>, result.<span class="keyword">Count</span>, (<span class="keyword">int</span> i, ParallelLoopState ls) =&gt;</span><br><span class="line">          &#123;</span><br><span class="line">              <span class="keyword">Task</span>.Delay(<span class="number">10</span>).Wait();</span><br><span class="line">              <span class="keyword">if</span> (i &gt; <span class="number">50</span>)</span><br><span class="line">              &#123;</span><br><span class="line">                  Console.<span class="keyword">WriteLine</span>(<span class="string">"Parallel.For使用Break停止当前迭代:"</span> + i);</span><br><span class="line">                  ls.<span class="keyword">Break</span>();</span><br><span class="line">                  <span class="keyword">return</span>;</span><br><span class="line">              &#125;</span><br><span class="line">              Console.<span class="keyword">WriteLine</span>(<span class="string">"测试Parallel.For的Break："</span> + i);</span><br><span class="line">          &#125;);</span><br><span class="line"></span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> StopFor()</span><br><span class="line">      &#123;</span><br><span class="line">          var result = GetListTest();</span><br><span class="line">          Parallel.<span class="keyword">For</span>(<span class="number">0</span>, result.<span class="keyword">Count</span>, (<span class="keyword">int</span> i, ParallelLoopState ls) =&gt;</span><br><span class="line">          &#123;</span><br><span class="line">              <span class="keyword">Task</span>.Delay(<span class="number">10</span>).Wait();</span><br><span class="line">              <span class="keyword">if</span> (i &gt; <span class="number">50</span>)</span><br><span class="line">              &#123;</span><br><span class="line">                  Console.<span class="keyword">WriteLine</span>(<span class="string">"Parallel.For使用Stop停止 迭代:"</span> + i);</span><br><span class="line">                  ls.Stop();</span><br><span class="line">                  <span class="keyword">return</span>;</span><br><span class="line">              &#125;</span><br><span class="line">              Console.<span class="keyword">WriteLine</span>(<span class="string">"测试Parallel.For的Stop："</span> + i);</span><br><span class="line">          &#125;);</span><br><span class="line">      &#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span><span class="params">(<span class="built_in">string</span>[] args)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    BraekFor();</span><br><span class="line">    StopFor();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="http://123.207.8.91:8081/src/Pictures/111/ForBreak.png" alt="ForStop"></p>
+<p><img src="http://123.207.8.91:8081/src/Pictures/111/ForStop.png" alt="ForStop"></p>
+<p>我们看对于Parallel.For()来说这个案例。使用Break()停止当前迭代会输出符合条件所有结果，但是我们使用Stop的时候输出部分的时候就停止了。</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="built_in">void</span> BraekForEach()</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">var</span> result = GetListTest();</span><br><span class="line">    Parallel.ForEach&lt;Test&gt;<span class="function">(<span class="params">result, (<span class="params">Test s, ParallelLoopState ls</span>) =&gt;</span></span></span><br><span class="line"><span class="function"><span class="params">    &#123;</span></span></span><br><span class="line"><span class="function"><span class="params">        Task.Delay(<span class="params">10</span>).Wait(<span class="params"></span>);</span></span></span><br><span class="line"><span class="function"><span class="params">        <span class="keyword">if</span> (<span class="params">Convert.ToInt32(<span class="params">s.Name</span>) &gt; 50</span>)</span></span></span><br><span class="line"><span class="function"><span class="params">        &#123;</span></span></span><br><span class="line"><span class="function"><span class="params">            Console.WriteLine(<span class="params">"Parallel.ForEach使用Break停止当前迭代:" + s.Name</span>);</span></span></span><br><span class="line"><span class="function"><span class="params">            ls.Break(<span class="params"></span>);</span></span></span><br><span class="line"><span class="function"><span class="params">            <span class="keyword">return</span>;</span></span></span><br><span class="line"><span class="function"><span class="params">        &#125;</span></span></span><br><span class="line"><span class="function"><span class="params">        Console.WriteLine(<span class="params">"测试Parallel.ForEach的Break：" + s.Name</span>);</span></span></span><br><span class="line"><span class="function"><span class="params">    &#125;</span>);</span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function">&#125;</span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function"><span class="params">public</span> <span class="params">static</span> <span class="params">void</span> <span class="params">StopForEach</span><span class="params">()</span></span></span><br><span class="line"><span class="function">&#123;</span></span><br><span class="line"><span class="function">    <span class="params">var</span> <span class="params">result</span> = <span class="params">GetListTest</span><span class="params">()</span>;</span></span><br><span class="line"><span class="function">    <span class="params">Parallel</span>.<span class="params">ForEach</span>&lt;<span class="params">Test</span>&gt;(<span class="params">result, (<span class="params">Test s, ParallelLoopState ls</span>) =&gt;</span></span></span><br><span class="line"><span class="function"><span class="params">    &#123;</span></span></span><br><span class="line"><span class="function"><span class="params">        Task.Delay(<span class="params">10</span>).Wait(<span class="params"></span>);</span></span></span><br><span class="line"><span class="function"><span class="params">        <span class="keyword">if</span> (<span class="params">Convert.ToInt32(<span class="params">s.Name</span>) &gt; 50</span>)</span></span></span><br><span class="line"><span class="function"><span class="params">        &#123;</span></span></span><br><span class="line"><span class="function"><span class="params">            Console.WriteLine(<span class="params">"Parallel.ForEach使用Stop停止 迭代:" + s.Name</span>);</span></span></span><br><span class="line"><span class="function"><span class="params">            ls.Stop(<span class="params"></span>);</span></span></span><br><span class="line"><span class="function"><span class="params">            <span class="keyword">return</span>;</span></span></span><br><span class="line"><span class="function"><span class="params">        &#125;</span></span></span><br><span class="line"><span class="function"><span class="params">        Console.WriteLine(<span class="params">"测试Parallel.ForEach的Stop：" + s.Name</span>);</span></span></span><br><span class="line"><span class="function"><span class="params">    &#125;</span>);</span></span><br><span class="line"><span class="function">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span><span class="params">(<span class="built_in">string</span>[] args)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    BraekForEach();</span><br><span class="line">    StopForEach();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="http://123.207.8.91:8081/src/Pictures/111/ForEachBreak.png" alt="ForEachBreak"></p>
+<p><img src="http://123.207.8.91:8081/src/Pictures/111/ForEachStop.png" alt="ForEachStop"></p>
+<p>我们再对Parallel.ForEach进行测试，发现对于Stop和Break的用法和意义是一样的。</p>
+<h2 id="Parallel-Invoke"><a href="#Parallel-Invoke" class="headerlink" title="Parallel.Invoke()"></a><strong>Parallel.Invoke()</strong></h2><p>上面我们介绍了Parallel.For和Parallel.ForEach以及提供的两个方法Break和Stop。上面介绍的这些都是对数据的并行处理执行。下面我们介绍Parallel.Invoke()。它是针对于任务的并行运行处理。</p>
+<p>这里我们需要注意以下几点：</p>
+<p><strong>1、如果我们传入4个任务并行，那么我们至少需要四个逻辑处理内核(硬件线程)才可能使四个任务一起运行。但是当其中一个内核繁忙，那么底层的调度逻辑就可能会延迟某些方法的初始化执行。</strong></p>
+<p><strong>2、Parallel.Invoke()所包含的并行任务不能相互依赖，因为运行执行的顺序不可保证。</strong></p>
+<p><strong>3、使用Parallel.Invoke()我们需要测试运行结果，观察逻辑内核使用率以及实现加速。</strong></p>
+<p><strong>4、使用Parallel.Invoke()会产生一些额外的开销，例如分配硬件线程。</strong></p>
+<p>我们看下面的案例：</p>
+<p>下面我们对一个集合的数据进行添加然后输出。下面我们分为四组测试。500条数据和1000条数据各两个，分别是一般的同步任务和Parallel.Invoke()的并行任务执行。再观察其运行的时间比较。</p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br></pre></td><td class="code"><pre><span class="line">#region Parallel.Invoke()使用共同资源</span><br><span class="line"></span><br><span class="line"> public static <span class="keyword">List</span>&lt;<span class="keyword">Test</span>&gt; _tests = null;</span><br><span class="line"> public static void TaskFive_One()</span><br><span class="line"> &#123;</span><br><span class="line">     <span class="keyword">for</span> (int i = 0; i &lt; 500; i++)</span><br><span class="line">     &#123;</span><br><span class="line">         <span class="keyword">Test</span> <span class="keyword">test</span> = new <span class="keyword">Test</span>();</span><br><span class="line">         <span class="keyword">test</span>.Name = i.<span class="keyword">ToString</span>();</span><br><span class="line">         <span class="keyword">test</span>.Index = i.<span class="keyword">ToString</span>();</span><br><span class="line">         <span class="keyword">test</span>.Time = DateTime.Now;</span><br><span class="line">         _tests.Add(<span class="keyword">test</span>);</span><br><span class="line">     &#125;</span><br><span class="line">     Console.WriteLine(<span class="string">"TaskFive_One 500条数据第一个方法 执行完成"</span>);</span><br><span class="line"> &#125;</span><br><span class="line"> public static void TaskFive_Two()</span><br><span class="line"> &#123;</span><br><span class="line">     <span class="keyword">for</span> (int i = 500; i &lt; 1000; i++)</span><br><span class="line">     &#123;</span><br><span class="line">         <span class="keyword">Test</span> <span class="keyword">test</span> = new <span class="keyword">Test</span>();</span><br><span class="line">         <span class="keyword">test</span>.Name = i.<span class="keyword">ToString</span>();</span><br><span class="line">         <span class="keyword">test</span>.Index = i.<span class="keyword">ToString</span>();</span><br><span class="line">         <span class="keyword">test</span>.Time = DateTime.Now;</span><br><span class="line">         _tests.Add(<span class="keyword">test</span>);</span><br><span class="line">     &#125;</span><br><span class="line">     Console.WriteLine(<span class="string">"TaskFive_Two 500条数据第二个方法 执行完成"</span>);</span><br><span class="line"> &#125;</span><br><span class="line"> public static void TaskFive_Three()</span><br><span class="line"> &#123;</span><br><span class="line">     <span class="keyword">for</span> (int i = 1000; i &lt; 1500; i++)</span><br><span class="line">     &#123;</span><br><span class="line">         <span class="keyword">Test</span> <span class="keyword">test</span> = new <span class="keyword">Test</span>();</span><br><span class="line">         <span class="keyword">test</span>.Name = i.<span class="keyword">ToString</span>();</span><br><span class="line">         <span class="keyword">test</span>.Index = i.<span class="keyword">ToString</span>();</span><br><span class="line">         <span class="keyword">test</span>.Time = DateTime.Now;</span><br><span class="line">         _tests.Add(<span class="keyword">test</span>);</span><br><span class="line">     &#125;</span><br><span class="line">     Console.WriteLine(<span class="string">"TaskFive_Three 500条数据第三个方法 执行完成"</span>);</span><br><span class="line"> &#125;</span><br><span class="line"> public static void TaskFive_Four()</span><br><span class="line"> &#123;</span><br><span class="line">     <span class="keyword">for</span> (int i = 1500; i &lt; 2000; i++)</span><br><span class="line">     &#123;</span><br><span class="line">         <span class="keyword">Test</span> <span class="keyword">test</span> = new <span class="keyword">Test</span>();</span><br><span class="line">         <span class="keyword">test</span>.Name = i.<span class="keyword">ToString</span>();</span><br><span class="line">         <span class="keyword">test</span>.Index = i.<span class="keyword">ToString</span>();</span><br><span class="line">         <span class="keyword">test</span>.Time = DateTime.Now;</span><br><span class="line">         _tests.Add(<span class="keyword">test</span>);</span><br><span class="line">     &#125;</span><br><span class="line">     Console.WriteLine(<span class="string">"TaskFive_Four 500条数据第四个方法 执行完成"</span>);</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> public static void TaskOnethousand_One()</span><br><span class="line"> &#123;</span><br><span class="line">     <span class="keyword">for</span> (int i = 0; i &lt; 1000; i++)</span><br><span class="line">     &#123;</span><br><span class="line">         <span class="keyword">Test</span> <span class="keyword">test</span> = new <span class="keyword">Test</span>();</span><br><span class="line">         <span class="keyword">test</span>.Name = i.<span class="keyword">ToString</span>();</span><br><span class="line">         <span class="keyword">test</span>.Index = i.<span class="keyword">ToString</span>();</span><br><span class="line">         <span class="keyword">test</span>.Time = DateTime.Now;</span><br><span class="line">         _tests.Add(<span class="keyword">test</span>);</span><br><span class="line">     &#125;</span><br><span class="line">     Console.WriteLine(<span class="string">"TaskOnethousand_One 1000条数据第一个方法 执行完成"</span>);</span><br><span class="line"> &#125;</span><br><span class="line"> public static void TaskOnethousand_Two()</span><br><span class="line"> &#123;</span><br><span class="line">     <span class="keyword">for</span> (int i = 1000; i &lt; 2000; i++)</span><br><span class="line">     &#123;</span><br><span class="line">         <span class="keyword">Test</span> <span class="keyword">test</span> = new <span class="keyword">Test</span>();</span><br><span class="line">         <span class="keyword">test</span>.Name = i.<span class="keyword">ToString</span>();</span><br><span class="line">         <span class="keyword">test</span>.Index = i.<span class="keyword">ToString</span>();</span><br><span class="line">         <span class="keyword">test</span>.Time = DateTime.Now;</span><br><span class="line">         _tests.Add(<span class="keyword">test</span>);</span><br><span class="line">     &#125;</span><br><span class="line">     Console.WriteLine(<span class="string">"TaskOnethousand_Two 1000条数据第二个方法 执行完成"</span>);</span><br><span class="line"> &#125;</span><br><span class="line"> public static void TaskOnethousand_Three()</span><br><span class="line"> &#123;</span><br><span class="line">     <span class="keyword">for</span> (int i = 2000; i &lt; 3000; i++)</span><br><span class="line">     &#123;</span><br><span class="line">         <span class="keyword">Test</span> <span class="keyword">test</span> = new <span class="keyword">Test</span>();</span><br><span class="line">         <span class="keyword">test</span>.Name = i.<span class="keyword">ToString</span>();</span><br><span class="line">         <span class="keyword">test</span>.Index = i.<span class="keyword">ToString</span>();</span><br><span class="line">         <span class="keyword">test</span>.Time = DateTime.Now;</span><br><span class="line">         _tests.Add(<span class="keyword">test</span>);</span><br><span class="line">     &#125;</span><br><span class="line">     Console.WriteLine(<span class="string">"TaskOnethousand_Three 1000条数据第三个方法 执行完成"</span>);</span><br><span class="line"> &#125;</span><br><span class="line"> public static void TaskOnethousand_Four()</span><br><span class="line"> &#123;</span><br><span class="line">     <span class="keyword">for</span> (int i = 3000; i &lt; 4000; i++)</span><br><span class="line">     &#123;</span><br><span class="line">         <span class="keyword">Test</span> <span class="keyword">test</span> = new <span class="keyword">Test</span>();</span><br><span class="line">         <span class="keyword">test</span>.Name = i.<span class="keyword">ToString</span>();</span><br><span class="line">         <span class="keyword">test</span>.Index = i.<span class="keyword">ToString</span>();</span><br><span class="line">         <span class="keyword">test</span>.Time = DateTime.Now;</span><br><span class="line">         _tests.Add(<span class="keyword">test</span>);</span><br><span class="line">     &#125;</span><br><span class="line">     Console.WriteLine(<span class="string">"TaskOnethousand_Three 1000条数据第四个方法 执行完成"</span>);</span><br><span class="line"> &#125;</span><br><span class="line"> #endregion</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> <span class="keyword">void</span> Main(string[] args)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">//五百条数据顺序完成</span></span><br><span class="line">    <span class="built_in">Stopwatch</span> swFive = <span class="keyword">new</span> <span class="built_in">Stopwatch</span>();</span><br><span class="line">    swFive.Start();</span><br><span class="line">    Thread.Sleep(<span class="number">3000</span>);</span><br><span class="line">    _tests = <span class="keyword">new</span> <span class="built_in">List</span>&lt;Test&gt;();</span><br><span class="line">    TaskFive_One();</span><br><span class="line">    TaskFive_Two();</span><br><span class="line">    TaskFive_Three();</span><br><span class="line">    TaskFive_Four();</span><br><span class="line">    swFive.Stop();</span><br><span class="line">    Console.WriteLine(<span class="string">"500条数据  顺序编程所耗时间:"</span> + swFive.ElapsedMilliseconds);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">//五百条数据并行完成</span></span><br><span class="line">    <span class="built_in">Stopwatch</span> swFiveTask = <span class="keyword">new</span> <span class="built_in">Stopwatch</span>();</span><br><span class="line">    swFiveTask.Start();</span><br><span class="line">    Thread.Sleep(<span class="number">3000</span>);</span><br><span class="line">    _tests = <span class="keyword">new</span> <span class="built_in">List</span>&lt;Test&gt;();</span><br><span class="line">    Parallel.Invoke(() =&gt; TaskFive_One(), () =&gt; TaskFive_Two(), () =&gt; TaskFive_Three(), () =&gt; TaskFive_Four());</span><br><span class="line">    swFiveTask.Stop();</span><br><span class="line">    Console.WriteLine(<span class="string">"500条数据  并行编程所耗时间:"</span> + swFiveTask.ElapsedMilliseconds);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">//一千条数据顺序完成</span></span><br><span class="line">    <span class="built_in">Stopwatch</span> swOnethousand = <span class="keyword">new</span> <span class="built_in">Stopwatch</span>();</span><br><span class="line">    swOnethousand.Start();</span><br><span class="line">    Thread.Sleep(<span class="number">3000</span>);</span><br><span class="line">    _tests = <span class="keyword">new</span> <span class="built_in">List</span>&lt;Test&gt;();</span><br><span class="line">    TaskOnethousand_One();</span><br><span class="line">    TaskOnethousand_Two();</span><br><span class="line">    TaskOnethousand_Three();</span><br><span class="line">    TaskOnethousand_Four();</span><br><span class="line">    swOnethousand.Stop();</span><br><span class="line">    Console.WriteLine(<span class="string">"1000条数据  顺序编程所耗时间:"</span> + swOnethousand.ElapsedMilliseconds);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">//一千条数据并行完成</span></span><br><span class="line">    <span class="built_in">Stopwatch</span> swOnethousandTask = <span class="keyword">new</span> <span class="built_in">Stopwatch</span>();</span><br><span class="line">    swOnethousandTask.Start();</span><br><span class="line">    Thread.Sleep(<span class="number">3000</span>);</span><br><span class="line">    _tests = <span class="keyword">new</span> <span class="built_in">List</span>&lt;Test&gt;();</span><br><span class="line">    Parallel.Invoke(() =&gt; TaskOnethousand_One(), () =&gt; TaskOnethousand_Two(), () =&gt; TaskOnethousand_Three(), () =&gt; TaskOnethousand_Four());</span><br><span class="line">    swOnethousandTask.Stop();</span><br><span class="line">    Console.WriteLine(<span class="string">"1000条数据  并行编程所耗时间:"</span> + swOnethousandTask.ElapsedMilliseconds);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="http://123.207.8.91:8081/src/Pictures/111/Invoke1.png" alt="Invoke1"></p>
+<p>我们看这次的运行结果，发现我们使用顺序编程和并行编程所需要的时间相差无几的。那么怎么回事呢？我们仔细检查下，发现我们似乎对资源进行了共享。我们下面处理下，对list集合不进行共享看看。</p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br></pre></td><td class="code"><pre><span class="line">#region Parallel.Invoke()不使用共同资源</span><br><span class="line"></span><br><span class="line">public static void TaskFive_One()</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">List</span>&lt;<span class="keyword">Test</span>&gt; tests = new <span class="keyword">List</span>&lt;<span class="keyword">Test</span>&gt;();</span><br><span class="line">    <span class="keyword">for</span> (int i = 0; i &lt; 500; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">Test</span> <span class="keyword">test</span> = new <span class="keyword">Test</span>();</span><br><span class="line">        <span class="keyword">test</span>.Name = <span class="string">"Name"</span> + i.<span class="keyword">ToString</span>();</span><br><span class="line">        <span class="keyword">test</span>.Index = <span class="string">"Index"</span> + i.<span class="keyword">ToString</span>();</span><br><span class="line">        <span class="keyword">test</span>.Time = DateTime.Now;</span><br><span class="line">        tests.Add(<span class="keyword">test</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    Console.WriteLine(<span class="string">"TaskFive_One 500条数据第一个方法 执行完成"</span>);</span><br><span class="line">&#125;</span><br><span class="line">public static void TaskFive_Two()</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">List</span>&lt;<span class="keyword">Test</span>&gt; tests = new <span class="keyword">List</span>&lt;<span class="keyword">Test</span>&gt;();</span><br><span class="line">    <span class="keyword">for</span> (int i = 500; i &lt; 1000; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">Test</span> <span class="keyword">test</span> = new <span class="keyword">Test</span>();</span><br><span class="line">        <span class="keyword">test</span>.Name = <span class="string">"Name"</span> + i.<span class="keyword">ToString</span>();</span><br><span class="line">        <span class="keyword">test</span>.Index = <span class="string">"Index"</span> + i.<span class="keyword">ToString</span>();</span><br><span class="line">        <span class="keyword">test</span>.Time = DateTime.Now;</span><br><span class="line">        tests.Add(<span class="keyword">test</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    Console.WriteLine(<span class="string">"TaskFive_Two 500条数据第二个方法 执行完成"</span>);</span><br><span class="line">&#125;</span><br><span class="line">public static void TaskFive_Three()</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">List</span>&lt;<span class="keyword">Test</span>&gt; tests = new <span class="keyword">List</span>&lt;<span class="keyword">Test</span>&gt;();</span><br><span class="line">    <span class="keyword">for</span> (int i = 1000; i &lt; 1500; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">Test</span> <span class="keyword">test</span> = new <span class="keyword">Test</span>();</span><br><span class="line">        <span class="keyword">test</span>.Name = <span class="string">"Name"</span> + i.<span class="keyword">ToString</span>();</span><br><span class="line">        <span class="keyword">test</span>.Index = <span class="string">"Index"</span> + i.<span class="keyword">ToString</span>();</span><br><span class="line">        <span class="keyword">test</span>.Time = DateTime.Now;</span><br><span class="line">        tests.Add(<span class="keyword">test</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    Console.WriteLine(<span class="string">"TaskFive_Three 500条数据第三个方法 执行完成"</span>);</span><br><span class="line">&#125;</span><br><span class="line">public static void TaskFive_Four()</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">List</span>&lt;<span class="keyword">Test</span>&gt; tests = new <span class="keyword">List</span>&lt;<span class="keyword">Test</span>&gt;();</span><br><span class="line">    <span class="keyword">for</span> (int i = 1500; i &lt; 2000; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">Test</span> <span class="keyword">test</span> = new <span class="keyword">Test</span>();</span><br><span class="line">        <span class="keyword">test</span>.Name = <span class="string">"Name"</span> + i.<span class="keyword">ToString</span>();</span><br><span class="line">        <span class="keyword">test</span>.Index = <span class="string">"Index"</span> + i.<span class="keyword">ToString</span>();</span><br><span class="line">        <span class="keyword">test</span>.Time = DateTime.Now;</span><br><span class="line">        tests.Add(<span class="keyword">test</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    Console.WriteLine(<span class="string">"TaskFive_Four 500条数据第四个方法 执行完成"</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">public static void TaskOnethousand_One()</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">List</span>&lt;<span class="keyword">Test</span>&gt; tests = new <span class="keyword">List</span>&lt;<span class="keyword">Test</span>&gt;();</span><br><span class="line">    <span class="keyword">for</span> (int i = 0; i &lt; 1000; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">Test</span> <span class="keyword">test</span> = new <span class="keyword">Test</span>();</span><br><span class="line">        <span class="keyword">test</span>.Name = <span class="string">"Name"</span> + i.<span class="keyword">ToString</span>();</span><br><span class="line">        <span class="keyword">test</span>.Index = <span class="string">"Index"</span> + i.<span class="keyword">ToString</span>();</span><br><span class="line">        <span class="keyword">test</span>.Time = DateTime.Now;</span><br><span class="line">        tests.Add(<span class="keyword">test</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    Console.WriteLine(<span class="string">"TaskOnethousand_One 1000条数据第一个方法 执行完成"</span>);</span><br><span class="line">&#125;</span><br><span class="line">public static void TaskOnethousand_Two()</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">List</span>&lt;<span class="keyword">Test</span>&gt; tests = new <span class="keyword">List</span>&lt;<span class="keyword">Test</span>&gt;();</span><br><span class="line">    <span class="keyword">for</span> (int i = 1000; i &lt; 2000; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">Test</span> <span class="keyword">test</span> = new <span class="keyword">Test</span>();</span><br><span class="line">        <span class="keyword">test</span>.Name = <span class="string">"Name"</span> + i.<span class="keyword">ToString</span>();</span><br><span class="line">        <span class="keyword">test</span>.Index = <span class="string">"Index"</span> + i.<span class="keyword">ToString</span>();</span><br><span class="line">        <span class="keyword">test</span>.Time = DateTime.Now;</span><br><span class="line">        tests.Add(<span class="keyword">test</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    Console.WriteLine(<span class="string">"TaskOnethousand_Two 1000条数据第二个方法 执行完成"</span>);</span><br><span class="line">&#125;</span><br><span class="line">public static void TaskOnethousand_Three()</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">List</span>&lt;<span class="keyword">Test</span>&gt; tests = new <span class="keyword">List</span>&lt;<span class="keyword">Test</span>&gt;();</span><br><span class="line">    <span class="keyword">for</span> (int i = 2000; i &lt; 3000; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">Test</span> <span class="keyword">test</span> = new <span class="keyword">Test</span>();</span><br><span class="line">        <span class="keyword">test</span>.Name = <span class="string">"Name"</span> + i.<span class="keyword">ToString</span>();</span><br><span class="line">        <span class="keyword">test</span>.Index = <span class="string">"Index"</span> + i.<span class="keyword">ToString</span>();</span><br><span class="line">        <span class="keyword">test</span>.Time = DateTime.Now;</span><br><span class="line">        tests.Add(<span class="keyword">test</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    Console.WriteLine(<span class="string">"TaskOnethousand_Three 1000条数据第三个方法 执行完成"</span>);</span><br><span class="line">&#125;</span><br><span class="line">public static void TaskOnethousand_Four()</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">List</span>&lt;<span class="keyword">Test</span>&gt; tests = new <span class="keyword">List</span>&lt;<span class="keyword">Test</span>&gt;();</span><br><span class="line">    <span class="keyword">for</span> (int i = 3000; i &lt; 4000; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">Test</span> <span class="keyword">test</span> = new <span class="keyword">Test</span>();</span><br><span class="line">        <span class="keyword">test</span>.Name = <span class="string">"Name"</span> + i.<span class="keyword">ToString</span>();</span><br><span class="line">        <span class="keyword">test</span>.Index = <span class="string">"Index"</span> + i.<span class="keyword">ToString</span>();</span><br><span class="line">        <span class="keyword">test</span>.Time = DateTime.Now;</span><br><span class="line">        tests.Add(<span class="keyword">test</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    Console.WriteLine(<span class="string">"TaskOnethousand_Four 1000条数据第四个方法 执行完成"</span>);</span><br><span class="line">&#125;</span><br><span class="line">#endregion</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">static void Main(string[] args)</span><br><span class="line">&#123;</span><br><span class="line">    Stopwatch swTest = <span class="keyword">new</span> Stopwatch();</span><br><span class="line">    swTest.Start();</span><br><span class="line">    Thread.Sleep(<span class="number">3000</span>);</span><br><span class="line">    TaskFive_One();</span><br><span class="line">    TaskFive_Two();</span><br><span class="line">    TaskFive_Three();</span><br><span class="line">    TaskFive_Four();</span><br><span class="line">    swTest.Stop();</span><br><span class="line">    Console.WriteLine(<span class="string">"500条数据  顺序编程所耗时间:"</span> + swTest.ElapsedMilliseconds);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="regexp">//</span>五百条数据并行完成 </span><br><span class="line">    swTest.Restart();</span><br><span class="line">    Thread.Sleep(<span class="number">3000</span>);</span><br><span class="line">    Parallel.Invoke(<span class="function"><span class="params">()</span> =&gt;</span> TaskFive_One(), <span class="function"><span class="params">()</span> =&gt;</span> TaskFive_Two(), <span class="function"><span class="params">()</span> =&gt;</span> TaskFive_Three(), <span class="function"><span class="params">()</span> =&gt;</span> TaskFive_Four());</span><br><span class="line">    swTest.Stop();</span><br><span class="line">    Console.WriteLine(<span class="string">"500条数据  并行编程所耗时间:"</span> + swTest.ElapsedMilliseconds);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="regexp">//</span>一千条数据顺序完成 </span><br><span class="line">    swTest.Restart();</span><br><span class="line">    Thread.Sleep(<span class="number">3000</span>);</span><br><span class="line">    TaskOnethousand_One();</span><br><span class="line">    TaskOnethousand_Two();</span><br><span class="line">    TaskOnethousand_Three();</span><br><span class="line">    TaskOnethousand_Four();</span><br><span class="line">    swTest.Stop();</span><br><span class="line">    Console.WriteLine(<span class="string">"1000条数据  顺序编程所耗时间:"</span> + swTest.ElapsedMilliseconds);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="regexp">//</span>一千条数据并行完成 </span><br><span class="line">    swTest.Restart();</span><br><span class="line">    Thread.Sleep(<span class="number">3000</span>);</span><br><span class="line">    Parallel.Invoke(<span class="function"><span class="params">()</span> =&gt;</span> TaskOnethousand_One(), <span class="function"><span class="params">()</span> =&gt;</span> TaskOnethousand_Two(), <span class="function"><span class="params">()</span> =&gt;</span> TaskOnethousand_Three(), <span class="function"><span class="params">()</span> =&gt;</span> TaskOnethousand_Four());</span><br><span class="line">    swTest.Stop();</span><br><span class="line">    Console.WriteLine(<span class="string">"1000条数据  并行编程所耗时间:"</span> + swTest.ElapsedMilliseconds);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="http://123.207.8.91:8081/src/Pictures/111/Invoke2.png" alt="Invoke2"></p>
+<p>　　我们看下我们修改共享资源后，对于500条数据的运行结果，顺序编程比并行编程还是要快点，但是在1000条数据的时候并行编程就明显比顺序编程要快了。而且在测试中并行编程的运行顺序也是不固定的。我们在日常编程中我们需要衡量我们的应用是否需要并行编程，不然可能造成更多的性能损耗。</p>
+<hr>
+<p><strong>世界上那些最容易的事情中，拖延时间最不费力。坚韧是成功的一大要素，只要在门上敲得够久够大声，终会把人唤醒的。</strong></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/uploads/WX.jpg" alt="Boy wechat" style="width: 200px; max-width: 100%;">
+    <div>欢迎您扫一扫上面的微信公众号，订阅我的博客！</div>
+</div>
+
+      </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Net/" rel="tag"># .Net</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/11/01/NET解析深浅拷贝/" rel="next" title="NET解析深浅拷贝">
+                <i class="fa fa-chevron-left"></i> NET解析深浅拷贝
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/uploads/Hand.jpg" alt="Boy">
+            
+              <p class="site-author-name" itemprop="name">Boy</p>
+              <p class="site-description motion-element" itemprop="description">技术分享、生活分享</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">47</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/hulizong" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="a127988466@qq.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.cnblogs.com/hulizhong/" target="_blank" title="博客园">
+                      
+                        <i class="fa fa-fw fa-google"></i>博客园</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://juejin.im/user/5d689be2f265da03a6532c73/posts" target="_blank" title="掘金">
+                      
+                        <i class="fa fa-fw fa-google"></i>掘金</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+            <div class="cc-license motion-element" itemprop="license">
+              <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" target="_blank">
+                <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons">
+              </a>
+            </div>
+          
+
+          
+          
+		  
+<br>
+
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=1296893537&auto=1&height=66"></iframe>
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#概念初识"><span class="nav-number">2.</span> <span class="nav-text">概念初识</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Parallel"><span class="nav-number">3.</span> <span class="nav-text">Parallel</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Parallel-For"><span class="nav-number">4.</span> <span class="nav-text">Parallel.For()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Parallel-ForEach"><span class="nav-number">5.</span> <span class="nav-text">Parallel.ForEach()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ParallelLoopState"><span class="nav-number">6.</span> <span class="nav-text">ParallelLoopState</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Parallel-Invoke"><span class="nav-number">7.</span> <span class="nav-text">Parallel.Invoke()</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+         
+<div class="copyright">&copy; Wed Jul 31 2019 08:00:00 GMT+0800 (GMT+08:00) &mdash; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Boy</span>
+
+  
+</div>
+<span id="sitetime"></span>
+
+ <!-- <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+--> 
+
+
+
+<script language="javascript">
+    function siteTime() {
+        window.setTimeout("siteTime()", 1000);
+        var seconds = 1000;
+        var minutes = seconds * 60;
+        var hours = minutes * 60;
+        var days = hours * 24;
+        var years = days * 365;
+        var today = new Date();
+        var todayYear = today.getFullYear();
+        var todayMonth = today.getMonth() + 1;
+        var todayDate = today.getDate();
+        var todayHour = today.getHours();
+        var todayMinute = today.getMinutes();
+        var todaySecond = today.getSeconds();
+        /* Date.UTC() -- 返回date对象距世界标准时间(UTC)1970年1月1日午夜之间的毫秒数(时间戳)
+        year - 作为date对象的年份，为4位年份值
+        month - 0-11之间的整数，做为date对象的月份
+        day - 1-31之间的整数，做为date对象的天数
+        hours - 0(午夜24点)-23之间的整数，做为date对象的小时数
+        minutes - 0-59之间的整数，做为date对象的分钟数
+        seconds - 0-59之间的整数，做为date对象的秒数
+        microseconds - 0-999之间的整数，做为date对象的毫秒数 */
+        var t1 = Date.UTC(2019, 07, 31, 00, 00, 00); //北京时间2018-2-13 00:00:00
+        var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+        var diff = t2 - t1;
+        var diffYears = Math.floor(diff / years);
+        var diffDays = Math.floor((diff / days) - diffYears * 365);
+        var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
+        var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) / minutes);
+        var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours - diffMinutes * minutes) / seconds);
+        document.getElementById("sitetime").innerHTML = "本站已运行 " +diffYears+" 年 "+diffDays + " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+    }/*因为建站时间还没有一年，就将之注释掉了。需要的可以取消*/
+    siteTime();
+</script>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user">本站访客数</i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人次
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye">本站总访问量</i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://yoursite.com/2019/11/05/并行编程和任务（一）/';
+          this.page.identifier = '2019/11/05/并行编程和任务（一）/';
+          this.page.title = '并行编程和任务（一）';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+<!-- LOCAL: You can save these files to your site and update links -->
+    
+        
+        <link rel="stylesheet" href="https://aimingoo.github.io/gitmint/style/default.css">
+        <script src="https://aimingoo.github.io/gitmint/dist/gitmint.browser.js"></script>
+    
+<!-- END LOCAL -->
+
+    
+
+    
+      <script type="text/javascript">
+      function renderGitment(){
+        var gitment = new Gitmint({
+            id: window.location.pathname, 
+            owner: 'hulizong',
+            repo: 'BlogComments',
+            
+            lang: "" || navigator.language || navigator.systemLanguage || navigator.userLanguage,
+            
+            oauth: {
+            
+            
+                client_secret: '30d441eff5d043066b447c9159b4c85cbb64ad4f# EITHER this or proxy_gateway, Github access secret token for the Gitment',
+            
+                client_id: 'Iv1.18fd15a59885b6d8# MUST HAVE, Github client id for the Gitment'
+            }});
+        gitment.render('gitment-container');
+      }
+
+      
+      renderGitment();
+      
+      </script>
+    
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
